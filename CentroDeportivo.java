@@ -1,7 +1,7 @@
 
 /**
  * ENTREGA UT3
- * @author - (aquí pon tu nombre)
+ * @author - Rubén Gómez García
  * 
  * 
  * Un centro deportivo oferta clases de yoga, pilates y spinning
@@ -25,36 +25,52 @@
  */
 public class CentroDeportivo
 {
-    //TODO 
-    
-    
-    
+    private final int HORA_PRIMERA_CLASE = 10;
+    private final int MINUTOS_PRIMERA_CLASE = 30;
+    private final int HORA_ULTIMA_CLASE = 8;
+    private final int MINUTOS_ULTIMA_CLASE = 30;
+    private final int DESCANSO = 10;
+    private final int PRECIO_BASE = 5;
+    private final double PRECIO_QUINCE_MINUTOS = 0.40;
+    private final char YOGA = 'Y';
+    private final char PILATES = 'P';
+    private final char SPINNING = 'S';
+
+    private String nombre;
+    private int yoga;
+    private int pilates;
+    private int spinning;
+    private double totalAcumulado;
+    private int salaMaximoYoga;
+    private int maximoInscripcionesYoga;
 
     /**
      * Constructor  - 
      * Recibe un único parámetro, el nombre del centro deportivo
      * e inicializa el resto de atributos adecuadamente 
      */
-    public CentroDeportivo()    {
-        //TODO 
-        
-
+    public CentroDeportivo(String queNombre)    {
+        nombre = queNombre;
+        yoga = 0;
+        pilates = 0;
+        spinning = 0;
+        totalAcumulado = 0;
+        salaMaximoYoga = 0;
+        maximoInscripcionesYoga = 0;
     }
 
     /**
      *  Accesor para el nombre del centro deportivo
-     *
      */
-    public  getNombre()    {
-        //TODO 
+    public String getNombre()    {
+        return nombre;
     }
 
     /**
      *  Mutador para el nombre del centro deportivo
      */
-    public   setNombre()    {
-       //TODO 
-       
+    public void setNombre(String queNombre)    {
+        nombre = queNombre;
     }
 
     /**
@@ -62,9 +78,8 @@ public class CentroDeportivo
      *  entre todos los inscritos en el centro
      *
      */
-    public   getImporteTotal()    {
-        //TODO 
-        
+    public double getImporteTotal()    {
+        return totalAcumulado;
     }
 
     /**
@@ -100,29 +115,25 @@ public class CentroDeportivo
      */
     public void tarificarClaseEnSala(int sala, char tipo, int horas, int minutos, int inscritos)    {
         //TODO 
-        
-        
+
     }
 
-    /**
-     *  nº sala en la que hay más inscritos en yoga
-     *   
-     */
-    public  getSala()   {
-        //TODO 
-        
-    }
+    // /**
+     // *  nº sala en la que hay más inscritos en yoga
+     // *   
+     // */
+    // public int getSala()   {
+        // //TODO 
 
-    /**
-     * Devuelve el nombre de la actividad con más inscritos 
-     * independientemente de la sala  (puede haber coincidencias)
-     *  
-     */
-    public   getActividadMaximasInscripciones()    {
-        //TODO 
-        
-        
-        
-    }
+    // }
 
+    // /**
+     // * Devuelve el nombre de la actividad con más inscritos 
+     // * independientemente de la sala  (puede haber coincidencias)
+     // *  
+     // */
+    // public String getActividadMaximasInscripciones()    {
+        // //TODO 
+
+    // }
 }
