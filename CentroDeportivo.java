@@ -1,7 +1,7 @@
 
 /**
  * ENTREGA UT3
- * @author - (aquí pon tu nombre)
+ * @Beñat Martínez Moreno
  * 
  * 
  * Un centro deportivo oferta clases de yoga, pilates y spinning
@@ -25,11 +25,23 @@
  */
 public class CentroDeportivo
 {
-    //TODO 
-    
-    
-    
-
+     final int HORA_PRIMERA_CLASE = 10;
+     final int MINUTOS_PRIMERA_CLASE = 30;
+     final int HORA_ULTIMA_CLASE = 8;
+     final int MINUTOS_ULTIMA_CLASE = 30;
+     final int DESCANSO = 10;
+     final double PRECIO_BASE = 5.0;
+     final double PRECIO_QUINCE_MINUTOS = 0.40;
+     final char YOGA = 'Y';
+     final char PILATES = 'P';
+     final char SPINNING = 'S';
+     String nombre;
+     int yoga;
+     int pilates;
+     int spinning;
+     double totalAcumulado;
+     int salaMaximoYoga;
+     int maximoInscripcionesYoga;
     /**
      * Constructor  - 
      * Recibe un único parámetro, el nombre del centro deportivo
