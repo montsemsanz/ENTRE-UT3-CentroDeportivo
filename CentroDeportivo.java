@@ -25,8 +25,6 @@
  */
 public class CentroDeportivo
 {
-    //TODO 
-    
     //Constantes tiempo
     private int HORA_PRIMERA_CLASE = 10;
     private int MINUTOS_PRIMERA_CLASE = 30;
@@ -41,6 +39,15 @@ public class CentroDeportivo
     private char PILATES = 'P';
     private char SPINNING = 'S';
     
+    //Atributos
+    private String nombre;
+    private int yoga;
+    private int spinning;
+    private double totalAcumulado;
+    private int salaMaximoYoga;
+    private int maximoInscripcionesYoga;
+    
+    
     
 
     /**
@@ -49,7 +56,12 @@ public class CentroDeportivo
      * e inicializa el resto de atributos adecuadamente 
      */
     public CentroDeportivo()    {
-        //TODO 
+        nombre = queNombre;
+        yoga = 0;
+        spinning = 0;
+        totalAcumulado = 0;
+        salaMaximoYoga = 0.0;
+        maximoInscripcionesYoga = 0;
         
 
     }
