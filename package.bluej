@@ -38,5 +38,5 @@ target2.name=DemoCentroDeportivo
 target2.showInterface=false
 target2.type=ClassTarget
 target2.width=170
-target2.x=60
-target2.y=100
+target2.x=50
+target2.y=110
