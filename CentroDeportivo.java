@@ -1,7 +1,7 @@
 
 /**
  * ENTREGA UT3
- * @author - (aquí pon tu nombre)
+ * @author - Italo Ramirez Arellan
  * 
  * 
  * Un centro deportivo oferta clases de yoga, pilates y spinning
@@ -52,7 +52,7 @@ public class CentroDeportivo
     /**
      *  Mutador para el nombre del centro deportivo
      */
-    public   setNombre()    {
+    public  setNombre()    {
        //TODO 
        
     }
