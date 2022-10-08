@@ -2,10 +2,10 @@
 dependency1.from=DemoCentroDeportivo
 dependency1.to=CentroDeportivo
 dependency1.type=UsesDependency
-editor.fx.0.height=1047
-editor.fx.0.width=974
-editor.fx.0.x=953
-editor.fx.0.y=0
+editor.fx.0.height=1056
+editor.fx.0.width=1936
+editor.fx.0.x=-8
+editor.fx.0.y=-8
 objectbench.height=340
 objectbench.width=1896
 package.divider.horizontal=0.600297176820208
