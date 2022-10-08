@@ -61,8 +61,8 @@ public class CentroDeportivo
         yoga = 0;
         spinning = 0;
         pilates = 0;
-        totalAcumulado = 0;
-        salaMaximoYoga = 0.0;
+        totalAcumulado = 0.0;
+        salaMaximoYoga = 0;
         maximoInscripcionesYoga = 0;
         
 
@@ -134,14 +134,14 @@ public class CentroDeportivo
             break;
             case SPINNING: spinning = inscritos;
             break;
-            
+        }
             //calcula la sala con maximo numero de inscritos y la cantidad total de inscritos
             if ( yoga > maximoInscripcionesYoga){
                 salaMaximoYoga = sala;
                 maximoInscripcionesYoga = yoga;
             }
             
-            
+             totalAcumulado = PRECIO_BASE + PRECIO_QUINCE_MINUTOS * ((horas * 60 + minutos) % 15);
         }
         
         
