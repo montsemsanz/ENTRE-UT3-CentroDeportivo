@@ -1,7 +1,7 @@
 
 /**
  * ENTREGA UT3
- * @author - (aquí pon tu nombre)
+ * @author - Aitor Zubillaga Soria
  * 
  * 
  * Un centro deportivo oferta clases de yoga, pilates y spinning
@@ -27,6 +27,19 @@ public class CentroDeportivo
 {
     //TODO 
     
+    //Constantes tiempo
+    private int HORA_PRIMERA_CLASE = 10;
+    private int MINUTOS_PRIMERA_CLASE = 30;
+    private int HORA_ULTIMA_CLASE = 8;
+    private int MINUTOS_ULTIMA_CLASE = 30;
+    private int DESCANSO = 10;
+    //Constantes precio
+    private double PRECIO_BASE = 5.0;
+    private double PRECIO_QUINCE_MINUTOS = 0.4;
+    //Constantes identificadoras
+    private char YOGA = 'Y';
+    private char PILATES = 'P';
+    private char SPINNING = 'S';
     
     
 
