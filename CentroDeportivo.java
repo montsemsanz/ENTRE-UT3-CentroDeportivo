@@ -43,6 +43,7 @@ public class CentroDeportivo
     private String nombre;
     private int yoga;
     private int spinning;
+    private int pilates;
     private double totalAcumulado;
     private int salaMaximoYoga;
     private int maximoInscripcionesYoga;
@@ -59,6 +60,7 @@ public class CentroDeportivo
         nombre = queNombre;
         yoga = 0;
         spinning = 0;
+        pilates = 0;
         totalAcumulado = 0;
         salaMaximoYoga = 0.0;
         maximoInscripcionesYoga = 0;
@@ -124,7 +126,23 @@ public class CentroDeportivo
      *              
      */
     public void tarificarClaseEnSala(int sala, char tipo, int horas, int minutos, int inscritos)    {
-        //TODO 
+        //analiza el tipo de actividad relacinando la cantidad de inscritos
+        switch (tipo){
+            case YOGA: yoga = inscritos;
+            break;
+            case PILATES: pilates = inscritos;
+            break;
+            case SPINNING: spinning = inscritos;
+            break;
+            
+            //calcula la sala con maximo numero de inscritos y la cantidad total de inscritos
+            if ( yoga > maximoInscripcionesYoga){
+                salaMaximoYoga = sala;
+                maximoInscripcionesYoga = yoga;
+            }
+            
+            
+        }
         
         
     }
