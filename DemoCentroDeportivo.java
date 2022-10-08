@@ -7,16 +7,16 @@ import java.util.Scanner;
  */
 public class DemoCentroDeportivo
 {
-
-    private CentroDeportivo centro;
+    private  CentroDeportivo centro;
     private static Scanner teclado = new Scanner(System.in);
-
+    
     /**
      * Constructor de la clase DemoCentroDeportivo
      */
     public DemoCentroDeportivo()    {
 
         centro = new CentroDeportivo("FITNESS CENTER");
+        
     }
 
     /**
@@ -32,7 +32,7 @@ public class DemoCentroDeportivo
         int[] inscripciones = {30, 22, 20, 15, 18, 10};
 
         tarificar(tipoActividad, horas, minutos, inscripciones);
-        
+
         mostrarEstadisticas();
 
     }
@@ -48,6 +48,7 @@ public class DemoCentroDeportivo
         }
 
     }
+
     /**
      * Mostrar en pantalla las estadísticas
      */
@@ -82,5 +83,6 @@ public class DemoCentroDeportivo
         teclado.nextLine();
         System.out.println("\u000C");    
     }
-
+    
+    
 }

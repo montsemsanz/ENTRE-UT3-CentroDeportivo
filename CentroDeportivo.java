@@ -1,7 +1,7 @@
 
 /**
  * ENTREGA UT3
- * @author - (aquí pon tu nombre)
+ * @Jagoba Castro
  * 
  * 
  * Un centro deportivo oferta clases de yoga, pilates y spinning
@@ -25,19 +25,35 @@
  */
 public class CentroDeportivo
 {
-    //TODO 
-    
-    
-    
+    private final int HORA_PRIMERA_CLASE = 10;
+    private final int MINUTOS_PRIMERA_CLASE = 30;
+    private final int HORA_ULTIMA_CLASE = 8;
+    private final int MINUTOS_ULTIMA_CLASE = 30;
+    private final int descanso = 10;
+    private final double PRECIO_BASE = 5.0;
+    private final double PRECIO_QUINCE_MINUTOS = 0.40;
+    private final char YOGA = 'Y';
+    private final char PILATES = 'P';
+    private final char SPINNING = 'S';
+    private String nombre;
+    private int yoga;
+    private int pilates;
+    private int spinning;
+    private double totalAcumulado;
+    private int salaMaximoYoga;
+    private int maximoInscripcionesYoga;
 
     /**
      * Constructor  - 
      * Recibe un único parámetro, el nombre del centro deportivo
      * e inicializa el resto de atributos adecuadamente 
      */
-    public CentroDeportivo()    {
-        //TODO 
-        
+    public CentroDeportivo(String nombre)    {
+        yoga = 0;
+        pilates = 0;
+        totalAcumulado = 0;
+        salaMaximoYoga = 0;
+        maximoInscripcionesYoga = 0;
 
     }
 
@@ -45,16 +61,16 @@ public class CentroDeportivo
      *  Accesor para el nombre del centro deportivo
      *
      */
-    public  getNombre()    {
-        //TODO 
+    public String getNombre()    {
+        return nombre; 
     }
 
     /**
      *  Mutador para el nombre del centro deportivo
      */
-    public   setNombre()    {
-       //TODO 
-       
+    public void  setNombre(String setNombre)    {
+        nombre = setNombre;
+
     }
 
     /**
@@ -62,9 +78,9 @@ public class CentroDeportivo
      *  entre todos los inscritos en el centro
      *
      */
-    public   getImporteTotal()    {
-        //TODO 
-        
+    public  int getImporteTotal()    {
+        return totalAcumulado;
+
     }
 
     /**
@@ -99,9 +115,11 @@ public class CentroDeportivo
      *              
      */
     public void tarificarClaseEnSala(int sala, char tipo, int horas, int minutos, int inscritos)    {
-        //TODO 
-        
-        
+        sala;
+        tipo;
+        horas;
+        minutos = ;
+        inscritos = ;
     }
 
     /**
@@ -109,8 +127,8 @@ public class CentroDeportivo
      *   
      */
     public  getSala()   {
-        //TODO 
-        
+        TODO 
+
     }
 
     /**
@@ -118,11 +136,8 @@ public class CentroDeportivo
      * independientemente de la sala  (puede haber coincidencias)
      *  
      */
-    public   getActividadMaximasInscripciones()    {
-        //TODO 
-        
-        
-        
-    }
+    public String getActividadMaximasInscripciones()    {
+        TODO 
 
+    }
 }
