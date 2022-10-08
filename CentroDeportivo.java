@@ -35,10 +35,10 @@ public class CentroDeportivo
     private double PRECIO_BASE = 5.0;
     private double PRECIO_QUINCE_MINUTOS = 0.4;
     //Constantes identificadoras
-    private char YOGA = 'Y';
-    private char PILATES = 'P';
-    private char SPINNING = 'S';
-    
+    private final char YOGA = 'Y';
+    private final char PILATES = 'P';
+    private final char SPINNING = 'S';
+
     //Atributos
     private String nombre;
     private int yoga;
@@ -47,16 +47,13 @@ public class CentroDeportivo
     private double totalAcumulado;
     private int salaMaximoYoga;
     private int maximoInscripcionesYoga;
-    
-    
-    
 
     /**
      * Constructor  - 
      * Recibe un único parámetro, el nombre del centro deportivo
      * e inicializa el resto de atributos adecuadamente 
      */
-    public CentroDeportivo()    {
+    public CentroDeportivo(String queNombre)    {
         nombre = queNombre;
         yoga = 0;
         spinning = 0;
@@ -64,7 +61,6 @@ public class CentroDeportivo
         totalAcumulado = 0.0;
         salaMaximoYoga = 0;
         maximoInscripcionesYoga = 0;
-        
 
     }
 
@@ -80,8 +76,8 @@ public class CentroDeportivo
      *  Mutador para el nombre del centro deportivo
      */
     public void setNombre(String queNombre)    {
-          nombre = queNombre;
-       
+        nombre = queNombre;
+
     }
 
     /**
@@ -91,7 +87,7 @@ public class CentroDeportivo
      */
     public  double getImporteTotal()    {
         return totalAcumulado;
-        
+
     }
 
     /**
@@ -126,24 +122,35 @@ public class CentroDeportivo
      *              
      */
     public void tarificarClaseEnSala(int sala, char tipo, int horas, int minutos, int inscritos)    {
-        //analiza el tipo de actividad relacinando la cantidad de inscritos
+        String nombreTipo = "";
         switch (tipo){
             case YOGA: yoga = inscritos;
-            break;
+                        nombreTipo = "YOGA";
+                break;
             case PILATES: pilates = inscritos;
-            break;
+                        nombreTipo = "PILATES";
+                break;
             case SPINNING: spinning = inscritos;
-            break;
+                        nombreTipo = "SPINNING";
+                break;
         }
-            //calcula la sala con maximo numero de inscritos y la cantidad total de inscritos
-            if ( yoga > maximoInscripcionesYoga){
-                salaMaximoYoga = sala;
-                maximoInscripcionesYoga = yoga;
-            }
-            
-             totalAcumulado = PRECIO_BASE + PRECIO_QUINCE_MINUTOS * ((horas * 60 + minutos) % 15);
+        //calcula la sala con maximo numero de inscritos y la cantidad total de inscritos
+        if ( yoga > maximoInscripcionesYoga){
+            salaMaximoYoga = sala;
+            maximoInscripcionesYoga = yoga;
         }
         
+        double precioTiempo;
+        precioTiempo = PRECIO_BASE + PRECIO_QUINCE_MINUTOS * ((horas * 60 + minutos) % 15);
+        
+        
+        System.out.println("Sala Nº: " + sala +"                       Actividad:" + nombreTipo);
+        System.out.println("--------------------------------------------------------");
+        System.out.println("Longitud (Duración): " + (horas * 60 + minutos) + " min. Descanso: 10 min."); 
+        System.out.println("Precio clase: " + precioTiempo + "€");
+        System.out.println("Clase ofertada en sala: " +"" + " veces al día");
+        System.out.println("La última clase termina a las: " +"" + "h. y " +"" + " minutos");
+        System.out.println("Total inscritos en sala: " + inscritos);
         
     }
 
@@ -151,9 +158,9 @@ public class CentroDeportivo
      *  nº sala en la que hay más inscritos en yoga
      *   
      */
-    public  getSala()   {
-        //TODO 
-        
+    public  int getSala()   {
+        return salaMaximoYoga;
+
     }
 
     /**
@@ -161,11 +168,30 @@ public class CentroDeportivo
      * independientemente de la sala  (puede haber coincidencias)
      *  
      */
-    public   getActividadMaximasInscripciones()    {
-        //TODO 
-        
-        
-        
-    }
+    public String getActividadMaximasInscripciones()    {
 
+        if((yoga != pilates) && (pilates != spinning)){
+            if (yoga > pilates) {
+                if (yoga > spinning) {
+                    return "YOGA";                                             
+                } else {
+                    return "SPINNING";     
+                }
+            } else if (pilates > spinning) {
+                return "PILATES";
+            } else {
+                return "SPINNING";
+            }
+        }
+        else if ((yoga == pilates) && (yoga > spinning)){
+            return "YOGA PILATES";
+            } else if ((yoga == spinning) && (yoga > pilates)){
+            return "YOGA SPINNING";
+            } else if ((pilates == spinning) && (pilates > yoga)){
+            return "PILATES SPINNING";
+        } else {return "YOGA PILATES SPINNING";
+        }
+
+    }
 }
+
