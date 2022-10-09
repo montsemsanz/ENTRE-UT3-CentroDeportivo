@@ -78,8 +78,8 @@ public class CentroDeportivo
      *  entre todos los inscritos en el centro
      *
      */
-    public   getImporteTotal()    {
-        //TODO 
+    public  double getImporteTotal()    {
+       return totalAcumulado;
         
     }
 
@@ -115,8 +115,20 @@ public class CentroDeportivo
      *              
      */
     public void tarificarClaseEnSala(int sala, char tipo, int horas, int minutos, int inscritos)    {
-        //TODO 
-        
+        inscritos = yoga + pilates + spinning;
+        system.out.println(inscritos);
+        system.out.println(maximoInscripcionesYoga);
+        switch (sala) {
+            case 1: int precio = horas % 1 =  0;
+                    int precio2 = minutos % 0 = 0;
+                    horas *= PRECIO_BASE;
+                    break;
+             case 1: int precio = horas % 2 =  0;
+                    int precio2 = minutos % 0 = 0;
+                    horas *= PRECIO_BASE;
+                    break;
+                    
+        }
         
     }
 
@@ -124,8 +136,8 @@ public class CentroDeportivo
      *  nº sala en la que hay más inscritos en yoga
      *   
      */
-    public  getSala()   {
-        //TODO 
+    public  int getSala()   {
+        
         
     }
 
