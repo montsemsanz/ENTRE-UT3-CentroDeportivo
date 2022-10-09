@@ -31,10 +31,10 @@ public class CentroDeportivo
     private String nombre;
     
     // Hora y minutos
-    private int HORA_PRIMERA_CLASE;
-    private int MINUTOS_PRIMERA_CLASE;
-    private int HORA_ULTIMA_CLASE;
-    private int MINUTOS_ULTIMA_CLASE;
+    private final int HORA_PRIMERA_CLASE = 10;
+    private final int MINUTOS_PRIMERA_CLASE = 30;
+    private final int HORA_ULTIMA_CLASE = 8;
+    private final int MINUTOS_ULTIMA_CLASE = 30;
     private final int DESCANSO = 10;
     
     // Precio base de las clases
@@ -65,9 +65,14 @@ public class CentroDeportivo
      * Recibe un único parámetro, el nombre del centro deportivo
      * e inicializa el resto de atributos adecuadamente 
      */
-    public CentroDeportivo()    {
-        //TODO 
-        
+    public CentroDeportivo(String queCentroDeportivo)    {
+        nombre = queCentroDeportivo;
+        yoga = 0;
+        pilates = 0;
+        spinning = 0;
+        totalAcumulado = 0;
+        salaMaximoYoga = 0;
+        maximoInscripcionesYoga = 0;
 
     }
 
