@@ -25,6 +25,7 @@
  */
 public class CentroDeportivo
 {
+    //CONSTANTES:
     private final int HORA_PRIMERA_CLASE = 10; //10:00 AM == 10:00 H
         private final int MINUTOS_PRIMERA_CLASE = 30; //30 MIN
     private final int HORA_ULTIMA_CLASE = 8; //8:00PM == 20:00 H
@@ -38,8 +39,19 @@ public class CentroDeportivo
     private final char PILATES = 'P'; //tipo de actividad - pilates
     private final char SPINNING = 'S'; //tipo de actividad - spinning
     
+    //RESTO DE ATRIBUTOS:
+    private String nombre; //nombre del centro deportivo
     
+    private int yoga; //cantidad de personas inscritas en yoga
+    private int pilates; //cantidad de personas inscritas en pilates
+    private int spinning; //cantidad de personas inscritas en spinning
     
+    private double totalAcumulado; //dinero total obtenido entre todos los 
+                                    //inscritos de todas las clases
+    
+    private int salaMaximoYoga; //el numero de la sala con mas personas inscritas
+        private int maximoInscripcionesYoga; //el numero de personas inscritas en la
+                                              //sala de yoga con mas inscripciones
     /**
      * Constructor  - 
      * Recibe un único parámetro, el nombre del centro deportivo
