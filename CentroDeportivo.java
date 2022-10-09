@@ -37,22 +37,27 @@ public class CentroDeportivo
     private final char YOGA='Y';
     private final char PILATES='P';
     private final char SPINNING='S';
-    //actividad y ultimas constantes
+    //actividad y ultimas CONSTANTES
     private String nombre; //Del centro
     private int yoga; // nº de personas inscritas
     private int pilates; // nº de personas inscritas
     private int spinning; // nº de personas inscritas
     private double totalAcumulado; // importe total entre todos
     private int salaMaximoYoga; //nº de sala mas gente para yoga
-    private int maximoInscripcionesYoga; // nº máximo personas yoga en sala
+    private int maximoInscripcionesYoga; // nº máximo personas yoga en  sala
     /**
      * Constructor  - 
      * Recibe un único parámetro, el nombre del centro deportivo
      * e inicializa el resto de atributos adecuadamente 
      */
-    public CentroDeportivo()    {
-        //TODO 
-
+    public CentroDeportivo(String queNombre)    {
+        nombre = queNombre;
+        yoga = 0;
+        pilates = 0;
+        spinning = 0;
+        totalAcumulado = 0;
+        salaMaximoYoga = 0;
+        maximoInscripcionesYoga = 0;
     }
 
     /**
