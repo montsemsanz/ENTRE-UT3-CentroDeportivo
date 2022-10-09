@@ -84,14 +84,13 @@ public class CentroDeportivo
     }
 
     /**
-     *  accesor para el importe total acumulado 
+     *  accesor para el importe (dinero) total acumulado 
      *  entre todos los inscritos en el centro
      *
      */
-    // public   getImporteTotal()    {
-        // //TODO 
-        
-    // }
+    public double getImporteTotal()    {
+        return totalAcumulado; 
+    }
 
     /**
      *  Este método recibe 5 parámetros: 
