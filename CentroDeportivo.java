@@ -1,7 +1,7 @@
 
 /**
  * ENTREGA UT3
- * @author - (aquí pon tu nombre)
+ * @CristinaLópez
  * 
  * 
  * Un centro deportivo oferta clases de yoga, pilates y spinning
@@ -45,27 +45,27 @@ public class CentroDeportivo
      *  Accesor para el nombre del centro deportivo
      *
      */
-    public  getNombre()    {
-        //TODO 
-    }
+    // public  getNombre()    {
+        // //TODO 
+    // }
 
     /**
      *  Mutador para el nombre del centro deportivo
      */
-    public   setNombre()    {
-       //TODO 
+    // public   setNombre()    {
+       // //TODO 
        
-    }
+    // }
 
     /**
      *  accesor para el importe total acumulado 
      *  entre todos los inscritos en el centro
      *
      */
-    public   getImporteTotal()    {
-        //TODO 
+    // public   getImporteTotal()    {
+        // //TODO 
         
-    }
+    // }
 
     /**
      *  Este método recibe 5 parámetros: 
@@ -108,21 +108,21 @@ public class CentroDeportivo
      *  nº sala en la que hay más inscritos en yoga
      *   
      */
-    public  getSala()   {
-        //TODO 
+    // public  getSala()   {
+        // //TODO 
         
-    }
+    // }
 
     /**
      * Devuelve el nombre de la actividad con más inscritos 
      * independientemente de la sala  (puede haber coincidencias)
      *  
      */
-    public   getActividadMaximasInscripciones()    {
-        //TODO 
+    // public   getActividadMaximasInscripciones()    {
+        // //TODO 
         
         
         
-    }
+    // }
 
 }
