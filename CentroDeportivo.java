@@ -80,8 +80,8 @@ public class CentroDeportivo
      *  Accesor para el nombre del centro deportivo
      *
      */
-    public  getNombre()    {
-        //TODO 
+    public void getNombre()    {
+        return nombre;
     }
 
     /**
