@@ -25,9 +25,11 @@
  */
 public class CentroDeportivo
 {
-    //TODO 
-    
-    
+    private final int HORA_PRIMERA_CLASE = 10; //10:00 AM == 10:00 H
+        private final int MINUTOS_PRIMERA_CLASE = 30; //30 MIN
+    private final int HORA_ULTIMA_CLASE = 8; //8:00PM == 20:00 H
+        private final int MINUTOS_ULTIMA_CLASE = 30; //30 MIN
+    private final int DESCANSO = 10; //10 MINUTOS
     
 
     /**
