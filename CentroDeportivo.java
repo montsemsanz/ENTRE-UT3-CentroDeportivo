@@ -31,7 +31,15 @@ public class CentroDeportivo
         private final int MINUTOS_ULTIMA_CLASE = 30; //30 MIN
     private final int DESCANSO = 10; //10 MINUTOS
     
-
+    private final double PRECIO_BASE = 5.0; //precio base de cada clase
+    private final double PRECIO_QUINCE_MINUTOS = 0.40; //incremento de precio cada 15 mins
+    
+    private final char YOGA = 'Y'; //tipo de actividad - yoga
+    private final char PILATES = 'P'; //tipo de actividad - pilates
+    private final char SPINNING = 'S'; //tipo de actividad - spinning
+    
+    
+    
     /**
      * Constructor  - 
      * Recibe un único parámetro, el nombre del centro deportivo
