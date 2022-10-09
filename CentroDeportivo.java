@@ -55,12 +55,17 @@ public class CentroDeportivo
     /**
      * Constructor  - 
      * Recibe un único parámetro, el nombre del centro deportivo
-     * e inicializa el resto de atributos adecuadamente 
+     * e inicializa el resto de atributos adecuadamente (a cero)
      */
-    public CentroDeportivo()    {
-        //TODO 
+    public CentroDeportivo(String queNombre)    {
+        nombre = queNombre;
         
-
+        yoga = 0;
+        pilates = 0;
+        spinning = 0;
+        totalAcumulado = 0;
+        salaMaximoYoga = 0;
+        maximoInscripcionesYoga = 0;
     }
 
     /**
