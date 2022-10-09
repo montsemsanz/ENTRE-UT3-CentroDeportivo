@@ -1,7 +1,7 @@
 
 /**
  * ENTREGA UT3
- * @author - (aquí pon tu nombre)
+ * @author - (Aimar Urquizu Diego)
  * 
  * 
  * Un centro deportivo oferta clases de yoga, pilates y spinning
@@ -27,8 +27,38 @@ public class CentroDeportivo
 {
     //TODO 
     
+    // Nombre del Centro Deportivo
+    private String nombre;
     
+    // Hora y minutos
+    private int HORA_PRIMERA_CLASE;
+    private int MINUTOS_PRIMERA_CLASE;
+    private int HORA_ULTIMA_CLASE;
+    private int MINUTOS_ULTIMA_CLASE;
+    private final int DESCANSO = 10;
     
+    // Precio base de las clases
+    private final double PRECIO_BASE = 5.0;
+    private final double PRECIO_QUINCE_MINUTOS = 0.40;
+    
+    // Tipo de actividad
+    private final String YOGA = 'Y';
+    private final String PILATES = 'P';
+    private final String SPINNING = 'S';
+    
+    // Nº de personas inscritas
+    private int yoga;
+    private int pilates;
+    private int spinning;
+    
+    // Total dinero acumulado
+    private double totalAcumulado;
+    
+    // Mas inscripciones para yoga
+    private int salaMaximoYoga;
+    
+    // Nº maximo personas inscritas en yoga en dicha sala
+    private int maximoInscripcionesYoga;
 
     /**
      * Constructor  - 
