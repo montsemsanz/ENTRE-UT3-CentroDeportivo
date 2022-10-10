@@ -27,7 +27,7 @@ public class CentroDeportivo
     //CONSTANTES 
     private final int HORA_PRIMERA_CLASE = 10;
     private final int MINUTOS_PRIMERA_CLASE = 30;
-    private final int HORA_ULTIMA_CLASE = 8;
+    private final int HORA_ULTIMA_CLASE = 20;
     private final int MINUTOS_ULTIMA_CLASE = 30;
     private final int DESCANSO = 10;
 
@@ -128,8 +128,7 @@ public class CentroDeportivo
         int inscritosY = 0;
         int inscritosP = 0;
         int inscritosS = 0;
-        
-        
+
         switch (tipo) {
             case 'Y':
                 inscritosY += inscritos;
@@ -140,19 +139,34 @@ public class CentroDeportivo
             case 'S':
                 inscritosS += inscritos;
                 break;
-            }
-         
-        
+        }
+
         if(tipo == 'Y' && inscritos >= maximoInscripcionesYoga){
             maximoInscripcionesYoga = inscritos;
             salaMaximoYoga = sala;
         }
+        //---------------------------------------------------------------------------//
+        int horaEnMinutos = horas;
+        horaEnMinutos *= 60 + minutos;
+        //---------------------------------------------------------------------------//
+        int totalMinutos = horaEnMinutos / 15;
+
+        double totalPrecio = PRECIO_BASE + PRECIO_QUINCE_MINUTOS * totalMinutos;
+        System.out.println(totalPrecio);
+        //---------------------------------------------------------------------------//
+        int horaConDescanso = horaEnMinutos + DESCANSO;
+        
+        int difClases = (HORA_ULTIMA_CLASE * 60 + MINUTOS_ULTIMA_CLASE) - (HORA_PRIMERA_CLASE * 60 + MINUTOS_PRIMERA_CLASE);
+        int horasDisp = difClases / horaConDescanso;
+        System.out.println(horasDisp);
+        
+        
     }
-    
+
     /**
-    *  nº sala en la que hay más inscritos en yoga
-    *   
-    */
+     *  nº sala en la que hay más inscritos en yoga
+     *   
+     */
     public int getSala()   {
         return salaMaximoYoga;
     }
