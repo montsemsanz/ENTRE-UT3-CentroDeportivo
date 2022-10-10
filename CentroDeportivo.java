@@ -48,9 +48,11 @@ public class CentroDeportivo
      * Recibe un único parámetro, el nombre del centro deportivo
      * e inicializa el resto de atributos adecuadamente 
      */
-    public CentroDeportivo(String nombre)    {
+    public CentroDeportivo(String queNombre)    {
+        nombre = queNombre;
         yoga = 0;
         pilates = 0;
+        spinning = 0;
         totalAcumulado = 0;
         salaMaximoYoga = 0;
         maximoInscripcionesYoga = 0;
@@ -78,7 +80,7 @@ public class CentroDeportivo
      *  entre todos los inscritos en el centro
      *
      */
-    public  int getImporteTotal()    {
+    public  double getImporteTotal()    {
         return totalAcumulado;
 
     }
@@ -114,21 +116,27 @@ public class CentroDeportivo
      *   En pantalla se mostrarán los datos de la sala tal como indican los resultados de ejecución
      *              
      */
-    public void tarificarClaseEnSala(int sala, char tipo, int horas, int minutos, int inscritos)    {
-        sala;
-        tipo;
-        horas;
-        minutos = ;
-        inscritos = ;
+    public void tarificarClaseEnSala(int queSala, char queTipo, int queHoras, int queMinutos, int queInscritos)    {
+        sala = queSala;
+        tipo = queTipo;
+        horas = queHoras;
+        minutos = queMinutos;
+        inscritos = queInscritos;
+        
+        
+        
+        
+        
+        
     }
 
     /**
      *  nº sala en la que hay más inscritos en yoga
      *   
      */
-    public  getSala()   {
-        TODO 
-
+    public int getSala()   {
+        return maximoInscripcionesYoga;
+        
     }
 
     /**
@@ -137,7 +145,7 @@ public class CentroDeportivo
      *  
      */
     public String getActividadMaximasInscripciones()    {
-        TODO 
+        
 
     }
 }
