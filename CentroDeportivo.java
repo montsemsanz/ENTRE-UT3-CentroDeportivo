@@ -115,30 +115,47 @@ public class CentroDeportivo
      *              
      */
     public void tarificarClaseEnSala(int sala, char tipo, int horas, int minutos, int inscritos)    {
-        //TODO 
-        
-        
+        switch (tipo) {
+            case 'P': pilates += inscritos;
+                break;
+            case 'S': spinning += inscritos;
+                break;
+            case 'Y': 
+                yoga += inscritos;
+                if (salaMaximoYoga == 0 && maximoInscripcionesYoga == 0) {
+                    salaMaximoYoga = sala;
+                    maximoInscripcionesYoga = inscritos;
+                }
+                else if (inscritos > maximoInscripcionesYoga) {
+                    salaMaximoYoga = sala;
+                    maximoInscripcionesYoga = inscritos;
+                }
+                break;
+        }
+        int periodosCompletos = ((horas * 60) + minutos) / 15;
+        double precioClase = PRECIO_BASE + (PRECIO_QUINCE_MINUTOS * periodosCompletos);
+        System.out.println(precioClase);
     }
 
     /**
      *  nº sala en la que hay más inscritos en yoga
      *   
      */
-    public  getSala()   {
+    //public  getSala()   {
         //TODO 
         
-    }
+    //}
 
     /**
      * Devuelve el nombre de la actividad con más inscritos 
      * independientemente de la sala  (puede haber coincidencias)
      *  
      */
-    public   getActividadMaximasInscripciones()    {
+    //public   getActividadMaximasInscripciones()    {
         //TODO 
         
         
         
-    }
+    //}
 
 }
