@@ -65,8 +65,8 @@ public class CentroDeportivo
      *  Accesor para el nombre del centro deportivo
      *
      */
-    public void getNombre()    {
-        
+    public String getNombre()    {
+        return nombre;
     }
 
     /**
