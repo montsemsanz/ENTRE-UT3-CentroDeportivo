@@ -147,20 +147,41 @@ public class CentroDeportivo
         }
         //---------------------------------------------------------------------------//
         int horaEnMinutos = horas;
-        horaEnMinutos *= 60 + minutos;
+        horaEnMinutos = (horaEnMinutos * 60) + minutos;
+        System.out.println(horaEnMinutos + "horaEnMinutos");
         //---------------------------------------------------------------------------//
         int totalMinutos = horaEnMinutos / 15;
 
         double totalPrecio = PRECIO_BASE + PRECIO_QUINCE_MINUTOS * totalMinutos;
-        System.out.println(totalPrecio);
+        System.out.println(totalPrecio + " Total precio");
         //---------------------------------------------------------------------------//
         int horaConDescanso = horaEnMinutos + DESCANSO;
-        
+
         int difClases = (HORA_ULTIMA_CLASE * 60 + MINUTOS_ULTIMA_CLASE) - (HORA_PRIMERA_CLASE * 60 + MINUTOS_PRIMERA_CLASE);
         int horasDisp = difClases / horaConDescanso;
-        System.out.println(horasDisp);
+        System.out.println(difClases + " DIFE");
+        System.out.println(horasDisp + " HORADISP");
+        //---------------------------------------------------------------------------//
+
+        int horaFin = (difClases - (horaConDescanso * horasDisp));
+
+        System.out.println(horaFin + " horafin");
+
+        if(horaFin > 30){
+            int nuevaUltimaH = HORA_ULTIMA_CLASE - 1;
+            int nuevoMinFinal = horaFin - MINUTOS_ULTIMA_CLASE;
+            int superfinal = 60 - nuevoMinFinal;
+
+            System.out.println(nuevaUltimaH + "," + superfinal);
+
+        }else{
+            int minFinal = MINUTOS_ULTIMA_CLASE - horaFin;
+            System.out.println(HORA_ULTIMA_CLASE + "," + minFinal + " MINFINAL");
+        }
+
         
-        
+        double importeTotal = totalPrecio * inscritos;
+        System.out.println(importeTotal + " Importe");
     }
 
     /**
