@@ -71,9 +71,9 @@ public class CentroDeportivo
     /**
      *  Mutador para el nombre del centro deportivo
      */
-    public   setNombre()    {
-       //TODO 
-       
+    public void setNombre(String queNombre)    {
+        nombre = queNombre;
+
     }
 
     /**
@@ -82,7 +82,7 @@ public class CentroDeportivo
      *
      */
     public   getImporteTotal()    {
-        //TODO 
+        
         
     }
 
