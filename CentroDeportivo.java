@@ -73,7 +73,7 @@ public class CentroDeportivo
      *  Mutador para el nombre del centro deportivo
      */
     public void setNombre(String queNombre)    {
-        
+        nombre = queNombre;
        
     }
 
