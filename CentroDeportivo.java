@@ -25,30 +25,30 @@
  */
 public class CentroDeportivo
 {
-     final int HORA_PRIMERA_CLASE = 10;
-     final int MINUTOS_PRIMERA_CLASE = 30;
-     final int HORA_ULTIMA_CLASE = 8;
-     final int MINUTOS_ULTIMA_CLASE = 30;
-     final int DESCANSO = 10;
-     final double PRECIO_BASE = 5.0;
-     final double PRECIO_QUINCE_MINUTOS = 0.40;
-     final char YOGA = 'Y';
-     final char PILATES = 'P';
-     final char SPINNING = 'S';
+     private final int HORA_PRIMERA_CLASE = 10;
+     private final int MINUTOS_PRIMERA_CLASE = 30;
+     private final int HORA_ULTIMA_CLASE = 8;
+     private final int MINUTOS_ULTIMA_CLASE = 30;
+     private final int DESCANSO = 10;
+     private final double PRECIO_BASE = 5.0;
+     private final double PRECIO_QUINCE_MINUTOS = 0.40;
+     private final char YOGA = 'Y';
+     private final char PILATES = 'P';
+     private final char SPINNING = 'S';
      String nombre;
-     int yoga;
-     int pilates;
-     int spinning;
-     double totalAcumulado;
-     int salaMaximoYoga;
-     int maximoInscripcionesYoga;
+     private int yoga;
+     private int pilates;
+     private int spinning;
+     private double totalAcumulado;
+     private int salaMaximoYoga;
+     private int maximoInscripcionesYoga;
     /**
      * Constructor  - 
      * Recibe un único parámetro, el nombre del centro deportivo
      * e inicializa el resto de atributos adecuadamente 
      */
-    public CentroDeportivo(int queNombre)    {
-    String nombre = queNombre;
+    public CentroDeportivo(String queNombre)    {
+    nombre = queNombre;
      int yoga = 0;
      int pilates = 0;
      int spinning = 0;
