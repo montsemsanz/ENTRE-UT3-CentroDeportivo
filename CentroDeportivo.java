@@ -65,7 +65,7 @@ public class CentroDeportivo
      *
      */
     public String getNombre()    {
-        return  
+        return nombre;
     }
 
     /**
