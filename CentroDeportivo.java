@@ -65,15 +65,15 @@ public class CentroDeportivo
      *  Accesor para el nombre del centro deportivo
      *
      */
-    public String getNombre()    {
-        return nombre; 
+    public void getNombre()    {
+        
     }
 
     /**
      *  Mutador para el nombre del centro deportivo
      */
     public void setNombre(String queNombre)    {
-        nombre = queNombre;
+        
        
     }
 
@@ -82,8 +82,8 @@ public class CentroDeportivo
      *  entre todos los inscritos en el centro
      *
      */
-    public int getImporteTotal()    {
-        return totalAcumulado; 
+    public void getImporteTotal()    {
+        
         
     }
 
