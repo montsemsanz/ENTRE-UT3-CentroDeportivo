@@ -39,7 +39,7 @@ public class CentroDeportivo
     private int yoga;
     private int pilates;
     private int spinning;
-    private int totalAcumulado;
+    private double totalAcumulado;
     private int salaMaximoYoga;
     private int maximoInscripcionesYoga;
     
@@ -82,7 +82,7 @@ public class CentroDeportivo
      *  entre todos los inscritos en el centro
      *
      */
-    public int getImporteTotal()    {
+    public double getImporteTotal()    {
         return totalAcumulado;
         
     }
@@ -118,8 +118,18 @@ public class CentroDeportivo
      *   En pantalla se mostrarán los datos de la sala tal como indican los resultados de ejecución
      *              
      */
-    public int tarificarClaseEnSala(int sala, char tipo, int horas, int minutos, int inscritos)    {
+    public void tarificarClaseEnSala(int sala, char tipo, int horas, int minutos, int inscritos)    {
        String actividad = "";
+       int duracionTotal = (horas * 60) + minutos;
+       double totalPrecio = PRECIO_BASE + (duracionTotal / 15) * PRECIO_QUINCE_MINUTOS;
+       totalAcumulado = totalAcumulado + (totalPrecio * inscritos);
+       int minutosDia = ((HORA_ULTIMA_CLASE + 12) * 60 + MINUTOS_ULTIMA_CLASE) - (HORA_PRIMERA_CLASE * 60 + MINUTOS_PRIMERA_CLASE);
+       int vecesDia = minutosDia / (duracionTotal + DESCANSO);
+       int claseTerminah = ((HORA_PRIMERA_CLASE * 60) + MINUTOS_PRIMERA_CLASE + (duracionTotal + DESCANSO) * vecesDia) / 60;
+       int claseTerminam = ((HORA_PRIMERA_CLASE * 60) + MINUTOS_PRIMERA_CLASE + (duracionTotal + DESCANSO) * vecesDia) % 60;
+       
+       
+       
         switch (tipo) {
             case YOGA: yoga = inscritos;
             actividad = "YOGA";
@@ -136,8 +146,14 @@ public class CentroDeportivo
             salaMaximoYoga = sala;
         }
         System.out.println("Sala Nº:" + sala + "                                           Actividad:" + actividad );
-        System.out.println("------------------------------------------------------------")
-        System.out.
+        System.out.println("------------------------------------------------------------");
+        System.out.println("Longitud(Duracion):" + duracionTotal + "min " + "Descanso: " + DESCANSO + "min");
+        System.out.println("Precio clase:" + totalPrecio + "€");
+        System.out.println("Clase ofertada en sala:" +vecesDia + " veces al dia");
+        System.out.println("La ultima clase termina a las:" + claseTerminah +"h." + " y " + claseTerminam +"minutos");
+        System.out.println("Total inscritos en sala: " + inscritos);
+        
+        
         
             
         }
@@ -159,8 +175,8 @@ public class CentroDeportivo
      * independientemente de la sala  (puede haber coincidencias)
      *  
      */
-    public void getActividadMaximasInscripciones()    {
-        //TODO 
+    public String getActividadMaximasInscripciones()    {
+        return nombre;
         
         
         
