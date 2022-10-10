@@ -81,8 +81,8 @@ public class CentroDeportivo
      *  entre todos los inscritos en el centro
      *
      */
-    public   getImporteTotal()    {
-        
+    public double getImporteTotal()    {
+        return totalAcumulado;
         
     }
 
