@@ -101,7 +101,7 @@ public class CentroDeportivo
      *   
      *   También el método calculará:
      *   
-     *      - el precio de la clase en la sala (basándose en su duración). En el ejemplo anterior
+     *      - el precio de la clase en la sala (basándose en su dsación). En el ejemplo anterior
      *      la clase de pilates duraba 1 hora y 5 minutos . Como el total de minutos
      *      de duración es 65 su precio será: 5 + 0,40 *  4 = 6,60 ya que son 4 los períodos completos de
      *      15 minutos que hay
@@ -116,11 +116,11 @@ public class CentroDeportivo
      */
     public void tarificarClaseEnSala(int sala, char tipo, int horas, int minutos, int inscritos)    {
         inscritos = yoga + pilates + spinning;
-        system.out.println(inscritos);
-        system.out.println(maximoInscripcionesYoga);
+        System.out.println(inscritos);
+        System.out.println(maximoInscripcionesYoga);
         switch (sala) {
-            case 1: int precio = horas % 1 =  0;
-                    int precio2 = minutos % 0 = 0;
+            case 1: int precio = horas % 1 ==  0;
+                    int precio2 = minutos % 0 == 0;
                     horas *= PRECIO_BASE;
                     break;
              case 2: int precio3 = horas % 2 =  0;
