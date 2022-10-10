@@ -1,7 +1,7 @@
 
 /**
  * ENTREGA UT3
- * @author - (aquí pon tu nombre)
+ * @author - Jagoba Inda
  * 
  * 
  * Un centro deportivo oferta clases de yoga, pilates y spinning
