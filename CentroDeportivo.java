@@ -123,8 +123,8 @@ public class CentroDeportivo
                     int precio2 = minutos % 0 = 0;
                     horas *= PRECIO_BASE;
                     break;
-             case 1: int precio = horas % 2 =  0;
-                    int precio2 = minutos % 0 = 0;
+             case 2: int precio3 = horas % 2 =  0;
+                    int precio4 = minutos % 0 = 0;
                     horas *= PRECIO_BASE;
                     break;
                     
@@ -146,11 +146,16 @@ public class CentroDeportivo
      * independientemente de la sala  (puede haber coincidencias)
      *  
      */
-    public   getActividadMaximasInscripciones()    {
-        //TODO 
-        
-        
-        
-    }
-
+    public   String getActividadMaximasInscripciones()    {
+       if ((yoga > pilates) && (yoga > spinning)) { 
+           return "yoga";
+       }
+       else if ((pilates > spinning) && (pilates > yoga)) { 
+           return "pilates";
+       }
+        else if ((spinning > pilates) && (spinning > yoga)) { 
+            return "spinning";
 }
+}
+}
+
