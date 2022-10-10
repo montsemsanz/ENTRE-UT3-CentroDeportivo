@@ -118,18 +118,39 @@ public class CentroDeportivo
      *   En pantalla se mostrarán los datos de la sala tal como indican los resultados de ejecución
      *              
      */
-    public void tarificarClaseEnSala(int sala, char tipo, int horas, int minutos, int inscritos)    {
+    public int tarificarClaseEnSala(int sala, char tipo, int horas, int minutos, int inscritos)    {
+       String actividad = "";
+        switch (tipo) {
+            case YOGA: yoga = inscritos;
+            actividad = "YOGA";
+            break;
+            case PILATES: pilates = inscritos;
+            actividad = "PILATES";
+            break;
+            case SPINNING: spinning = inscritos;
+            actividad = "SPINNING";
+            break;
+        }
+        if (yoga > maximoInscripcionesYoga) {
+            maximoInscripcionesYoga = yoga;
+            salaMaximoYoga = sala;
+        }
+        System.out.println("Sala Nº:" + sala + "                                           Actividad:" + actividad );
+        System.out.println("------------------------------------------------------------")
+        System.out.
         
+            
+        }
         
-        
-    }
+    
 
     /**
      *  nº sala en la que hay más inscritos en yoga
      *   
      */
-    public void getSala()   {
-        //TODO 
+    public int getSala()   {
+        return maximoInscripcionesYoga;
+        
         
     }
 
