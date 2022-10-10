@@ -132,9 +132,38 @@ public class CentroDeportivo
                 }
                 break;
         }
-        int periodosCompletos = ((horas * 60) + minutos) / 15;
+        String actividad = "";
+        switch (tipo) {
+            case 'Y': actividad = "YOGA";
+                break;
+            case 'S': actividad = "SPINNING";
+                break;
+            case 'P': actividad = "PILATES";
+                break;
+        }
+        int periodosCompletos = (int) Math.floor(((horas * 60) + minutos) / 15);
         double precioClase = PRECIO_BASE + (PRECIO_QUINCE_MINUTOS * periodosCompletos);
-        System.out.println(precioClase);
+        int minutosDisponibles = (((HORA_ULTIMA_CLASE + 12) - MINUTOS_PRIMERA_CLASE) * 60)
+                                        + (MINUTOS_ULTIMA_CLASE - MINUTOS_PRIMERA_CLASE);
+        int minutosClase = ((horas * 60) + minutos) + DESCANSO;
+        int numeroClases = minutosDisponibles / minutosClase;
+        int minutosTotales = minutosClase * numeroClases;
+        int minutosSobrantes = minutosDisponibles - minutosTotales;
+        int horasSobra = minutosSobrantes / 60;
+        int minutosSobra = minutosSobrantes % 60;
+        int horaFinal = HORA_ULTIMA_CLASE - horasSobra;
+        if (minutosSobra > 30) {
+            int minutosFinal = 60 - (minutosSobra - 30);
+            horaFinal --;
+        }
+        int minutosFinal = MINUTOS_ULTIMA_CLASE - minutosSobra;
+        totalAcumulado += precioClase * inscritos;
+        System.out.println("Sala Nº: " + sala + "             Actividad: " + actividad + "\n" + 
+                            "---------------------------------------------------\n" + 
+                            "Longitud (Duración): " + (minutosClase - 10) + " min. Descanso: " + DESCANSO + " min.\n" +
+                            "Clase ofertada en sala: " + numeroClases + " veces al día.\n" +
+                            "La última clase termina a las: " + horaFinal + "h y " + minutosFinal + "minutos.\n" +
+                            "Total inscritos en sala: " + inscritos);
     }
 
     /**
@@ -152,7 +181,7 @@ public class CentroDeportivo
      *  
      */
     //public   getActividadMaximasInscripciones()    {
-        //TODO 
+        //Math. max(num1,num2) 
         
         
         
