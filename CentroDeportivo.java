@@ -143,7 +143,7 @@ public class CentroDeportivo
         }
         int periodosCompletos = (int) Math.floor(((horas * 60) + minutos) / 15);
         double precioClase = PRECIO_BASE + (PRECIO_QUINCE_MINUTOS * periodosCompletos);
-        int minutosDisponibles = (((HORA_ULTIMA_CLASE + 12) - MINUTOS_PRIMERA_CLASE) * 60)
+        int minutosDisponibles = (((HORA_ULTIMA_CLASE + 12) - HORA_PRIMERA_CLASE) * 60)
                                         + (MINUTOS_ULTIMA_CLASE - MINUTOS_PRIMERA_CLASE);
         int minutosClase = ((horas * 60) + minutos) + DESCANSO;
         int numeroClases = minutosDisponibles / minutosClase;
@@ -162,7 +162,7 @@ public class CentroDeportivo
                             "---------------------------------------------------\n" + 
                             "Longitud (Duración): " + (minutosClase - 10) + " min. Descanso: " + DESCANSO + " min.\n" +
                             "Clase ofertada en sala: " + numeroClases + " veces al día.\n" +
-                            "La última clase termina a las: " + horaFinal + "h y " + minutosFinal + "minutos.\n" +
+                            "La última clase termina a las: " + horaFinal + "h y " + minutosFinal + " minutos.\n" +
                             "Total inscritos en sala: " + inscritos);
     }
 
@@ -170,10 +170,9 @@ public class CentroDeportivo
      *  nº sala en la que hay más inscritos en yoga
      *   
      */
-    //public  getSala()   {
-        //TODO 
-        
-    //}
+    public int getSala()   {
+         return salaMaximoYoga;        
+    }
 
     /**
      * Devuelve el nombre de la actividad con más inscritos 
