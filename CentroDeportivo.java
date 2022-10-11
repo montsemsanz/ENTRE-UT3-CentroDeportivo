@@ -221,26 +221,26 @@ public class CentroDeportivo
     }
 
     
-    // /**
-     // * Devuelve el nombre de la actividad con más inscritos 
-     // * independientemente de la sala  (puede haber coincidencias)
-     // *  
-     // */
-    // public String getActividadMaximasInscripciones()    {
-         // String actividadMaximasInscripciones;
+    /**
+     * Devuelve el nombre de la actividad con más inscritos 
+     * independientemente de la sala  (puede haber coincidencias)
+     *  
+     */
+    public String getActividadMaximasInscripciones()    {
+         String actividadMaximasInscripciones;
     
-          // if((yoga > pilates && pilates > spinning) || (yoga > spinning && spinning > pilates))
-           // {
-              // actividadMaximasInscripciones = "Yoga";
-           // } else if ((pilates > yoga && yoga > spinning) || (pilates > spinning && spinning > yoga)) 
-                   // {
-                    // actividadMaximasInscripciones = "Pilates";
-                   // } else 
-                       // {
-                        // actividadMaximasInscripciones = "Spinning";
-                       // }
+          if((yoga > pilates && pilates > spinning) || (yoga > spinning && spinning > pilates))
+           {
+              actividadMaximasInscripciones = "Yoga";
+           } else if ((pilates > yoga && yoga > spinning) || (pilates > spinning && spinning > yoga)) 
+                   {
+                    actividadMaximasInscripciones = "Pilates";
+                   } else 
+                       {
+                        actividadMaximasInscripciones = "Spinning";
+                       }
     
-        // return actividadMaximasInscripciones;
-     // }
+        return actividadMaximasInscripciones;
+     }
 
 }
