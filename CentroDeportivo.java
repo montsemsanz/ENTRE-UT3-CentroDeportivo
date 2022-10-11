@@ -105,7 +105,7 @@ public class CentroDeportivo
         // } 
 
         double precioClaseSala = PRECIO_BASE+PRECIO_QUINCE_MINUTOS*(minutosClaseTotal/15);
-        int vecesOfertada = 
+
     }
 
     /**
