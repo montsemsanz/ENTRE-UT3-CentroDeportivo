@@ -83,10 +83,8 @@ public class CentroDeportivo
      *
      */
     public double  getImporteTotal()    {
-        //TODO 
-        
-        //si no no me deja compilar para probar lo que he hecho
-        return 0;
+        //TODO     
+        return totalAcumulado;
     }
     
 
