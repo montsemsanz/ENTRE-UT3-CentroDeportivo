@@ -116,11 +116,11 @@ public class CentroDeportivo
      */
     public void tarificarClaseEnSala(int sala, char tipo, int horas, int minutos, int inscritos)    {
         switch (tipo) {
-            case 'P': pilates += inscritos;
+            case PILATES: pilates += inscritos;
                 break;
-            case 'S': spinning += inscritos;
+            case SPINNING: spinning += inscritos;
                 break;
-            case 'Y': 
+            case YOGA: 
                 yoga += inscritos;
                 if (salaMaximoYoga == 0 && maximoInscripcionesYoga == 0) {
                     salaMaximoYoga = sala;
@@ -134,11 +134,11 @@ public class CentroDeportivo
         }
         String actividad = "";
         switch (tipo) {
-            case 'Y': actividad = "YOGA";
+            case YOGA: actividad = "YOGA";
                 break;
-            case 'S': actividad = "SPINNING";
+            case SPINNING: actividad = "SPINNING";
                 break;
-            case 'P': actividad = "PILATES";
+            case PILATES: actividad = "PILATES";
                 break;
         }
         int periodosCompletos = (int) Math.floor(((horas * 60) + minutos) / 15);
@@ -180,11 +180,14 @@ public class CentroDeportivo
      * independientemente de la sala  (puede haber coincidencias)
      *  
      */
-    //public   getActividadMaximasInscripciones()    {
-        //Math. max(num1,num2) 
-        
-        
-        
-    //}
-
+    public int getActividadMaximasInscripciones()    {
+        int max = 0;
+        if (yoga >= pilates) {
+            max = Math.max(yoga, spinning);
+        }
+        else if (yoga < pilates) {
+            max = Math.max(pilates, spinning);
+        }
+        return max;
+    }
 }
