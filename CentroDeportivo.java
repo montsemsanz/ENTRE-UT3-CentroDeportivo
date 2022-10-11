@@ -134,6 +134,8 @@ public class CentroDeportivo
         totalAcumulado = PRECIO_BASE+(PRECIO_QUINCE_MINUTOS * 
         ((Horas*60 + Minutos)/15));
         
+        double importeTotal;
+        importeTotal = totalAcumulado * Inscritos;       
         
         
         
@@ -148,13 +150,20 @@ public class CentroDeportivo
         
     }
 
-    // /**
-     // * Devuelve el nombre de la actividad con más inscritos 
-     // * independientemente de la sala  (puede haber coincidencias)
-     // *  
-     // */
-     // public String getActividadMaximasInscripciones()    {
-        // return ;      
-
-     // }
+    /**
+     * Devuelve el nombre de la actividad con más inscritos 
+     * independientemente de la sala  (puede haber coincidencias)
+     *  
+     */
+     public String getActividadMaximasInscripciones()    {
+        int actividadMaximasInscripciones = 0;
+         if (yoga > pilates && yoga > spinning){
+            actividadMaximasInscripciones = yoga;
+        }
+        else if (pilates > yoga && pilates > spinning)
+                actividadMaximasInscripciones = pilates;
+        else if (spinning > yoga && spinning > pilates)
+                actividadMaximasInscripciones = spinning;
+        return actividadMaximasInscripciones + ":";
+    }
 }
