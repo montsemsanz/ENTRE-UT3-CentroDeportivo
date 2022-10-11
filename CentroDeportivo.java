@@ -1,7 +1,7 @@
 
 /**
  * ENTREGA UT3
- * @author - (aquí pon tu nombre)
+ * @author - (Joseba Trigo Sierra)
  * 
  * 
  * Un centro deportivo oferta clases de yoga, pilates y spinning
@@ -26,33 +26,53 @@
 public class CentroDeportivo
 {
     //TODO 
+    private final int HORA_PRIMERA_CLASE = 10;
+    private final int MINUTOS_PRIMERA_CLASE = 30;
+    private final int HORA_ULTIMA_CLASE = 8;
+    private final int MINUTOD_ULTIMA_CLASE = 30;
+    private final int DESCANSO = 10;
     
+    private final double PRECIO_BASE = 5;
+    private final double PRECIO_QUINCE_MINUTOS = 0.4;
     
+    private final char YOGA = 'Y';
+    private final char PILATES = 'P';
+    private final char SPINNING = 'S';
     
-
+    private String nombre;
+    
+    private int yoga;
+    private int pilates;
+    private int spinning;
+    
+    private double totalAcumulado;
+    
+    private int salaMaximoYoga;
+    private int maximoInscripcionesYoga;
+    
     /**
      * Constructor  - 
      * Recibe un único parámetro, el nombre del centro deportivo
      * e inicializa el resto de atributos adecuadamente 
      */
-    public CentroDeportivo()    {
+    public CentroDeportivo(String queNombre)    {
         //TODO 
-        
-
+        nombre = queNombre;
     }
 
     /**
      *  Accesor para el nombre del centro deportivo
      *
      */
-    public  getNombre()    {
+    public String getNombre()    {
         //TODO 
+        return "esto solo lo hago para poder compilar";
     }
 
     /**
      *  Mutador para el nombre del centro deportivo
      */
-    public   setNombre()    {
+    public void setNombre()    {
        //TODO 
        
     }
@@ -62,10 +82,13 @@ public class CentroDeportivo
      *  entre todos los inscritos en el centro
      *
      */
-    public   getImporteTotal()    {
+    public double  getImporteTotal()    {
         //TODO 
         
+        //si no no me deja compilar para probar lo que he hecho
+        return 0;
     }
+    
 
     /**
      *  Este método recibe 5 parámetros: 
@@ -108,9 +131,11 @@ public class CentroDeportivo
      *  nº sala en la que hay más inscritos en yoga
      *   
      */
-    public  getSala()   {
+    public int getSala()   {
         //TODO 
         
+        //si no no me deja compilar para probar lo que he hecho
+        return 0;
     }
 
     /**
@@ -118,11 +143,11 @@ public class CentroDeportivo
      * independientemente de la sala  (puede haber coincidencias)
      *  
      */
-    public   getActividadMaximasInscripciones()    {
+    public String getActividadMaximasInscripciones()    {
         //TODO 
         
         
-        
+        return "esto lo hago para poder compilar";
     }
 
 }
