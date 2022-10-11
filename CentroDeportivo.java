@@ -116,14 +116,23 @@ public class CentroDeportivo
      *   En pantalla se mostrarán los datos de la sala tal como indican los resultados de ejecución
      *              
      */
-    public void tarificarClaseEnSala(int queSala, char queTipo, int queHoras, int queMinutos, int queInscritos)    {
-        sala = queSala;
-        tipo = queTipo;
-        horas = queHoras;
-        minutos = queMinutos;
-        inscritos = queInscritos;
-        
-        
+    public void tarificarClaseEnSala(int Sala, char Tipo, int Horas, int Minutos, int Inscritos)    {
+        switch (Inscritos){
+            case YOGA:
+                yoga = 'Y';
+                break;
+            case SPINNING:
+                spinning = 'S';
+                break;
+            case PILATES:
+                pilates = 'P';
+                break;
+        }
+        if (yoga > maximoInscripcionesYoga){
+            yoga = salaMaximoYoga;
+        }
+        totalAcumulado = PRECIO_BASE+(PRECIO_QUINCE_MINUTOS * 
+        ((Horas*60 + Minutos)/15));
         
         
         
@@ -135,17 +144,17 @@ public class CentroDeportivo
      *   
      */
     public int getSala()   {
-        return maximoInscripcionesYoga;
+        return salaMaximoYoga;
         
     }
 
-    /**
-     * Devuelve el nombre de la actividad con más inscritos 
-     * independientemente de la sala  (puede haber coincidencias)
-     *  
-     */
-    public String getActividadMaximasInscripciones()    {
-        
+    // /**
+     // * Devuelve el nombre de la actividad con más inscritos 
+     // * independientemente de la sala  (puede haber coincidencias)
+     // *  
+     // */
+     // public String getActividadMaximasInscripciones()    {
+        // return ;      
 
-    }
+     // }
 }
