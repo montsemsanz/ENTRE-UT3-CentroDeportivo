@@ -152,17 +152,22 @@ public class CentroDeportivo
         int horasSobra = minutosSobrantes / 60;
         int minutosSobra = minutosSobrantes % 60;
         int horaFinal = HORA_ULTIMA_CLASE - horasSobra;
+        int minutosHora = 60;
+        int minutosFinal = 0;
         if (minutosSobra > 30) {
-            int minutosFinal = 60 - (minutosSobra - 30);
+            minutosFinal = minutosHora - (minutosSobra - MINUTOS_ULTIMA_CLASE);
             horaFinal --;
         }
-        int minutosFinal = MINUTOS_ULTIMA_CLASE - minutosSobra;
+        else {
+            minutosFinal = MINUTOS_ULTIMA_CLASE - minutosSobra;
+        }
         totalAcumulado += precioClase * inscritos;
         System.out.println("Sala Nº: " + sala + "             Actividad: " + actividad + "\n" + 
                             "---------------------------------------------------\n" + 
                             "Longitud (Duración): " + (minutosClase - 10) + " min. Descanso: " + DESCANSO + " min.\n" +
+                            "Precio clase: " + precioClase + "€\n" +
                             "Clase ofertada en sala: " + numeroClases + " veces al día.\n" +
-                            "La última clase termina a las: " + horaFinal + "h y " + minutosFinal + " minutos.\n" +
+                            "La última clase termina a las: " + (horaFinal + 12) + "h y " + minutosFinal + " minutos.\n" +
                             "Total inscritos en sala: " + inscritos);
     }
 
@@ -179,14 +184,30 @@ public class CentroDeportivo
      * independientemente de la sala  (puede haber coincidencias)
      *  
      */
-    public int getActividadMaximasInscripciones()    {
-        int max = 0;
-        if (yoga >= pilates) {
-            max = Math.max(yoga, spinning);
+    public String getActividadMaximasInscripciones()    {
+        if (yoga > pilates && yoga > spinning) {
+            return "YOGA";
         }
-        else if (yoga < pilates) {
-            max = Math.max(pilates, spinning);
+        else if (yoga > pilates && yoga < spinning) {
+            return "SPINNING";
         }
-        return max;
+        else if (yoga < pilates && pilates > spinning) {
+            return "PILATES";
+        }
+        else if ((yoga == pilates) && (yoga == spinning)) {
+            return "YOGA, PILATES y SPINNING";
+        }
+        else if ((yoga == pilates) && (yoga > spinning)) {
+            return "YOGA y PILATES";
+        }
+        else if ((yoga == spinning) && (yoga > pilates)) {
+            return "YOGA y SPINNING";
+        }
+        else if ((spinning == pilates) && (yoga < spinning)) {
+            return "SPINNING y PILATES";
+        }
+        else {
+            return "ERROR";
+        }
     }
 }
