@@ -28,7 +28,6 @@ public class CentroDeportivo
     private final int MINUTOS_PRIMERA_CLASE=30;
     private final int HORA_ULTIMA_CLASE=8;
     private final int MINUTOS_ULTIMA_CLASE=30;
-    private final int HORA_PRIMERA_CLASE=10;
     private final int DESCANSO=10;
     // horas
     private final double PRECIO_BASE=5.0; 
@@ -43,8 +42,8 @@ public class CentroDeportivo
     private int pilates; // nº de personas inscritas
     private int spinning; // nº de personas inscritas
     private double totalAcumulado; // importe total entre todos
-    private int salaMaximoYoga; //nº de sala mas gente para yoga
-    private int maximoInscripcionesYoga; // nº máximo personas yoga en  sala
+    private int salaMaximoYoga; //nº de sala haya mas gente para yoga
+    private int maximoInscripcionesYoga; // nº máximo personas inscritos en yoga en anterior sala
     /**
      * Constructor  - 
      * Recibe un único parámetro, el nombre del centro deportivo
@@ -75,59 +74,46 @@ public class CentroDeportivo
         nombre = queNombre;
 
     }
-
+    //Hasta aqui nombre
     /**
      *  accesor para el importe total acumulado 
      *  entre todos los inscritos en el centro
-     *
      */
-    public  getImporteTotal()    {
-        //TODO 
+    public double getImporteTotal()    {
+        return totalAcumulado;
 
     }
 
-    /**
-     *  Este método recibe 5 parámetros: 
-     *      - sala: el nº de sala donde se hace la actividad
-     *      - tipo: el tipo de actividad, un carácter 'Y' yoga, 'P' pilates 'S' spinning
-     *      - horas y minutos : duración de la actividad en nº horas y minutos
-     *      - inscritos: el nº de personas inscritas en esa actividad en la sala
-     *      
-     *      Por ej, tarificarClaseEnSala(4, 'P', 1, 5, 15) significa que en la sala 4 se hace
-     *      pilates, las clases duran 1 hora y  5 minutos y se han inscrito en esta sala 15 personas
-     *   
-     *   A partir de esta información el método debe calcular:
-     *      - total inscritos por tipo de actividad (independientemente de la sala)
-     *      - la sala con máximo nº de inscritos en yoga y dicho valor máximo 
-     *   
-     *   Utiliza una sentencia switch  para analizar el tipo de actividad
-     *   
-     *   También el método calculará:
-     *   
-     *      - el precio de la clase en la sala (basándose en su duración). En el ejemplo anterior
-     *      la clase de pilates duraba 1 hora y 5 minutos . Como el total de minutos
-     *      de duración es 65 su precio será: 5 + 0,40 *  4 = 6,60 ya que son 4 los períodos completos de
-     *      15 minutos que hay
-     *      - nº de veces que la clase se ofertará en la sala (dependerá de su duración. No olvidar que entre clase 
-     *      y clase siempre hay un descanso)
-     *      - la hora de finalización de la última clase (hora y minutos) - !!Ver resultados de ejecución!!
-     *      - el método además irá registrando el importe total que lleva acumulado el centro entre todas
-     *      las personas inscritas 
-     *      
-     *   En pantalla se mostrarán los datos de la sala tal como indican los resultados de ejecución
+    /** 
+     * En pantalla se mostrarán los datos de la sala
+     * como indican los resultados de ejecución
      *              
      */
-    public void tarificarClaseEnSala(int sala, char tipo, int horas, int minutos, int inscritos)    {
-        //TODO 
+    public void tarificarClaseEnSala(int sala, char tipo, int horas, int minutos, 
+    int inscritos)    {
+        int totalInscritos = inscritos; 
+        int horasEnMinutos = horas * 60;
+        int minutosClaseTotal = horasEnMinutos + minutos;
+        // switch(totalInscritos){
+            // case 'Y': inscritos=yoga;
+                // break;
+            // case 'P': inscritos=pilates;
+                // break;
+            // case 'S': inscritos=spinning;
+                // break;
 
+        // } 
+
+        double precioClaseSala = PRECIO_BASE+PRECIO_QUINCE_MINUTOS*(minutosClaseTotal/15);
+        int vecesOfertada = 
     }
 
     /**
      *  nº sala en la que hay más inscritos en yoga
      *   
      */
-    public  getSala()   {
-        //TODO 
+    public int getSala()   {
+        return salaMaximoYoga; 
 
     }
 
@@ -136,8 +122,8 @@ public class CentroDeportivo
      * independientemente de la sala  (puede haber coincidencias)
      *  
      */
-    public   getActividadMaximasInscripciones()    {
-        //TODO 
-
+    public String getActividadMaximasInscripciones()    {
+        return loquesea;
     }
 }
+
