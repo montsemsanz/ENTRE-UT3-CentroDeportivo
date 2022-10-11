@@ -124,30 +124,123 @@ public class CentroDeportivo
      *              
      */
     public void tarificarClaseEnSala(int sala, char tipo, int horas, int minutos, int inscritos)    {
-        //TODO 
+        int totalInscritosEnActividadY = 0; 
+        int totalInscritosEnActividadS = 0; 
+        int totalInscritosEnActividadP = 0; 
         
+        int salasYoga = 0;
+        
+        //identificar el tipo de actividad con una sentencia switch:
+        switch (tipo){
+        
+            case 'Y':   tipo = YOGA;
+                        salasYoga += sala; //esto está mal porque en realidad sobreescribe el valor de 
+                                           // las salas anteriores, no añade salas :'C
+                        totalInscritosEnActividadY += inscritos;
+                        break;
+                        
+            case 'P':   tipo = PILATES;
+                        totalInscritosEnActividadP += inscritos;
+                        break;
+                        
+            case 'S':   tipo = SPINNING;
+                        totalInscritosEnActividadS += inscritos;
+                        break;
+                  
+            default:    System.out.println("Tipo de actividad no válido. Por favor, inserte otro caracter.");
+                        break;
+        }
+        
+        //--------------------------------------------------------
+        
+        salaMaximoYoga = Math.max(totalInscritosEnActividadY, inscritos); //this is surely wrong
+        maximoInscripcionesYoga = totalInscritosEnActividadY; //lmao this is a HUGE mistake
+        
+        //-----------APARTADO A:--------------------------------------
+            //definición de auxiliares:
+            int duracion1Clase = (horas * 60 + minutos); //calcula la duración EN MINUTOS de UNA clase
+            
+        double precioDuracionClase = PRECIO_BASE + PRECIO_QUINCE_MINUTOS * (duracion1Clase / 15);
+                    //divides la duraciónClase entre 15 porque cada 15 mins,
+                    //se vuelve a sumar el PRECIO_QUINCE_MINUTOS al PRECIO_BASE
+        
+        //-----------APARTADO B:-------------------------------------------
+            //definición de auxiliares:
+            int horaFullEmpiezanClasesEnMinutos = (HORA_PRIMERA_CLASE * 60 + MINUTOS_PRIMERA_CLASE); 
+                    //PASADA A MINUTOS
+                    
+            int tiempoDisponible = (HORA_ULTIMA_CLASE * 60 + MINUTOS_ULTIMA_CLASE) -
+                                    (HORA_PRIMERA_CLASE * 60 + MINUTOS_PRIMERA_CLASE); 
+                    //tiempo total disponible en una sala (EN MINUTOS)
+                          
+        int vecesClaseOfertada = (int) Math.floor(tiempoDisponible / (duracion1Clase + DESCANSO)); 
+                //numero de veces que se pueden dar clases en una sala en función de la duración de éstas 
+                // teniendo en cuenta los descansos
+                //(resultado redondeado hacia abajo porque no se pueden ofertar clases fuera de horario)
+                
+        //-----------APARTADO C:--------------------------------------------
+            //definición de auxiliares:
+            int duracionFullClasesEnMinutos = ((duracion1Clase + DESCANSO) * vecesClaseOfertada); 
+                //PASADA A MINUTOS
+                
+            int horaFullFinClasesEnMinutos = horaFullEmpiezanClasesEnMinutos + duracionFullClasesEnMinutos; 
+                //cantidad de MINUTOS que pasan desde las 00:00am hasta que termina la última clase del día  
+        
+            int horaFinClasesEn24Horas = (int) Math.floor(horaFullFinClasesEnMinutos / 60);
+                //devuelve la hora que es (formato 24h) en el momento en el que termina la última clase
+            
+            int horaFinClasesEn12Horas = (horaFinClasesEn24Horas - 12);
+                //transforma la hora a la que acaba la última clase a formato 12h
+                //fórmula empleada: formato24h - 12h == formato12h
+            
+        int horaFinClasesMinutosRestantes = horaFullFinClasesEnMinutos - (horaFinClasesEn24Horas * 60); 
+            //devuelve los minutos correspondientes a la hora en la que termina la última clase
+            //fórmula: multiplicar número entero de horaFinClasesEn24Horas * 60 para pasarlo a minutos y, 
+            //         después, restar esos minutos al total de minutos "horaFullFinClasesEnMinutos" para
+            //         saber cuántos minutos sueltos sobran (tras restarle las X horas completas que dure)
+        
+        String horaFinUltimaClase = horaFinClasesEn12Horas + ":" + horaFinClasesMinutosRestantes + " PM";
+        
+        //-----------APARTADO D:-----------------------------------------------
+            //definición de auxiliares:
+            int totalInscritosCentro = totalInscritosEnActividadY + totalInscritosEnActividadP 
+                                        + totalInscritosEnActividadS; 
+                                        
+        double totalAcumulado = precioDuracionClase * vecesClaseOfertada * totalInscritosCentro;
+        
+        //----- AHORA TOCA IMPRIMIR TODA LA INFORMACIÓN QUE TENEMOS HASTA AHORA (figura 1 PDF enunciado)---
         
     }
 
-    /**
-     *  nº sala en la que hay más inscritos en yoga
-     *   
-     */
-    // public  getSala()   {
-        // //TODO 
-        
+    // /**
+     // *  nº sala en la que hay más inscritos en yoga
+     // *   
+     // */
+    // public int getSala()   { //Nº DE SALA CON MAX DE INSCRIPCIONES EN YOGA
+        // return salaMaximoYoga;
     // }
 
-    /**
-     * Devuelve el nombre de la actividad con más inscritos 
-     * independientemente de la sala  (puede haber coincidencias)
-     *  
-     */
-    // public   getActividadMaximasInscripciones()    {
-        // //TODO 
-        
-        
-        
-    // }
+    
+    // /**
+     // * Devuelve el nombre de la actividad con más inscritos 
+     // * independientemente de la sala  (puede haber coincidencias)
+     // *  
+     // */
+    // public String getActividadMaximasInscripciones()    {
+         // String actividadMaximasInscripciones;
+    
+          // if((yoga > pilates && pilates > spinning) || (yoga > spinning && spinning > pilates))
+           // {
+              // actividadMaximasInscripciones = "Yoga";
+           // } else if ((pilates > yoga && yoga > spinning) || (pilates > spinning && spinning > yoga)) 
+                   // {
+                    // actividadMaximasInscripciones = "Pilates";
+                   // } else 
+                       // {
+                        // actividadMaximasInscripciones = "Spinning";
+                       // }
+    
+        // return actividadMaximasInscripciones;
+     // }
 
 }
