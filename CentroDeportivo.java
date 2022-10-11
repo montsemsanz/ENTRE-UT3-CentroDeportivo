@@ -95,17 +95,14 @@ public class CentroDeportivo
         int horasEnMinutos = horas * 60;
         int minutosClaseTotal = horasEnMinutos + minutos;
         int tiempoTotal = 600; //en minutos
-        double numeroClases = (tiempoTotal / minutosClaseTotal); 
-        double numeroDescansos = numeroClases; 
-        int vecesOfertada = 0;
+        int numeroClases = (int) Math.floor((tiempoTotal / (minutosClaseTotal + 10))); //cociente de está división y nºdescansos=nºde clases
         double precioClaseSala = PRECIO_BASE+PRECIO_QUINCE_MINUTOS*(minutosClaseTotal/15);
-        double comprobacionTiempo = numeroClases * (minutosClaseTotal-10) + (numeroDescansos * 10); //aproveche todo el tiempo disponible
-        if (comprobacionTiempo <= 600 && comprobacionTiempo >= 590){ // si el tiempo aprovechado es suficientemente bueno
-            vecesOfertada=(int)numeroClases;
-        } else{
-            vecesOfertada= "Intenta otra duración";
-        }
-
+        // double comprobacionTiempo = numeroClases * (minutosClaseTotal-10) + (numeroClases * 10); //formula ver tiempo aprovechable
+       
+        
+        
+        
+        
         // switch(totalInscritos){
         // case 'Y': inscritos=yoga;
         // break;
@@ -115,26 +112,24 @@ public class CentroDeportivo
         // break;
 
         // } 
-        
-    }
-    
-    {
-        /**
-        *  nº sala en la que hay más inscritos en yoga
-        *   
-         */
-        public int getSala()   {
-            return salaMaximoYoga; 
 
-        }
-
-        /**
-         * Devuelve el nombre de la actividad con más inscritos 
-         * independientemente de la sala  (puede haber coincidencias)
-         *  
-         */
-        public String getActividadMaximasInscripciones()    {
-            return loquesea;
-        }
     }
 
+    /**
+     *  nº sala en la que hay más inscritos en yoga
+     *   
+     */
+    public int getSala()   {
+        return salaMaximoYoga; 
+
+    }
+
+    /**
+     * Devuelve el nombre de la actividad con más inscritos 
+     * independientemente de la sala  (puede haber coincidencias)
+     *  
+     */
+    public String getActividadMaximasInscripciones()    {
+        return loquesea;
+    }
+}
