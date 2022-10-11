@@ -66,15 +66,15 @@ public class CentroDeportivo
      */
     public String getNombre()    {
         //TODO 
-        return "esto solo lo hago para poder compilar";
+        return nombre;
     }
 
     /**
      *  Mutador para el nombre del centro deportivo
      */
-    public void setNombre()    {
+    public void setNombre(String queNombre)    {
        //TODO 
-       
+       nombre = queNombre;
     }
 
     /**
