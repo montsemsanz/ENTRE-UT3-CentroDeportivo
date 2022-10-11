@@ -212,13 +212,13 @@ public class CentroDeportivo
         
     }
 
-    // /**
-     // *  nº sala en la que hay más inscritos en yoga
-     // *   
-     // */
-    // public int getSala()   { //Nº DE SALA CON MAX DE INSCRIPCIONES EN YOGA
-        // return salaMaximoYoga;
-    // }
+    /**
+     *  nº sala en la que hay más inscritos en yoga
+     *   
+     */
+    public int getSala()   { //Nº DE SALA CON MAX DE INSCRIPCIONES EN YOGA
+        return salaMaximoYoga;
+    }
 
     
     // /**
