@@ -179,8 +179,8 @@ public class CentroDeportivo
             int horaFullEmpiezanClasesEnMinutos = (HORA_PRIMERA_CLASE * 60 + MINUTOS_PRIMERA_CLASE); 
                     //PASADA A MINUTOS
                     
-            int tiempoDisponible = (HORA_ULTIMA_CLASE * 60 + MINUTOS_ULTIMA_CLASE) -
-                                    (HORA_PRIMERA_CLASE * 60 + MINUTOS_PRIMERA_CLASE); 
+            //int tiempoDisponible = (HORA_ULTIMA_CLASE * 60 + MINUTOS_ULTIMA_CLASE) - (HORA_PRIMERA_CLASE * 60 + MINUTOS_PRIMERA_CLASE); 
+            int tiempoDisponible = 600; //MINUTOS entre el incio de las clases y el fin (aka, mins entre 10:30am y 8:30pm)
                     //tiempo total disponible en una sala (EN MINUTOS)
                           
         int vecesClaseOfertada = (int) Math.floor(tiempoDisponible / (duracion1Clase + DESCANSO)); 
@@ -206,7 +206,7 @@ public class CentroDeportivo
         int horaFinClasesMinutosRestantes = horaFullFinClasesEnMinutos - (horaFinClasesEn24Horas * 60); 
             //devuelve los minutos correspondientes a la hora en la que termina la última clase
             //fórmula: multiplicar número entero de horaFinClasesEn24Horas * 60 para pasarlo a minutos y, 
-            //         después, restar esos minutos al total de minutos "horaFullFinClasesE                     nMinutos" para
+            //         después, restar esos minutos al total de minutos "horaFullFinClasesEnMinutos" para
             //         saber cuántos minutos sueltos sobran (tras restarle las X horas completas que dure)
         
         String horaFinUltimaClase = horaFinClasesEn12Horas + ":" + horaFinClasesMinutosRestantes + " PM";
@@ -216,16 +216,17 @@ public class CentroDeportivo
             int totalInscritosCentro = totalInscritosEnActividadY + totalInscritosEnActividadP 
                                         + totalInscritosEnActividadS; 
                                         
-        double totalAcumulado = precioDuracionClase * vecesClaseOfertada * totalInscritosCentro;
+        totalAcumulado = precioDuracionClase * vecesClaseOfertada * totalInscritosCentro;
         
         //-----------IMPRESIÓN:------------------------------------------------
         
         System.out.println("Sala Nº: " + sala + "                         Actividad: " + nombreTipo);
         System.out.println("----------------------------------------------");
-        System.out.println("Longitud (duración): " + duracion1Clase + "min.      Descanso: " + DESCANSO + "min.");
+        System.out.println("Longitud (duración): " + duracion1Clase + " min.      Descanso: " + DESCANSO + " min.");
         System.out.println("Precio clase: " + precioDuracionClase + "€");
         System.out.println("Clase ofertada en sala " + vecesClaseOfertada + " veces al día.");
-        System.out.println("La última clase termina a las " + horaFinUltimaClase + "."); //escribe la hora en formato 12h
+            //System.out.println("La última clase termina a las " + horaFinUltimaClase + "."); //escribe la hora en formato 12h (SALE NEGATIVO????)
+            System.out.println("La última clase termina a las " + horaFinClasesEn24Horas + "h. y " + horaFinClasesMinutosRestantes + "min.");
         System.out.println("Total de inscritos en sala: " + totalInscritosEnSala);
 
         
