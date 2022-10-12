@@ -1,7 +1,7 @@
 
 /**
  * ENTREGA UT3
- * @CristinaLópez
+ * @Cristina López
  * 
  * 
  * Un centro deportivo oferta clases de yoga, pilates y spinning
@@ -139,8 +139,10 @@ public class CentroDeportivo
         
             case 'Y':   tipo = YOGA;
                         nombreTipo = "Yoga";
-                        salasYoga += sala; //esto está mal porque en realidad sobreescribe el valor de 
-                                           // las salas anteriores, no añade salas :'C
+                            if(salaMaximoYoga < inscritos)
+                             {
+                             salaMaximoYoga = inscritos;
+                             }
                         totalInscritosEnActividadY += inscritos;
                         totalInscritosEnSala += inscritos;
                         break;
@@ -163,8 +165,8 @@ public class CentroDeportivo
         
         //--------------------------------------------------------
         
-        salaMaximoYoga = Math.max(totalInscritosEnActividadY, inscritos); //this is surely wrong
-        maximoInscripcionesYoga = totalInscritosEnActividadY; //lmao this is a HUGE mistake
+        //salaMaximoYoga=;
+        maximoInscripcionesYoga = totalInscritosEnActividadY; 
         
         //-----------APARTADO A:--------------------------------------
             //definición de auxiliares:
@@ -209,7 +211,7 @@ public class CentroDeportivo
             //         después, restar esos minutos al total de minutos "horaFullFinClasesEnMinutos" para
             //         saber cuántos minutos sueltos sobran (tras restarle las X horas completas que dure)
         
-        String horaFinUltimaClase = horaFinClasesEn12Horas + ":" + horaFinClasesMinutosRestantes + " PM";
+        String horaFinUltimaClase = horaFinClasesEn12Horas + ":" + horaFinClasesMinutosRestantes + " PM"; //(NO USADO porque hace falta formato 24h y por separado)
         
         //-----------APARTADO D:-----------------------------------------------
             //definición de auxiliares:
@@ -225,8 +227,8 @@ public class CentroDeportivo
         System.out.println("Longitud (duración): " + duracion1Clase + " min.      Descanso: " + DESCANSO + " min.");
         System.out.println("Precio clase: " + precioDuracionClase + "€");
         System.out.println("Clase ofertada en sala " + vecesClaseOfertada + " veces al día.");
-            //System.out.println("La última clase termina a las " + horaFinUltimaClase + "."); //escribe la hora en formato 12h (SALE NEGATIVO????)
-            System.out.println("La última clase termina a las " + horaFinClasesEn24Horas + "h. y " + horaFinClasesMinutosRestantes + "min.");
+            //System.out.println("La última clase termina a las " + horaFinUltimaClase + "."); //escribe la hora en formato 12h (o debería)
+            System.out.println("La última clase termina a las " + horaFinClasesEn24Horas + " h. y " + horaFinClasesMinutosRestantes + " min.");
         System.out.println("Total de inscritos en sala: " + totalInscritosEnSala);
 
         
