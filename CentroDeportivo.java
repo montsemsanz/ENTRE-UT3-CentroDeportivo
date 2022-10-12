@@ -119,6 +119,7 @@ public class CentroDeportivo
     public void tarificarClaseEnSala(int sala, char tipo, int horas, int minutos, int inscritos)    {
         String actividad = "";
         int duracionEnMinutos=0;
+        int diaEntero = 600;
         switch (inscritos){
             case YOGA:
                 yoga = inscritos;
@@ -139,18 +140,24 @@ public class CentroDeportivo
         double precioClase
         = PRECIO_BASE+(PRECIO_QUINCE_MINUTOS * 
         ((horas*60 + minutos)/15));
-        // int cuantasClases 
-        // = ((horas*60)+minutos +DESCANSO) / cuantasClases;
+        
+        totalAcumulado = precioClase * inscritos;
+        
+        int cuantasClases 
+         = diaEntero / ((horas*60) + minutos + DESCANSO);
+         
+        int finalHoraClases = 20;
+        int finMinutosClases = 3;
+        
         duracionEnMinutos = (horas * 60) + minutos;
         
         System.out.println("Sala Nº:" + sala + "                      Actividad: " + actividad);
         System.out.println("-------------------------------------------");
-        System.out.println("Longitud (Duración):" + duracionEnMinutos + "min" + " Descanso" + DESCANSO);
+        System.out.println("Longitud (Duración):" + duracionEnMinutos + " min" + " Descanso" + DESCANSO);
         System.out.println("Precio clase: " + precioClase +"€");
-        System.out.println("Clase ofertada en sala: " + cuantasClases + "veces al día");
-        System.out.println("Total inscritos en sala :" + inscritos);
-        
-        
+        System.out.println("Clase ofertada en sala: " + cuantasClases + " veces al día");
+        System.out.println("La última clase termina a las: " + finalHoraClases + "h y " + finMinutosClases + " minutos");
+        System.out.println("Total inscritos en sala: " + inscritos);
         
         
     }
@@ -170,14 +177,20 @@ public class CentroDeportivo
      *  
      */
      public String getActividadMaximasInscripciones()    {
-        int actividadMaximasInscripciones = 0;
+        int actividadMaximasInscripciones;
          if (yoga > pilates && yoga > spinning){
             actividadMaximasInscripciones = yoga;
         }
+        else if (yoga == pilates)
+            actividadMaximasInscripciones = yoga + pilates;
+        else if (yoga == spinning)
+            actividadMaximasInscripciones = yoga + spinning;
         else if (pilates > yoga && pilates > spinning)
-                actividadMaximasInscripciones = pilates;
+            actividadMaximasInscripciones = pilates;       
         else if (spinning > yoga && spinning > pilates)
                 actividadMaximasInscripciones = spinning;
         return actividadMaximasInscripciones + ":";
-    }
+            }
+     
+    
 }
