@@ -47,8 +47,14 @@ public class CentroDeportivo
      * Recibe un único parámetro, el nombre del centro deportivo
      * e inicializa el resto de atributos adecuadamente 
      */
-    public CentroDeportivo()    {
-        //TODO
+    public CentroDeportivo(int queNombre)    {
+        nombre = queNombre;
+        yoga = 0;
+        pilates = 0;
+        spinning = 0;
+        totalAcumulado = 0;
+        salaMaximoYoga = 0;
+        maximoInscripcionesYoga = 0;
     }
 
     /**
