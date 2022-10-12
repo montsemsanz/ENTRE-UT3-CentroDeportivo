@@ -35,7 +35,7 @@ public class CentroDeportivo
     private final char YOGA = 'Y';
     private final char PILATES = 'P';
     private final char SPINNING = 'S';
-    
+
     private String nombre;
     private int yoga;
     private int pilates;
@@ -43,8 +43,7 @@ public class CentroDeportivo
     private double totalAcumulado;
     private int salaMaximoYoga;
     private int maximoInscripcionesYoga;
-    
-    
+
     /**
      * Constructor  - 
      * Recibe un único parámetro, el nombre del centro deportivo
@@ -62,7 +61,6 @@ public class CentroDeportivo
 
     /**
      *  Accesor para el nombre del centro deportivo
-     *
      */
     public String getNombre()    {
         return nombre;
@@ -83,7 +81,7 @@ public class CentroDeportivo
      */
     public double getImporteTotal()    {
         return totalAcumulado;
-        
+
     }
 
     /**
@@ -118,18 +116,39 @@ public class CentroDeportivo
      *              
      */
     public void tarificarClaseEnSala(int sala, char tipo, int horas, int minutos, int inscritos)    {
-        //TODO 
-        
-        
+        // totalInscritos es una variable local que calcula el total
+        // de inscritos por actividad
+        if (sala == 1){
+            System.out.println("Actividad: " + SPINNING);
+        }
+        int totalInscritos = 0;
+        switch    (tipo)    {
+            case 'Y':
+                System.out.println("YOGA");
+                totalInscritos = 0;
+                totalInscritos += inscritos;
+            case 'S':
+                System.out.println("SPINNING");
+                totalInscritos = 0;
+                totalInscritos += inscritos;
+            case 'P':
+                System.out.println("PILATES");
+                totalInscritos = 0;
+                totalInscritos += inscritos;
+        }
+        System.out.println("Sala Nº: " + sala + "      " + "Actividad: " + tipo);
+        System.out.println("--------------------------------------------------");
+        System.out.println("Total inscritos en sala " + inscritos);
     }
 
     /**
      *  nº sala en la que hay más inscritos en yoga
-     *   
      */
-    public  getSala()   {
-        //TODO 
-        
+    public int getSala()   {
+        int maximoInscritosYoga = 0;{
+            
+        }
+        return yoga;
     }
 
     /**
@@ -137,11 +156,8 @@ public class CentroDeportivo
      * independientemente de la sala  (puede haber coincidencias)
      *  
      */
-    public   getActividadMaximasInscripciones()    {
-        //TODO 
-        
-        
-        
-    }
+    public String getActividadMaximasInscripciones()    {
+        return nombre;
 
+    }
 }
