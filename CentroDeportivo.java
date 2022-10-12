@@ -29,7 +29,7 @@ public class CentroDeportivo
     private final int HORA_PRIMERA_CLASE = 10;
     private final int MINUTOS_PRIMERA_CLASE = 30;
     private final int HORA_ULTIMA_CLASE = 8;
-    private final int MINUTOD_ULTIMA_CLASE = 30;
+    private final int MINUTOS_ULTIMA_CLASE = 30;
     private final int DESCANSO = 10;
     
     private final double PRECIO_BASE = 5;
@@ -131,9 +131,8 @@ public class CentroDeportivo
      */
     public int getSala()   {
         //TODO 
-        
-        //si no no me deja compilar para probar lo que he hecho
-        return 0;
+    
+        return salaMaximoYoga;
     }
 
     /**
@@ -143,9 +142,15 @@ public class CentroDeportivo
      */
     public String getActividadMaximasInscripciones()    {
         //TODO 
-        
-        
-        return "esto lo hago para poder compilar";
+        if (yoga > spinning && yoga > pilates) {
+            return "Yoga";
+        }
+        else if (spinning > pilates) {
+            return "Spinning";
+        }
+        else {
+            return "Pilates";
+        }
     }
 
 }
