@@ -91,30 +91,39 @@ public class CentroDeportivo
      */
     public void tarificarClaseEnSala(int sala, char tipo, int horas, int minutos, 
     int inscritos)    {
-        int totalInscritos = inscritos; 
-        int horasEnMinutos = horas * 60;
-        int minutosClaseTotal = horasEnMinutos + minutos;
-        int tiempoTotal = 600; //en minutos
-        int numeroClases = (int) Math.floor((tiempoTotal / (minutosClaseTotal + 10))); //cociente de está división y nºdescansos=nºde clases
-        double precioClaseSala = PRECIO_BASE+PRECIO_QUINCE_MINUTOS*(minutosClaseTotal/15);
-        // double comprobacionTiempo = numeroClases * (minutosClaseTotal-10) + (numeroClases * 10); //formula ver tiempo aprovechable
-       
+        int y = 0;
+        int p = 0;
+        int s = 0;
+         switch(tipo){
+        case 'Y': y += inscritos;
+                    break;
+        case 'P': p += inscritos;
+                    break;
+        case 'S': s += inscritos;
+                    break;
+        } 
+        int totalInscritos = (y + p + s);
         
-        
-        
-        
-        // switch(totalInscritos){
-        // case 'Y': inscritos=yoga;
-        // break;
-        // case 'P': inscritos=pilates;
-        // break;
-        // case 'S': inscritos=spinning;
-        // break;
+        int tiempoDisponible = 600; //en minutos (de las 10:30 am a las 8:30 pm)
+        int horasEnMinutos = horas * 60; //(ejemplo con 2h:25mints)
+        int horaPrimeraClaseMinutos = (HORA_PRIMERA_CLASE * 60) + MINUTOS_PRIMERA_CLASE; //la constante en minutos para operar después
+        int duracionClaseMints = horasEnMinutos + minutos +10; //duracion clase + descansos (135)
+        int numeroClases = (int) Math.floor(tiempoDisponible / duracionClaseMints); //cociente de está división = veces puede ofertar una clase. (4)
+        int duracionClaseMintsTotal = numeroClases * duracionClaseMints; //Tiempo total (540)
+        int duracionTotalMinutos = horaPrimeraClaseMinutos + duracionClaseMintsTotal; //(1170) la hora y mints en que acaba la clase en formato minutos
+        int horaAcabaClase24 = duracionTotalMinutos/60; // hora a la que finaliza la clase en formato 24hrs (19)
+        int minutosRestantes = horaAcabaClase24 * 60; //(1140)        
+        int minutosAcabaClase = duracionTotalMinutos - minutosRestantes; //(24)
+        int horaAcabaClase12 = horaAcabaClase24 - 12; //(10)
 
-        // } 
+        
+        double precioClaseSala = PRECIO_BASE+PRECIO_QUINCE_MINUTOS*(duracionClaseMints/15);
+        double importeTotal =  numeroClases * precioClaseSala * totalInscritos; 
+
+        
 
     }
-
+    
     /**
      *  nº sala en la que hay más inscritos en yoga
      *   
@@ -124,12 +133,11 @@ public class CentroDeportivo
 
     }
 
-    /**
-     * Devuelve el nombre de la actividad con más inscritos 
-     * independientemente de la sala  (puede haber coincidencias)
-     *  
-     */
-    public String getActividadMaximasInscripciones()    {
-        return loquesea;
-    }
+    // /**
+     // * Devuelve el nombre de la actividad con más inscritos 
+     // * independientemente de la sala  (puede haber coincidencias)
+     // *  
+     // */
+    // public String getActividadMaximasInscripciones()    {
+    // }
 }
