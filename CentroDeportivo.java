@@ -1,7 +1,7 @@
 
 /**
  * ENTREGA UT3
- * @author - (aquí pon tu nombre)
+ * @author -   Rubén López-Davalillo
  * 
  * 
  * Un centro deportivo oferta clases de yoga, pilates y spinning
@@ -25,20 +25,30 @@
  */
 public class CentroDeportivo
 {
-    //TODO 
-    
-    
-    
-
+    private final int HORA_PRIMERA_CLASE = 10;
+    private final int MINUTOS_PRIMERA_CLASE = 30;
+    private final int HORA_ULTIMA_CLASE = 8;
+    private final int MINUTOS_ULTIMA_CLASE = 30;
+    private final int DESCANSO = 10;
+    private final double PRECIO_BASE = 5.0;
+    private final double PRECIO_QUINCE_MINUTOS = 0.40;
+    private final char YOGA = 'Y';
+    private final char PILATES = 'P';
+    private final char SPINNING = 'S';
+    private String nombre; //guarda el nombre del centro deportivo
+    private int yoga; //contabiliza el nº de personas inscritas en yoga
+    private int pilates; //contabiliza el nº de personas inscritas en pilates
+    private int spinning; //contabiliza el nº de personas inscritas en spinning
+    private double totalAcumulado; //importe total obtenido entre todos los inscritos
+    private int salaMaximoYoga; //nº de sala en la que hay más inscripciones para yoga
+    private int maximoInscripcionesYoga; //nº máximo de personas inscritas en yoga en dicha sala
     /**
      * Constructor  - 
      * Recibe un único parámetro, el nombre del centro deportivo
      * e inicializa el resto de atributos adecuadamente 
      */
     public CentroDeportivo()    {
-        //TODO 
-        
-
+        //TODO
     }
 
     /**
@@ -46,15 +56,14 @@ public class CentroDeportivo
      *
      */
     public  getNombre()    {
-        //TODO 
+        //TODO
     }
 
     /**
      *  Mutador para el nombre del centro deportivo
      */
-    public   setNombre()    {
+    public  setNombre(String queNombre)    {
        //TODO 
-       
     }
 
     /**
@@ -62,9 +71,8 @@ public class CentroDeportivo
      *  entre todos los inscritos en el centro
      *
      */
-    public   getImporteTotal()    {
-        //TODO 
-        
+    public  getImporteTotal()    {
+        //TODO
     }
 
     /**
@@ -99,8 +107,7 @@ public class CentroDeportivo
      *              
      */
     public void tarificarClaseEnSala(int sala, char tipo, int horas, int minutos, int inscritos)    {
-        //TODO 
-        
+        //TODO
         
     }
 
