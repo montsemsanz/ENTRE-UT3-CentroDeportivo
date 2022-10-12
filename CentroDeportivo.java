@@ -91,22 +91,25 @@ public class CentroDeportivo
      */
     public void tarificarClaseEnSala(int sala, char tipo, int horas, int minutos, 
     int inscritos)    {
-        int y = 0;
-        int p = 0;
-        int s = 0;
         int totalInscritosSala = 0;
         switch(tipo){
-            case 'Y': y += inscritos;  
+            case 'Y': yoga += inscritos;  
                     totalInscritosSala= inscritos;
+                    if(salaMaximoYoga < sala){
+                         salaMaximoYoga = sala; 
+                    }                
+                    else{
+                        salaMaximoYoga = salaMaximoYoga;
+                    }
                                     break;
-            case 'P': p += inscritos;  
+            case 'P': pilates += inscritos;  
                         totalInscritosSala= inscritos;
                                     break;
-            case 'S': s += inscritos;
+            case 'S': spinning += inscritos;
                     totalInscritosSala= inscritos;
                             break;
         } 
-        int totalInscritos = (y + p + s);
+        int totalInscritos = yoga + pilates + spinning;
 
         int tiempoDisponible = 600; //en minutos (de las 10:30 am a las 8:30 pm)
         int horasEnMinutos = horas * 60; //(ejemplo con 2h:25mints)
@@ -122,7 +125,7 @@ public class CentroDeportivo
         int horaAcabaClase12 = horaAcabaClase24 - 12; //(10)
 
         double precioClaseSala = PRECIO_BASE+PRECIO_QUINCE_MINUTOS*(duracionClaseMints/15);
-        double importeTotal =  numeroClases * precioClaseSala * totalInscritos; 
+        totalAcumulado =  (numeroClases * precioClaseSala * totalInscritos); 
 
         System.out.println("Sala Nº: " + sala + "  " + "Actividad: " + tipo); 
         System.out.println("Longitud (Duración): " + duracionClaseSinDescanso + 
