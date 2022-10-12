@@ -150,7 +150,7 @@ public class CentroDeportivo
         int mayorPrimero = 0;
         int mayorMax = 0;
         if('Y' > 'P'){
-            mayorPrimero = 'Y';
+            mayorPrimero = 'Y'; 
         }
         else {
             mayorPrimero = 'P';
@@ -161,4 +161,6 @@ public class CentroDeportivo
         else{
             mayorMax = mayorPrimero;
         }
+        return "mayor es:" + mayorMax; 
     }
+}
