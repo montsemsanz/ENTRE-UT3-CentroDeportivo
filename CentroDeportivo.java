@@ -135,28 +135,52 @@ public class CentroDeportivo
      */
     public void tarificarClaseEnSala(int sala, char tipo, int horas, int minutos, int inscritos)    {
         // TODO 
+        int totalInscritosY = 0;
+        int totalInscritosP = 0;
+        int totalInscritosS = 0;
+        int totalInscritos = totalInscritosY + totalInscritosP + totalInscritosS;
         // Total inscritos por tipo de actividad
-        switch (inscritos) {
-            case YOGA: inscritos = yoga;
+        switch (tipo) {
+            case YOGA: totalInscritosY = yoga;
                 break;
-            case PILATES: inscritos = pilates;
+            case PILATES: totalInscritosP = pilates;
                 break;
-            case SPINNING: inscritos = spinning;
+            case SPINNING: totalInscritosS = spinning;
                 break;
         }
         
-        // La sala con máximo no de inscritos en yoga y cuál es 
+        // La sala con máximo Nº de inscritos en yoga y cuál es 
         // ese valor máximo
+        salaMaximoYoga = Math.max(totalInscritosY, inscritos);
+        maximoInscripcionesYoga = salaMaximoYoga;
         
-        
-        // El precio de la clase en la sala
-        minutos = horas * 60 + minutos;
-        totalAcumulado += PRECIO_BASE + 
-                    (PRECIO_QUINCE_MINUTOS * (minutos % 15));
+        // A) El precio de la clase en la sala
+        int duracionClase = horas * 60 + minutos;
+        double precioClase = PRECIO_BASE + 
+                    (PRECIO_QUINCE_MINUTOS * (duracionClase / 15));
+        System.out.println("Precio clase: " + precioClase + "€");
                     
-        // Nº de veces que la clase se ofertará en la sala
+        // B) Nº de veces que la clase se ofertará en la sala
+        // 10 horas = 600 mins
+        int ClasesEnSala = (int) Math.floor(600 / (duracionClase + DESCANSO));
+        System.out.println("Clase ofertada en sala: " + ClasesEnSala + 
+                            "veces al día");
         
-                
+        // C) La hora de finalización de la última clase (hora y minutos)
+        int finUltimaClase = 600 - (600 % (duracionClase + 10));
+        int horaFinUltimaClase = finUltimaClase / 60;
+        int minFinUltimaClase = finUltimaClase % 60;
+             // Pasar a formato reloj la hora y los minutos
+        int HoraFinUltimaClase = 10 + horaFinUltimaClase;
+        int MinFinUltimaClase = minFinUltimaClase - 30;
+        System.out.println("La última clase termina a las: " +
+                            HoraFinUltimaClase + "h. y " +
+                            MinFinUltimaClase + "minutos");
+        
+        // D) el importe total que lleva acumulado el centro entre 
+        //    todas las personas inscritas
+        totalAcumulado = totalInscritos * precioClase * ClasesEnSala;
+        
     }
 
     /**
