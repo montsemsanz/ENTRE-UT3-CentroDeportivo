@@ -94,14 +94,17 @@ public class CentroDeportivo
         int y = 0;
         int p = 0;
         int s = 0;
-        
+        int totalInscritosSala = 0;
         switch(tipo){
             case 'Y': y += inscritos;  
-                break;
-            case 'P': p += inscritos;     
-                break;
+                    totalInscritosSala= inscritos;
+                                    break;
+            case 'P': p += inscritos;  
+                        totalInscritosSala= inscritos;
+                                    break;
             case 'S': s += inscritos;
-                break;
+                    totalInscritosSala= inscritos;
+                            break;
         } 
         int totalInscritos = (y + p + s);
 
@@ -121,15 +124,14 @@ public class CentroDeportivo
         double precioClaseSala = PRECIO_BASE+PRECIO_QUINCE_MINUTOS*(duracionClaseMints/15);
         double importeTotal =  numeroClases * precioClaseSala * totalInscritos; 
 
-        System.out.println("Sala Nº: " + sala + "  " + "Actividad: " + 'S'); 
+        System.out.println("Sala Nº: " + sala + "  " + "Actividad: " + tipo); 
         System.out.println("Longitud (Duración): " + duracionClaseSinDescanso + 
-            "Descanso: " + DESCANSO + "min.");
-        System.out.println("Clase ofertada en sala:" + numeroClases + "veces al día");
+            " Descanso: " + DESCANSO + "min.");
+        System.out.println("Clase ofertada en sala:" + numeroClases + " veces al día");
         System.out.println("La última clase termina a las: " + 
-            horaAcabaClase24+"h" + "y" + minutosAcabaClase + "minutos");
+            horaAcabaClase24+" h" + " y " + minutosAcabaClase + " minutos");
 
-        System.out.println("Total inscritos en la sala:");
-        System.out.println("Pulse tecla para continuar");
+        System.out.println("Total inscritos en la sala:" + totalInscritosSala);
     }
 
     /**
@@ -147,20 +149,17 @@ public class CentroDeportivo
      *  
      */
     public String getActividadMaximasInscripciones()    {
-        int mayorPrimero = 0;
-        int mayorMax = 0;
-        if('Y' > 'P'){
-            mayorPrimero = 'Y'; 
+        String actividadMaxima = "";
+        if(yoga > pilates && yoga > spinning){ //se evalua en escalera
+            actividadMaxima = "yoga";
         }
-        else {
-            mayorPrimero = 'P';
-        }
-        if(mayorPrimero > 'S'){
-            mayorMax = mayorPrimero;
-        }
+        else if(pilates > spinning){  // dentro de este else yoga no es max
+            actividadMaxima = "pilates"; 
+            }
         else{
-            mayorMax = mayorPrimero;
+            actividadMaxima = "spinning";
         }
-        return "mayor es:" + mayorMax; 
+        
+        return actividadMaxima;
     }
 }
