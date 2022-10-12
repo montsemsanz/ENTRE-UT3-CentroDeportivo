@@ -124,29 +124,43 @@ public class CentroDeportivo
         int finEnMinutos = (HORA_ULTIMA_CLASE + 12) * 60 +  MINUTOS_ULTIMA_CLASE;
         int diaLaborable = finEnMinutos - comienzoEnMinutos;
         int numeroVeces = diaLaborable / totalConDescanso;
-        int horaFin = (comienzoEnMinutos + numeroVeces * totalConDescanso);
-        int horaFinEnMinutos = horaFin / 60;
-        int minutosFin = horaFin % 60;
+        int horaFinEnMinutos = (comienzoEnMinutos + numeroVeces * totalConDescanso);
+        int horaFin = horaFinEnMinutos / 60;
+        int minutosFin = horaFinEnMinutos % 60;
         int totalInscritos = inscritos * numeroVeces;
-
+        String tipoActividad = "";
+        
         if (duracionClase + comienzoEnMinutos > finEnMinutos){
         }
         else{
             switch   (tipo)    {
                 case YOGA:   yoga += (totalInscritos);
+                             tipoActividad = "YOGA";
                     if (totalInscritos > maximoInscripcionesYoga){
                         maximoInscripcionesYoga = totalInscritos;
                         salaMaximoYoga = sala;
                     }
+                    
                     break;
                 case PILATES: pilates += (totalInscritos);
+                              tipoActividad = "PILATES";  
                     break;
                 case SPINNING: spinning += (totalInscritos);
+                               tipoActividad = "SPINNING";
                     break;
 
             }
             totalAcumulado += totalInscritos * precioClase;
-            
+            System.out.println("Sala Nº: " + sala + "                    Actividad: "
+             + tipoActividad);
+            System.out.println("-".repeat(55));
+            System.out.println("Longitud(duración): " + duracionClase + " min. "
+                + "Descanso: " + DESCANSO + " min. ");
+            System.out.println("Precio clase: " + precioClase + "€");
+            System.out.println("clase ofertada en sala: " + numeroVeces + " veces al día");
+            System.out.println("La última clase termina a las: " + horaFin + "h. y "
+                + minutosFin + " minutos");
+            System.out.println("Total inscritos en sala: " + totalInscritos);
         }
     }
 
@@ -159,10 +173,10 @@ public class CentroDeportivo
     }
 
     /**
-    * Devuelve el nombre de la actividad con más inscritos 
-    * independientemente de la sala  (puede haber coincidencias)
-    *  
-    */
+     * Devuelve el nombre de la actividad con más inscritos 
+     * independientemente de la sala  (puede haber coincidencias)
+     *  
+     */
     public String getActividadMaximasInscripciones()    {
         String str = " ";
         if (yoga > pilates && yoga > spinning){
