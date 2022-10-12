@@ -101,7 +101,7 @@ public class CentroDeportivo
      *   
      *   También el método calculará:
      *   
-     *      - el precio de la clase en la sala (basándose en su dsación). En el ejemplo anterior
+     *      - el precio de la clase en la sala (basándose en su duración). En el ejemplo anterior
      *      la clase de pilates duraba 1 hora y 5 minutos . Como el total de minutos
      *      de duración es 65 su precio será: 5 + 0,40 *  4 = 6,60 ya que son 4 los períodos completos de
      *      15 minutos que hay
@@ -114,23 +114,22 @@ public class CentroDeportivo
      *   En pantalla se mostrarán los datos de la sala tal como indican los resultados de ejecución
      *              
      */
-    public void tarificarClaseEnSala(int sala, char tipo, int horas, int minutos, int inscritos)    {
+    public double tarificarClaseEnSala(int sala, char tipo, int horas, int minutos, int inscritos)    {
         inscritos = yoga + pilates + spinning;
         System.out.println(inscritos);
         System.out.println(maximoInscripcionesYoga);
-        switch (sala) {
-            case 1: int precio = horas % 1 ==  0;
-                    int precio2 = minutos % 0 == 0;
-                    horas *= PRECIO_BASE;
-                    break;
-             case 2: int precio3 = horas % 2 =  0;
-                    int precio4 = minutos % 0 = 0;
-                    horas *= PRECIO_BASE;
-                    break;
-                    
-        }
-        
+        double precioHoras = horas *= PRECIO_BASE + (PRECIO_QUINCE_MINUTOS * minutos);
+        double precioMinutos = horas * PRECIO_BASE + (minutos / 15 *= PRECIO_QUINCE_MINUTOS );
+        double Nclase = horas/60 + minutos + DESCANSO;
+          if (horas % 1 == 0) {
+             return precioHoras;
+          } 
+         else if (horas > 1)   {
+          return precioHoras;
     }
+    return Nclase;
+    return precioHoras;
+    } 
 
     /**
      *  nº sala en la que hay más inscritos en yoga
@@ -156,6 +155,7 @@ public class CentroDeportivo
         else if ((spinning > pilates) && (spinning > yoga)) { 
             return "spinning";
 }
+return getActividadMaximasInscripciones();
 }
 }
 
