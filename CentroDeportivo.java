@@ -42,9 +42,9 @@ public class CentroDeportivo
     private final double PRECIO_QUINCE_MINUTOS = 0.40;
     
     // Tipo de actividad
-    private final String YOGA = 'Y';
-    private final String PILATES = 'P';
-    private final String SPINNING = 'S';
+    private final char YOGA = 'Y';
+    private final char PILATES = 'P';
+    private final char SPINNING = 'S';
     
     // Nº de personas inscritas
     private int yoga;
@@ -80,7 +80,7 @@ public class CentroDeportivo
      *  Accesor para el nombre del centro deportivo
      *
      */
-    public void getNombre()    {
+    public String getNombre()    {
         return nombre;
         
     }
@@ -88,7 +88,7 @@ public class CentroDeportivo
     /**
      *  Mutador para el nombre del centro deportivo
      */
-    public void setNombre(String queCambiarNombre)    {
+    public String setNombre(String queCambiarNombre)    {
        return nombre = queCambiarNombre;
        
     }
@@ -98,7 +98,7 @@ public class CentroDeportivo
      *  entre todos los inscritos en el centro
      *
      */
-    public void getImporteTotal()    {
+    public double getImporteTotal()    {
         return totalAcumulado;
     }
 
@@ -134,16 +134,36 @@ public class CentroDeportivo
      *              
      */
     public void tarificarClaseEnSala(int sala, char tipo, int horas, int minutos, int inscritos)    {
-        //TODO 
+        // TODO 
+        // Total inscritos por tipo de actividad
+        switch (inscritos) {
+            case YOGA: inscritos = yoga;
+                break;
+            case PILATES: inscritos = pilates;
+                break;
+            case SPINNING: inscritos = spinning;
+                break;
+        }
+        
+        // La sala con máximo no de inscritos en yoga y cuál es 
+        // ese valor máximo
         
         
+        // El precio de la clase en la sala
+        minutos = horas * 60 + minutos;
+        totalAcumulado += PRECIO_BASE + 
+                    (PRECIO_QUINCE_MINUTOS * (minutos % 15));
+                    
+        // Nº de veces que la clase se ofertará en la sala
+        
+                
     }
 
     /**
      *  nº sala en la que hay más inscritos en yoga
      *   
      */
-    public  getSala()   {
+    public void getSala()   {
         //TODO 
         
     }
@@ -153,9 +173,8 @@ public class CentroDeportivo
      * independientemente de la sala  (puede haber coincidencias)
      *  
      */
-    public   getActividadMaximasInscripciones()    {
+    public String getActividadMaximasInscripciones()    {
         //TODO 
-        
         
         
     }
