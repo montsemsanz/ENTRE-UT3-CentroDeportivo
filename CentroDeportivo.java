@@ -124,9 +124,13 @@ public class CentroDeportivo
      *              
      */
     public void tarificarClaseEnSala(int sala, char tipo, int horas, int minutos, int inscritos)    {
+        String nombreTipo = "";
+        
         int totalInscritosEnActividadY = 0; 
         int totalInscritosEnActividadS = 0; 
         int totalInscritosEnActividadP = 0; 
+        
+        int totalInscritosEnSala = 0;
         
         int salasYoga = 0;
         
@@ -134,17 +138,23 @@ public class CentroDeportivo
         switch (tipo){
         
             case 'Y':   tipo = YOGA;
+                        nombreTipo = "Yoga";
                         salasYoga += sala; //esto está mal porque en realidad sobreescribe el valor de 
                                            // las salas anteriores, no añade salas :'C
                         totalInscritosEnActividadY += inscritos;
+                        totalInscritosEnSala += inscritos;
                         break;
                         
             case 'P':   tipo = PILATES;
+                        nombreTipo = "Pilates";
                         totalInscritosEnActividadP += inscritos;
+                        totalInscritosEnSala += inscritos;
                         break;
                         
             case 'S':   tipo = SPINNING;
+                        nombreTipo = "Spinning";
                         totalInscritosEnActividadS += inscritos;
+                        totalInscritosEnSala += inscritos;
                         break;
                   
             default:    System.out.println("Tipo de actividad no válido. Por favor, inserte otro caracter.");
@@ -196,7 +206,7 @@ public class CentroDeportivo
         int horaFinClasesMinutosRestantes = horaFullFinClasesEnMinutos - (horaFinClasesEn24Horas * 60); 
             //devuelve los minutos correspondientes a la hora en la que termina la última clase
             //fórmula: multiplicar número entero de horaFinClasesEn24Horas * 60 para pasarlo a minutos y, 
-            //         después, restar esos minutos al total de minutos "horaFullFinClasesEnMinutos" para
+            //         después, restar esos minutos al total de minutos "horaFullFinClasesE                     nMinutos" para
             //         saber cuántos minutos sueltos sobran (tras restarle las X horas completas que dure)
         
         String horaFinUltimaClase = horaFinClasesEn12Horas + ":" + horaFinClasesMinutosRestantes + " PM";
@@ -208,7 +218,16 @@ public class CentroDeportivo
                                         
         double totalAcumulado = precioDuracionClase * vecesClaseOfertada * totalInscritosCentro;
         
-        //----- AHORA TOCA IMPRIMIR TODA LA INFORMACIÓN QUE TENEMOS HASTA AHORA (figura 1 PDF enunciado)---
+        //-----------IMPRESIÓN:------------------------------------------------
+        
+        System.out.println("Sala Nº: " + sala + "                         Actividad: " + nombreTipo);
+        System.out.println("----------------------------------------------");
+        System.out.println("Longitud (duración): " + duracion1Clase + "min.      Descanso: " + DESCANSO + "min.");
+        System.out.println("Precio clase: " + precioDuracionClase + "€");
+        System.out.println("Clase ofertada en sala " + vecesClaseOfertada + " veces al día.");
+        System.out.println("La última clase termina a las " + horaFinUltimaClase + "."); //escribe la hora en formato 12h
+        System.out.println("Total de inscritos en sala: " + totalInscritosEnSala);
+
         
     }
 
@@ -227,7 +246,7 @@ public class CentroDeportivo
      *  
      */
     public String getActividadMaximasInscripciones()    {
-         String actividadMaximasInscripciones;
+        String actividadMaximasInscripciones;
     
           if((yoga > pilates && pilates > spinning) || (yoga > spinning && spinning > pilates))
            {
