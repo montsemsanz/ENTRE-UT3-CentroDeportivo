@@ -145,8 +145,22 @@ public class CentroDeportivo
         int auxTotalMinutos = (vecesClase * (duracionClase + 10)) - 10;
         int horaUltimaClase = 10 + (auxTotalMinutos / 60);
         int minutoUltimaClase = 30 + (auxTotalMinutos % 60);
+        
+        if (minutoUltimaClase >= 60) {
+            minutoUltimaClase -= 60;
+            horaUltimaClase++;
+        }
+        
         totalAcumulado += precioClase * vecesClase * inscritos;
-
+        
+        System.out.println("Sala nº" + sala + "          Actividad: " + actividad);
+        System.out.println("-------------------------------------------------------");
+        System.out.println("Longitud (Duración): " + duracionClase + "min. Descanso: 10min");
+        System.out.println("Clase ofertada en la sala: " + vecesClase + " veces al día");
+        System.out.println("La última clase termina a las " + horaUltimaClase + "h y " 
+                           + minutoUltimaClase + "minutos.");
+        System.out.println("Total inscritos en la sala: " + inscritos);
+        
     }
 
     /**
