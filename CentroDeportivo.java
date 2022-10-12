@@ -52,9 +52,14 @@ public class CentroDeportivo
      * Recibe un único parámetro, el nombre del centro deportivo
      * e inicializa el resto de atributos adecuadamente 
      */
-    public CentroDeportivo()    {
-        //TODO 
-        
+    public CentroDeportivo(String queNombre)    {
+        nombre = queNombre;
+        yoga = 0;
+        pilates = 0;
+        spinning = 0;
+        totalAcumulado = 0;
+        salaMaximoYoga = 0;
+        maximoInscripcionesYoga = 0;
 
     }
 
@@ -62,15 +67,15 @@ public class CentroDeportivo
      *  Accesor para el nombre del centro deportivo
      *
      */
-    public  getNombre()    {
-        //TODO 
+    public  Strnig getNombre()    {
+        return nombre;
     }
 
     /**
      *  Mutador para el nombre del centro deportivo
      */
-    public   setNombre()    {
-       //TODO 
+    public  void setNombre( String queNombre)    {
+       nombre = queNombre;
        
     }
 
