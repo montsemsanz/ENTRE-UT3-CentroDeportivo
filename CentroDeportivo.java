@@ -76,7 +76,6 @@ public class CentroDeportivo
     /**
      *  accesor para el importe total acumulado 
      *  entre todos los inscritos en el centro
-     *
      */
     public double getImporteTotal()    {
         return totalAcumulado;
@@ -110,15 +109,12 @@ public class CentroDeportivo
      *      - el método además irá registrando el importe total que lleva acumulado el centro entre todas
      *      las personas inscritas 
      *      
-     *   En pantalla se mostrarán los datos de la sala tal como indican los resultados de ejecución
-     *              
+     *   En pantalla se mostrarán los datos de la sala tal como indican los resultados de ejecución         
      */
     public void tarificarClaseEnSala(int sala, char tipo, int horas, int minutos, int inscritos)    {
         int horasAMinutos = horas * 60;
-        int quinceMin = (horasAMinutos) / 4;
-        double precioClase = PRECIO_BASE + (PRECIO_QUINCE_MINUTOS * quinceMin)
-            + (PRECIO_QUINCE_MINUTOS * (minutos / 15));
         int duracionClase = horasAMinutos + minutos;
+        double precioClase = PRECIO_BASE + (PRECIO_QUINCE_MINUTOS * (duracionClase / 15));
         int totalConDescanso = duracionClase + DESCANSO;
         int comienzoEnMinutos = HORA_PRIMERA_CLASE * 60 + MINUTOS_PRIMERA_CLASE;
         int finEnMinutos = (HORA_ULTIMA_CLASE + 12) * 60 +  MINUTOS_ULTIMA_CLASE;
@@ -128,9 +124,42 @@ public class CentroDeportivo
         int horaFin = horaFinEnMinutos / 60;
         int minutosFin = horaFinEnMinutos % 60;
         int totalInscritos = inscritos * numeroVeces;
+        int noDescanso = DESCANSO;
         String tipoActividad = "";
         
-        if (duracionClase + comienzoEnMinutos > finEnMinutos){
+        if (comienzoEnMinutos + duracionClase > finEnMinutos){
+            System.out.println("La clase no puede pasar de las 20:30");
+        }
+        else if (comienzoEnMinutos + duracionClase == finEnMinutos){
+            numeroVeces = 1;
+            noDescanso = 0;
+            totalInscritos = inscritos;
+            switch   (tipo)    {
+                case YOGA:   yoga += (totalInscritos);
+                             tipoActividad = "YOGA";
+                    if (totalInscritos > maximoInscripcionesYoga){
+                        maximoInscripcionesYoga = totalInscritos;
+                        salaMaximoYoga = sala;
+                    }
+                    break;
+                case PILATES: pilates += (totalInscritos);
+                              tipoActividad = "PILATES";  
+                    break;
+                case SPINNING: spinning += (totalInscritos);
+                               tipoActividad = "SPINNING";
+                    break;
+            }
+            totalAcumulado += totalInscritos * precioClase;
+            System.out.println("Sala Nº: " + sala + "                 Actividad: "
+             + tipoActividad);
+            System.out.println("-".repeat(50));
+            System.out.println("Longitud(duración): " + duracionClase + " min. "
+                + "Descanso: " + noDescanso + " min. ");
+            System.out.println("Precio clase: " + precioClase + "€");
+            System.out.println("clase ofertada en sala: " + numeroVeces + " veces al día");
+            System.out.println("La última clase termina a las: " + horaFin + "h. y "
+                + minutosFin + " minutos");
+            System.out.println("Total inscritos en sala: " + totalInscritos);
         }
         else{
             switch   (tipo)    {
@@ -140,7 +169,6 @@ public class CentroDeportivo
                         maximoInscripcionesYoga = totalInscritos;
                         salaMaximoYoga = sala;
                     }
-                    
                     break;
                 case PILATES: pilates += (totalInscritos);
                               tipoActividad = "PILATES";  
@@ -148,12 +176,11 @@ public class CentroDeportivo
                 case SPINNING: spinning += (totalInscritos);
                                tipoActividad = "SPINNING";
                     break;
-
             }
             totalAcumulado += totalInscritos * precioClase;
-            System.out.println("Sala Nº: " + sala + "                    Actividad: "
+            System.out.println("Sala Nº: " + sala + "                 Actividad: "
              + tipoActividad);
-            System.out.println("-".repeat(55));
+            System.out.println("-".repeat(50));
             System.out.println("Longitud(duración): " + duracionClase + " min. "
                 + "Descanso: " + DESCANSO + " min. ");
             System.out.println("Precio clase: " + precioClase + "€");
@@ -166,7 +193,6 @@ public class CentroDeportivo
 
     /**
      *  nº sala en la que hay más inscritos en yoga
-     *   
      */
     public int getSala()   {
         return salaMaximoYoga;
@@ -175,30 +201,29 @@ public class CentroDeportivo
     /**
      * Devuelve el nombre de la actividad con más inscritos 
      * independientemente de la sala  (puede haber coincidencias)
-     *  
      */
     public String getActividadMaximasInscripciones()    {
-        String str = " ";
+        String str = "";
         if (yoga > pilates && yoga > spinning){
-            str +="YOGA";
+            str = "YOGA";
         }
         else if(yoga > pilates && yoga == spinning){
-            str += "YOGA SPINNING";
+            str = "YOGA SPINNING";
         }
         else if(pilates > yoga && pilates > spinning){
-            str += "PILATES";
+            str = "PILATES";
         }
         else if(pilates > spinning && pilates == yoga){
-            str += "PILATES YOGA";
+            str = "PILATES YOGA";
         }
         else if(spinning > yoga && spinning > pilates){
-            str += "SPINNING";
+            str = "SPINNING";
         }
         else if(spinning > yoga && pilates == spinning){
-            str += "SPINNING PILATES";
+            str = "SPINNING PILATES";
         }
         else if(spinning == yoga && pilates == spinning){
-            str += "YOGA SPINNING PILATES";
+            str = "YOGA SPINNING PILATES";
         }
         return str;
     }
