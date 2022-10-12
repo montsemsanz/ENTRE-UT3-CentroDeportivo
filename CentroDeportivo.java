@@ -127,39 +127,46 @@ public class CentroDeportivo
         int horaFin = (comienzoEnMinutos + numeroVeces * totalConDescanso);
         int horaFinEnMinutos = horaFin / 60;
         int minutosFin = horaFin % 60;
+        int totalInscritos = inscritos * numeroVeces;
 
         if (duracionClase + comienzoEnMinutos > finEnMinutos){
         }
         else{
             switch   (tipo)    {
-                case YOGA:    ;
+                case YOGA:   yoga += (totalInscritos);
+                    if (totalInscritos > maximoInscripcionesYoga){
+                        maximoInscripcionesYoga = totalInscritos;
+                        salaMaximoYoga = sala;
+                    }
                     break;
-                case PILATES:    ;
+                case PILATES: pilates += (totalInscritos);
                     break;
-                case SPINNING:    ;
+                case SPINNING: spinning += (totalInscritos);
                     break;
-                default:  ;
-                    break;
+
             }
-
+            totalAcumulado += totalInscritos * precioClase;
+            
         }
-        // /**
-        // *  nº sala en la que hay más inscritos en yoga
-        // *   
-        // */
-        // public int getSala()   {
-        // //TODO 
-
-        // }
-
-        // /**
-        // * Devuelve el nombre de la actividad con más inscritos 
-        // * independientemente de la sala  (puede haber coincidencias)
-        // *  
-        // */
-        // public String getActividadMaximasInscripciones()    {
-        // //TODO 
-
-        // }
     }
+
+    /**
+     *  nº sala en la que hay más inscritos en yoga
+     *   
+     */
+    public int getSala()   {
+        return salaMaximoYoga;
+    }
+
+    // /**
+    // * Devuelve el nombre de la actividad con más inscritos 
+    // * independientemente de la sala  (puede haber coincidencias)
+    // *  
+    // */
+    // public String getActividadMaximasInscripciones()    {
+        // String str = " ";
+        // if (yoga > pilates && yoga > spinning){
+            // str += YOGA;
+        // }
+    // }
 }
