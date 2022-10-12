@@ -63,7 +63,9 @@ public class CentroDeportivo
         yoga = 0;
         pilates = 0;
         spinning = 0;
+        
         totalAcumulado = 0;
+        
         salaMaximoYoga = 0;
         maximoInscripcionesYoga = 0;
     }
@@ -223,7 +225,7 @@ public class CentroDeportivo
         //-----------IMPRESIÓN:------------------------------------------------
         
         System.out.println("Sala Nº: " + sala + "                         Actividad: " + nombreTipo);
-        System.out.println("----------------------------------------------");
+        System.out.println("-------------------------------------------------------------");
         System.out.println("Longitud (duración): " + duracion1Clase + " min.      Descanso: " + DESCANSO + " min.");
         System.out.println("Precio clase: " + precioDuracionClase + "€");
         System.out.println("Clase ofertada en sala " + vecesClaseOfertada + " veces al día.");
@@ -242,7 +244,6 @@ public class CentroDeportivo
         return salaMaximoYoga;
     }
 
-    
     /**
      * Devuelve el nombre de la actividad con más inscritos 
      * independientemente de la sala  (puede haber coincidencias)
