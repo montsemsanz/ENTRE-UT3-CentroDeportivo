@@ -142,20 +142,21 @@ public class CentroDeportivo
         double precioClase = PRECIO_BASE + (duracionClase / 15) * PRECIO_QUINCE_MINUTOS;
         // De 10:30 a 8:30 hay 10 horas, que son 600 minutos.
         int vecesClase = 600 / (duracionClase + 10);
-        int auxTotalMinutos = (vecesClase * (duracionClase + 10)) - 10;
-        int horaUltimaClase = 10 + (auxTotalMinutos / 60);
-        int minutoUltimaClase = 30 + (auxTotalMinutos % 60);
+        int auxTotalMinutos = (vecesClase * (duracionClase + 10));
+        int horaUltimaClase = HORA_PRIMERA_CLASE + (auxTotalMinutos / 60);
+        int minutoUltimaClase = MINUTOS_PRIMERA_CLASE + (auxTotalMinutos % 60);
         
         if (minutoUltimaClase >= 60) {
             minutoUltimaClase -= 60;
             horaUltimaClase++;
         }
         
-        totalAcumulado += precioClase * vecesClase * inscritos;
+        totalAcumulado += precioClase * inscritos;
         
         System.out.println("Sala nº" + sala + "          Actividad: " + actividad);
         System.out.println("-------------------------------------------------------");
         System.out.println("Longitud (Duración): " + duracionClase + "min. Descanso: 10min");
+        System.out.println("Precio clase: " + precioClase + "€");
         System.out.println("Clase ofertada en la sala: " + vecesClase + " veces al día");
         System.out.println("La última clase termina a las " + horaUltimaClase + "h y " 
                            + minutoUltimaClase + "minutos.");
