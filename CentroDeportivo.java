@@ -121,6 +121,18 @@ public class CentroDeportivo
      */
     public void tarificarClaseEnSala(int sala, char tipo, int horas, int minutos, int inscritos)    {
         //TODO 
+        switch (tipo) {
+            case YOGA : yoga += inscritos;
+                        if (inscritos > salaMaximoYoga) {
+                            salaMaximoYoga = sala;
+                            maximoInscripcionesYoga = inscritos;
+                        }
+                break;
+            case PILATES : pilates += inscritos;
+                break;
+            case SPINNING : spinning += inscritos;
+                break;
+        }
         
         
     }
