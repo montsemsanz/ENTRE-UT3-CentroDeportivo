@@ -113,7 +113,43 @@ public class CentroDeportivo
      */
     public void tarificarClaseEnSala(int sala, char tipo, int horas, int minutos, int inscritos)    {
         //TODO 
+        String nombreTipo = "";
+        int totalInscritosEnY = 0; 
+        int totalInscritosEnS = 0; 
+        int totalInscritosEnP = 0; 
+        int totalInscritosEnSala = 0;
+        int salaY = 0;
+        switch (tipo){
 
+            case 'Y':   tipo = Yoga;
+                nombreTipo = "Yoga";
+                if(salaMaximoYoga < inscritos)
+                {
+                    salaMaximoYoga = inscritos;
+                }
+                totalInscritosEnY += inscritos;
+                totalInscritosEnSala += inscritos;
+                break;
+
+            case 'P':   tipo = Pilates;
+                nombreTipo = "Pilates";
+                totalInscritosEnP += inscritos;
+                totalInscritosEnSala += inscritos;
+                break;
+
+            case 'S':   tipo = Spinning;
+                nombreTipo = "Spinning";
+                totalInscritosEnS += inscritos;
+                totalInscritosEnSala += inscritos;
+                break;
+
+            default:    System.out.println("Esta actividad no existe, por favor cambiela");
+                break;
+        }
+        // calcular la salMaximo de Yoga
+        maximoInscripcionesYoga = totalInscritosEnY; 
+        // tiempo de duracion de de una clase
+        int duracionClase = (horas * 60 + minutos);
     }
 
     /**
@@ -130,8 +166,9 @@ public class CentroDeportivo
      * independientemente de la sala  (puede haber coincidencias)
      *  
      */
-    /*public   getActividadMaximasInscripciones()    {
+    /*public String  getActividadMaximasInscripciones()    {
         //TODO 
-
+        if(){}
+        }
     }*/
 }
