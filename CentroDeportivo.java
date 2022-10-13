@@ -1,6 +1,6 @@
 /**
  * ENTREGA UT3
- * @Midgard - (aquí pon tu nombre)
+ * @Midgard 
  * 
  * 
  * Un centro deportivo oferta clases de yoga, pilates y spinning
