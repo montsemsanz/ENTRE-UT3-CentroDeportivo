@@ -117,16 +117,31 @@ public class CentroDeportivo
      *              
      */
     public void tarificarClaseEnSala(int sala, char tipo, int horas, int minutos, int inscritos)    {
-        //TODO 
+        switch (tipo) {
+            case YOGA:
+                yoga += inscritos;
+                break;
+            case PILATES:
+                pilates += inscritos;
+                break;
+            case SPINNING:
+                spinning += inscritos;
+                break;
+        }
+        salaMaximoYoga = sala;
+        maximoInscripcionesYoga = inscritos;
         
+        int precioClase = PRECIO_BASE + (horas / 4 * PRECIO_QUINCE_MINUTOS) 
+        + (minutos / 15 * 0.40);
         
+        int vecesOfertada = 10 / (horas + minutos / 60 + 0.10);
     }
-
+    
     /**
      *  nº sala en la que hay más inscritos en yoga
      *   
      */
-    public  getSala()   {
+    public getSala()   {
         //TODO 
         
     }
