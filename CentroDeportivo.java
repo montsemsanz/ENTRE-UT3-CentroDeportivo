@@ -138,7 +138,9 @@ public class CentroDeportivo{
         }
         double precio_clase = PRECIO_BASE + (((horas * 60) + minutos) / 15) * PRECIO_QUINCE_MINUTOS;
         int numero_veces = total_minutos_abierto / total_minutos_clase_mas_descanso;
-        
+        int ultima_clase = minutos_total_primera_clase + (total_minutos_clase_mas_descanso * numero_veces - DESCANSO);
+        int hora_final_clase = ultima_clase / 60;
+        int minutos_final_clase = ultima_clase - (hora_final_clase * 60);
         totalAcumulado = inscritos * precio_clase;
     }
 
@@ -155,8 +157,8 @@ public class CentroDeportivo{
      * independientemente de la sala  (puede haber coincidencias)
      *  
      */
-    // public  getActividadMaximasInscripciones()    {
-        // //TODO 
+    public String getActividadMaximasInscripciones()    {
+        //TODO
 
-    // }
+    }
 }
