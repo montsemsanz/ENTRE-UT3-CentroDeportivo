@@ -122,24 +122,34 @@ public class CentroDeportivo
      */
     public void tarificarClaseEnSala(int sala, char tipo, int horas, int minutos, int inscritos)    {
         switch (tipo){
-            case YOGA:int inscritosY =+ inscritos;
+            case YOGA: yoga =+ inscritos;
                 if(inscritos > maximoInscripcionesYoga){
                     maximoInscripcionesYoga = inscritos;
                     salaMaximoYoga = sala;
                     
             }
                 break;
-            case PILATES: int inscritosP =+ inscritos;
+            case PILATES: pilates =+ inscritos;
                 break;
-            case SPINNING: int inscritosS =+ inscritos;
+            case SPINNING: spinning =+ inscritos;
                 break;
         }
         double precioClase = PRECIO_BASE + (PRECIO_QUINCE_MINUTOS * ((horas * 60 + minutos) / 15 ));
         
         int minutosClase = ((HORA_ULTIMA_CLASE + 12) * 60 + MINUTOS_ULTIMA_CLASE) - (HORA_PRIMERA_CLASE * 60 + MINUTOS_PRIMERA_CLASE);
-        int vecesOfertada = minutosClase / (horas * 60 + minutos + DESCANSO);
+        int minSala = (horas * 60 + minutos);
+        int vecesOfertada = minutosClase / minSala;
         
+        int horaFinalizacion = ((HORA_PRIMERA_CLASE * 60 + MINUTOS_PRIMERA_CLASE ) + (minSala + DESCANSO) * vecesOfertada) / 60;
+        int minutosFinalizacion = ((HORA_PRIMERA_CLASE * 60 + MINUTOS_PRIMERA_CLASE ) + (minSala + DESCANSO) * vecesOfertada) % 60;
         
+        totalAcumulado = totalAcumulado + precioClase;
+        
+        System.out.println("Sala Nº." + sala + " Actividad: " + tipo);
+        System.out.println("longitud (Duración): " + minSala + " min. Descanso: " + DESCANSO);
+        System.out.println("Clase ofertada en sala: " + vecesOfertada + " veces al día");
+        System.out.println("La última clase termina a las " + horaFinalizacion + "h. y " + minutosFinalizacion + " minutos");
+        System.out.println("Total inscritos en sala: " + inscritos);
     } 
     
 
@@ -157,9 +167,9 @@ public class CentroDeportivo
      * independientemente de la sala  (puede haber coincidencias)
      *  
      */
-    public  void getActividadMaximasInscripciones()    {
+    public String getActividadMaximasInscripciones()    {
         
-        
+        return nombre;
         
         
     }
