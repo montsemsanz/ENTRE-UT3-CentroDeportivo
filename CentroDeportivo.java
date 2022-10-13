@@ -67,7 +67,7 @@ public class CentroDeportivo
      *  Accesor para el nombre del centro deportivo
      *
      */
-    public  Strnig getNombre()    {
+    public  String getNombre()    {
         return nombre;
     }
 
@@ -121,17 +121,33 @@ public class CentroDeportivo
      *              
      */
     public void tarificarClaseEnSala(int sala, char tipo, int horas, int minutos, int inscritos)    {
-        //TODO 
+         int inscritosY;
+         int inscritosP;
+         int inscritosS;
+        switch (tipo){
+            case YOGA:
+                if(inscritos > maximoInscripcionesYoga){
+                    inscritosY =+ inscritos;
+                    maximoInscripcionesYoga = inscritos;
+                    salaMaximoYoga = sala;
+                    
+            }
+                break;
+            case PILATES: inscritosP =+ inscritos;
+                break;
+            case SPINNING: inscritosS =+ inscritos;
+                break;
+        }
         
-        
-    }
+    } 
+    
 
     /**
      *  nº sala en la que hay más inscritos en yoga
      *   
      */
-    public  getSala()   {
-        //TODO 
+    public int getSala()   {
+        return salaMaximoYoga;
         
     }
 
@@ -140,8 +156,8 @@ public class CentroDeportivo
      * independientemente de la sala  (puede haber coincidencias)
      *  
      */
-    public   getActividadMaximasInscripciones()    {
-        //TODO 
+    public  void getActividadMaximasInscripciones()    {
+        
         
         
         
