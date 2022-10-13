@@ -113,6 +113,14 @@ public class CentroDeportivo{
      *              
      */
     public void tarificarClaseEnSala(int sala, char tipo, int horas, int minutos, int inscritos)    {
+        int horas_en_minutos = horas * 60;
+        int total_minutos_clase = horas_en_minutos + minutos;
+        int total_minutos_clase_mas_descanso = total_minutos_clase + DESCANSO;
+        int HORA_PRIMERA_CLASE_en_minutos = HORA_PRIMERA_CLASE * 60;
+        int minutos_total_primera_clase = MINUTOS_PRIMERA_CLASE + HORA_PRIMERA_CLASE_en_minutos;
+        int HORA_ULTIMA_CLASE_en_minutos = (HORA_ULTIMA_CLASE + 12) * 60;
+        int minutos_total_ultima_clase = MINUTOS_ULTIMA_CLASE + HORA_ULTIMA_CLASE_en_minutos;
+        int total_minutos_abierto = minutos_total_ultima_clase - minutos_total_primera_clase;
         switch(tipo){
            case YOGA:
                yoga += inscritos;
@@ -128,8 +136,10 @@ public class CentroDeportivo{
                 spinning += inscritos;
                 break;
         }
-        double precio_clase;
-        precio_clase = PRECIO_BASE + (((horas * 60) + minutos) / 15) * PRECIO_QUINCE_MINUTOS;
+        double precio_clase = PRECIO_BASE + (((horas * 60) + minutos) / 15) * PRECIO_QUINCE_MINUTOS;
+        int numero_veces = total_minutos_abierto / total_minutos_clase_mas_descanso;
+        
+        totalAcumulado = inscritos * precio_clase;
     }
 
     /**
