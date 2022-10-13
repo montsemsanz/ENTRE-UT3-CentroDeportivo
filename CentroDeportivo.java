@@ -141,8 +141,8 @@ public class CentroDeportivo
         int duracionClase = horas * 60 + minutos;
         double precioClase = PRECIO_BASE + (duracionClase / 15) * PRECIO_QUINCE_MINUTOS;
         // De 10:30 a 8:30 hay 10 horas, que son 600 minutos.
-        int vecesClase = 600 / (duracionClase + 10);
-        int auxTotalMinutos = (vecesClase * (duracionClase + 10));
+        int vecesClase = 600 / (duracionClase + DESCANSO);
+        int auxTotalMinutos = (vecesClase * (duracionClase + DESCANSO));
         int horaUltimaClase = HORA_PRIMERA_CLASE + (auxTotalMinutos / 60);
         int minutoUltimaClase = MINUTOS_PRIMERA_CLASE + (auxTotalMinutos % 60);
         
@@ -181,15 +181,27 @@ public class CentroDeportivo
      */
     public String getActividadMaximasInscripciones()    {
         //TODO 
+        int auxMaxInscripciones;
+        String auxStr = "";
         if (yoga > spinning && yoga > pilates) {
-            return "Yoga";
+            auxMaxInscripciones = yoga;
         }
         else if (spinning > pilates) {
-            return "Spinning";
+            auxMaxInscripciones = spinning;
         }
         else {
-            return "Pilates";
+            auxMaxInscripciones = pilates;
         }
+        if (yoga == auxMaxInscripciones) {
+            auxStr += "YOGA ";
+        }
+        if (spinning == auxMaxInscripciones) {
+            auxStr += "SPINNING ";
+        }
+        if (pilates == auxMaxInscripciones) {
+            auxStr += "PILATES ";
+        }
+        return auxStr;
     }
 
 }
