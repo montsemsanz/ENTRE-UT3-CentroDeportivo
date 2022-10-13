@@ -81,8 +81,7 @@ public class CentroDeportivo
 
     /**
      *  Accesor para el importe total acumulado 
-     *  entre todos los inscritos en el centro
-     *
+     *  entre todos los inscritos en el centro 
      */
     public double getImporteTotal()    {
         return totalAcumulado; 
@@ -121,30 +120,47 @@ public class CentroDeportivo
      *              
      */
     public void tarificarClaseEnSala(int sala, char tipo, int horas, int minutos, int inscritos)    {
-        //TODO 
+        int horasAminutos = 0;
+        int tiempoClase = 0;
+        double precioClase = 0;
+        double totalAcumulado = 0;
         
-        
+        horasAminutos = horas * 60;
+        tiempoClase = horasAminutos + minutos;
+        precioClase = ((tiempoClase / 15) * 0.4 * + 5) * inscritos;
+        totalAcumulado =+ precioClase;
     }
 
-    /**
-     *  nº sala en la que hay más inscritos en yoga
-     *   
-     */
-    public  getSala()   {
-        //TODO 
+    // /**
+     // *  nº sala en la que hay más inscritos en yoga
+     // *   
+     // */
+    // public  getSala()   {
+         
         
-    }
+    // }
 
     /**
      * Devuelve el nombre de la actividad con más inscritos 
-     * independientemente de la sala  (puede haber coincidencias)
-     *  
+     * independientemente de la sala  (puede haber coincidencias)  
      */
-    public   getActividadMaximasInscripciones()    {
-        //TODO 
-        
-        
-        
+    public void getActividadMaximasInscripciones()    {
+        String actividadMaximasInscripciones;
+        if (yoga > pilates){
+            if (yoga > spinning){
+                actividadMaximasInscripciones = "yoga"; 
+            }
+            else {
+                actividadMaximasInscripciones = "spinning";
+            }
+        }
+        else if (pilates > spinning){
+            actividadMaximasInscripciones = "pilates";
+        }
+        else{
+            actividadMaximasInscripciones = "spinning";
+        }
+        return actividadMaximasInscripciones;
     }
 
 }
