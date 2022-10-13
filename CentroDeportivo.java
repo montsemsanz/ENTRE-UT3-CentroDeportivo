@@ -124,42 +124,10 @@ public class CentroDeportivo
         int horaFin = horaFinEnMinutos / 60;
         int minutosFin = horaFinEnMinutos % 60;
         int totalInscritos = inscritos * numeroVeces;
-        int noDescanso = DESCANSO;
         String tipoActividad = "";
         
         if (comienzoEnMinutos + duracionClase > finEnMinutos){
             System.out.println("La clase no puede pasar de las 20:30");
-        }
-        else if (comienzoEnMinutos + duracionClase == finEnMinutos){
-            numeroVeces = 1;
-            noDescanso = 0;
-            totalInscritos = inscritos;
-            switch   (tipo)    {
-                case YOGA:   yoga += (totalInscritos);
-                             tipoActividad = "YOGA";
-                    if (totalInscritos > maximoInscripcionesYoga){
-                        maximoInscripcionesYoga = totalInscritos;
-                        salaMaximoYoga = sala;
-                    }
-                    break;
-                case PILATES: pilates += (totalInscritos);
-                              tipoActividad = "PILATES";  
-                    break;
-                case SPINNING: spinning += (totalInscritos);
-                               tipoActividad = "SPINNING";
-                    break;
-            }
-            totalAcumulado += totalInscritos * precioClase;
-            System.out.println("Sala Nº: " + sala + "                 Actividad: "
-             + tipoActividad);
-            System.out.println("-".repeat(50));
-            System.out.println("Longitud(duración): " + duracionClase + " min. "
-                + "Descanso: " + noDescanso + " min. ");
-            System.out.println("Precio clase: " + precioClase + "€");
-            System.out.println("clase ofertada en sala: " + numeroVeces + " veces al día");
-            System.out.println("La última clase termina a las: " + horaFin + "h. y "
-                + minutosFin + " minutos");
-            System.out.println("Total inscritos en sala: " + totalInscritos);
         }
         else{
             switch   (tipo)    {
