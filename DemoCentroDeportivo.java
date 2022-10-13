@@ -7,35 +7,16 @@ import java.util.Scanner;
  */
 public class DemoCentroDeportivo
 {
-    private final int HORA_PRIMERA_CLASE = 10;
-    private final int MINUTOS_PRIMERA_CLASE = 30;
-    private final int HORA_ULTIMA_CLASE = 8;
-    private final int MINUTOS_ULTIMA_CLASE = 30;
-    private final int DESCANSO = 10;
-
-    private final double PRECIO_BASE = 5.0;
-    private final double PRECIO_QUINCE_MINUTOS = 0.49;
-
-    private final char YOGA = 'Y';
-    private final char PILATES = 'P';
-    private final char SPINNING = 'S';
-    
-    private String nombre;
-    private int yoga;
-    private int pilates;
-    private int spinning;
-    private int totalAcumulado;
-    private int salaMaximoYoga;
-    private int maximoInscripcionesYoga;
     
     private CentroDeportivo centro;
     private static Scanner teclado = new Scanner(System.in);
 
+    
     /**
      * Constructor de la clase DemoCentroDeportivo
      */
     public DemoCentroDeportivo()    {
-
+        
         centro = new CentroDeportivo("FITNESS CENTER");
     }
 

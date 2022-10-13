@@ -25,9 +25,26 @@
  */
 public class CentroDeportivo
 {
-    //TODO 
+    private final int HORA_PRIMERA_CLASE = 10;
+    private final int MINUTOS_PRIMERA_CLASE = 30;
+    private final int HORA_ULTIMA_CLASE = 8;
+    private final int MINUTOS_ULTIMA_CLASE = 30;
+    private final int DESCANSO = 10;
+
+    private final double PRECIO_BASE = 5.0;
+    private final double PRECIO_QUINCE_MINUTOS = 0.49;
+
+    private final char YOGA = 'Y';
+    private final char PILATES = 'P';
+    private final char SPINNING = 'S';
     
-    
+    private String nombre;
+    private int yoga;
+    private int pilates;
+    private int spinning;
+    private int totalAcumulado;
+    private int salaMaximoYoga;
+    private int maximoInscripcionesYoga;
     
 
     /**
@@ -35,8 +52,14 @@ public class CentroDeportivo
      * Recibe un único parámetro, el nombre del centro deportivo
      * e inicializa el resto de atributos adecuadamente 
      */
-    public CentroDeportivo()    {
-        //TODO 
+    public CentroDeportivo(String queNombre)    {
+        nombre = queNombre;
+        yoga = 0;
+        pilates = 0;
+        spinning = 0;
+        totalAcumulado = 0;
+        salaMaximoYoga = 0;
+        maximoInscripcionesYoga = 0;
         
 
     }
@@ -45,15 +68,15 @@ public class CentroDeportivo
      *  Accesor para el nombre del centro deportivo
      *
      */
-    public  getNombre()    {
-        //TODO 
+    public String getNombre()    {
+        return nombre;
     }
 
     /**
      *  Mutador para el nombre del centro deportivo
      */
-    public  setNombre()    {
-       //TODO 
+    public void setNombre(String queNombre)    {
+       nombre = queNombre;
        
     }
 
@@ -62,8 +85,8 @@ public class CentroDeportivo
      *  entre todos los inscritos en el centro
      *
      */
-    public   getImporteTotal()    {
-        //TODO 
+    public  double getImporteTotal()    {
+        return totalAcumulado;
         
     }
 
@@ -86,30 +109,56 @@ public class CentroDeportivo
      *   También el método calculará:
      *   
      *      - el precio de la clase en la sala (basándose en su duración). En el ejemplo anterior
-     *      la clase de pilates duraba 1 hora y 5 minutos . Como el total de minutos
-     *      de duración es 65 su precio será: 5 + 0,40 *  4 = 6,60 ya que son 4 los períodos completos de
-     *      15 minutos que hay
-     *      - nº de veces que la clase se ofertará en la sala (dependerá de su duración. No olvidar que entre clase 
-     *      y clase siempre hay un descanso)
-     *      - la hora de finalización de la última clase (hora y minutos) - !!Ver resultados de ejecución!!
-     *      - el método además irá registrando el importe total que lleva acumulado el centro entre todas
-     *      las personas inscritas 
+     *        la clase de pilates duraba 1 hora y 5 minutos . Como el total de minutos
+     *        de duración es 65 su precio será: 5 + 0,40 *  4 = 6,60 ya que son 4 los períodos
+     *        completos de 15 minutos que hay
+     *      - nº de veces que la clase se ofertará en la sala (dependerá de su duración.
+     *        No olvidar que entre clase y clase siempre hay un descanso)
+     *      - la hora de finalización de la última clase (hora y minutos) -
+     *        !!Ver resultados de ejecución!!
+     *      - el método además irá registrando el importe total que lleva acumulado el centro
+     *        entre todas las personas inscritas 
      *      
      *   En pantalla se mostrarán los datos de la sala tal como indican los resultados de ejecución
      *              
      */
     public void tarificarClaseEnSala(int sala, char tipo, int horas, int minutos, int inscritos)    {
-        //TODO 
+         switch(tipoActividad){
+            case YOGA : Yoga = inscritos;
+                break;
+                
+            case PILATES : Pilates = inscritos;
+                break;
+                
+            case SPINNING : Spinning = inscritos;
+                break;
         
+        } 
+        if(yoga > maximoInscripcionesYoga){
+            maximoInscripcionesYoga = yoga;
+        }
+        double precioClase = PRECIO_BASE + (PRECIO_QUINCE_MINUTOS * (tiempoClase / 15));
+        totalAcumulado = insctiros * precioClase;
+        int NºDeClasesEnSala = tiempoTotal / (horas * 60 + minutos + DESCANSO);
+        // int finalHora = ;
+        // int finalMinutos = ;
+        totalAcumulado = totadlAcumulado + precioClase * inscritos;
         
+        System.out.println("Sala Nº: " + sala +"                       Actividad:" + nombreTipo);
+        System.out.println("--------------------------------------------------------");
+        System.out.println("Longitud (Duración): " + _ + " min. " + "Descanso: 10 min."); 
+        System.out.println("Precio clase: " + _ + "€");
+        System.out.println("Clase ofertada en sala: " + _ + " veces al día");
+        System.out.println("La última clase termina a las: " + _ + "h." + "y " + _ + " minutos");
+        System.out.println("Total inscritos en sala: " + _);
     }
 
     /**
      *  nº sala en la que hay más inscritos en yoga
      *   
      */
-    public  getSala()   {
-        //TODO 
+    public void getSala()   {
+        return salaMaximoYoga;
         
     }
 
@@ -118,8 +167,10 @@ public class CentroDeportivo
      * independientemente de la sala  (puede haber coincidencias)
      *  
      */
-    public   getActividadMaximasInscripciones()    {
-        //TODO 
+    public String getActividadMaximasInscripciones()    {
+        
+        }
+        }
         
         
         
