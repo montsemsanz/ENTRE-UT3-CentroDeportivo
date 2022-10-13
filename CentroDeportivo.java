@@ -1,7 +1,7 @@
 
 /**
  * ENTREGA UT3
- * @author - (aquí pon tu nombre)
+ * @author - Aitor Cuadrado
  * 
  * 
  * Un centro deportivo oferta clases de yoga, pilates y spinning
@@ -25,10 +25,26 @@
  */
 public class CentroDeportivo
 {
-    //TODO 
-    
-    
-    
+    private final int HORA_PRIMERA_CLASE = 10;
+    private final int MINUTOS_PRIMERA_CLASE = 30;
+    private final int HORA_ULTIMA_CLASE = 8;
+    private final int MINUTOS_ULTIMA_CLASE = 30;
+    private final int DESCANSO = 10;
+
+    private final double PRECIO_BASE = 5.0;
+    private final double PRECIO_QUINCE_MINUTOS = 0.40;
+
+    private final char YOGA = 'Y';
+    private final char PILATES = 'P';
+    private final char SPINNING = 'S';
+
+    private String nombre;
+    private int yoga;
+    private int pilates;
+    private int spinning;
+    private double totalAcumulado;
+    private int salaMaximoYoga;
+    private int maximoInscripcionesYoga; 
 
     /**
      * Constructor  - 
