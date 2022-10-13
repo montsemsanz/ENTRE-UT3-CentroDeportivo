@@ -26,35 +26,48 @@
 public class CentroDeportivo
 {
     //TODO 
-    
-    
-    
-
+    private final int hora_primera_clase = 10;
+    private final int minutos_Primera_Clase = 30;
+    private final int hora_ultima_clase = 8;
+    private final int minutos_ultima_clase = 30;
+    private final int descaso = 10;
+    private final double precio_base = 5.0;
+    private final double precio_quince_minutos = 0.40;
+    private final char Yoga = 'Y';
+    private final char Pilates = 'P';
+    private final char Spinning = 'S';
+    private  String nombre; //nombre del centro deportivo
+    private int yoga;
+    private int pilates;
+    private int spinning;
+    private double totalAcumulado;
+    private int salaMaximoYoga;
+    private int maximoInscripcionesYoga;
     /**
      * Constructor  - 
      * Recibe un único parámetro, el nombre del centro deportivo
      * e inicializa el resto de atributos adecuadamente 
      */
-    public CentroDeportivo()    {
+    public CentroDeportivo(String queNombre)    {
         //TODO 
-        
-
+        nombre = queNombre;
     }
 
     /**
      *  Accesor para el nombre del centro deportivo
      *
      */
-    public  getNombre()    {
+    public String getNombre()    {
         //TODO 
+        return nombre;
     }
 
     /**
      *  Mutador para el nombre del centro deportivo
      */
-    public   setNombre()    {
-       //TODO 
-       
+    public void setNombre(String queNombre)    {
+        //TODO 
+        nombre = queNombre;
     }
 
     /**
@@ -62,9 +75,9 @@ public class CentroDeportivo
      *  entre todos los inscritos en el centro
      *
      */
-    public   getImporteTotal()    {
+    public  double getImporteTotal()    {
         //TODO 
-        
+        return totalAcumulado;
     }
 
     /**
@@ -100,17 +113,16 @@ public class CentroDeportivo
      */
     public void tarificarClaseEnSala(int sala, char tipo, int horas, int minutos, int inscritos)    {
         //TODO 
-        
-        
+
     }
 
     /**
      *  nº sala en la que hay más inscritos en yoga
      *   
      */
-    public  getSala()   {
+    public int getSala()   {
         //TODO 
-        
+        return salaMaximoYoga;
     }
 
     /**
@@ -118,11 +130,8 @@ public class CentroDeportivo
      * independientemente de la sala  (puede haber coincidencias)
      *  
      */
-    public   getActividadMaximasInscripciones()    {
+    /*public   getActividadMaximasInscripciones()    {
         //TODO 
-        
-        
-        
-    }
 
+    }*/
 }
