@@ -125,22 +125,23 @@ public class CentroDeportivo
         String nombreTipo = "";
         //filtra y relaciona el tipo con los inscritos y guarda el nombre
         switch (tipo){
-            case YOGA: yoga = inscritos;
+            case YOGA: yoga += inscritos;
                 nombreTipo = "YOGA";
+                //calcula la sala con maximo numero de inscritos y la cantidad total de inscritos
+                if ( inscritos > maximoInscripcionesYoga){
+                    salaMaximoYoga = sala;
+                    maximoInscripcionesYoga = inscritos;
+                }
                 break;
-            case PILATES: pilates = inscritos;
+            case PILATES: pilates += inscritos;
                 nombreTipo = "PILATES";
                 break;
-            case SPINNING: spinning = inscritos;
+            case SPINNING: spinning += inscritos;
                 nombreTipo = "SPINNING";
                 break;
         }
-        //calcula la sala con maximo numero de inscritos y la cantidad total de inscritos
-        if ( yoga > maximoInscripcionesYoga){
-            salaMaximoYoga = sala;
-            maximoInscripcionesYoga = yoga;
-        }
-        //tiempo total que el centro deportivo imparte clases
+
+        //tiempo total que el centro deportivo imparte clases (600minutos)
         int tiempoTotal = ((HORA_ULTIMA_CLASE + 12) * 60 + MINUTOS_ULTIMA_CLASE) - (HORA_PRIMERA_CLASE * 60 + MINUTOS_PRIMERA_CLASE);
         //tiempo que dura una clase
         int tiempoClase = horas * 60 + minutos;
@@ -153,16 +154,33 @@ public class CentroDeportivo
         //precio de una clase
         double precioClase = PRECIO_BASE + PRECIO_QUINCE_MINUTOS * (tiempoClase / 15);
         //dinero total generado
-        totalAcumulado = totalAcumulado + precioClase * inscritos ;
+        totalAcumulado += precioClase * inscritos ;
 
+        //calcula cual o cuales son las actividades con mas inscritos totales
+        if (yoga > pilates &&  yoga > spinning){
+            nombre = "YOGA";
+        }else if (pilates > yoga &&  pilates > spinning)  {
+            nombre = "PILATES";
+        }else if (spinning > yoga &&  spinning > pilates){
+            nombre = "SPINNING";
+        } else if (yoga == pilates && yoga != spinning){
+            nombre = "YOGA PILATES";
+        }else if (yoga == spinning && yoga != pilates){
+            nombre = "YOGA SPINNING";
+        }   else if (pilates == spinning && yoga != pilates){
+            nombre = "PILATES SPINNING";
+        }else {
+            nombre = "YOGA PILATES SPINNING";
+        }
+        //Imprime el ticket
         System.out.println("Sala Nº: " + sala +"                       Actividad:" + nombreTipo);
         System.out.println("--------------------------------------------------------");
-        System.out.println("Longitud (Duración): " + tiempoClase + " min. Descanso: 10 min."); 
+        System.out.println("Longitud (Duración): " + tiempoClase +    " min. Descanso: " + DESCANSO + "min."); 
         System.out.println("Precio clase: " + precioClase + "€");
         System.out.println("Clase ofertada en sala: " + vecesActividad + " veces al día");
         System.out.println("La última clase termina a las: " + horaFinal + "h. y " + minutoFinal + " minutos");
         System.out.println("Total inscritos en sala: " + inscritos);
-        
+
     }
 
     /**
@@ -180,29 +198,7 @@ public class CentroDeportivo
      *  
      */
     public String getActividadMaximasInscripciones()    {
-        //te devuelve la/s actividad/es con mas inscritos
-        if((yoga != pilates) && (pilates != spinning)){
-            if (yoga > pilates) {
-                if (yoga > spinning) {
-                    return "YOGA";                                             
-                } else {
-                    return "SPINNING";     
-                }
-            } else if (pilates > spinning) {
-                return "PILATES";
-            } else {
-                return "SPINNING";
-            }
-        }
-        else if ((yoga == pilates) && (yoga > spinning)){
-            return "YOGA PILATES";
-        } else if ((yoga == spinning) && (yoga > pilates)){
-            return "YOGA SPINNING";
-        } else if ((pilates == spinning) && (pilates > yoga)){
-            return "PILATES SPINNING";
-        } else {return "YOGA PILATES SPINNING";
-        }
-
+        return nombre;
     }
 }
 
