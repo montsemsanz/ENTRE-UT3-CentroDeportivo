@@ -47,7 +47,7 @@ public class CentroDeportivo{
      * Recibe un único parámetro, el nombre del centro deportivo
      * e inicializa el resto de atributos adecuadamente 
      */
-    public CentroDeportivo(int queNombre){
+    public CentroDeportivo(String queNombre){
         nombre = queNombre;
         yoga = 0;
         pilates = 0;
@@ -113,17 +113,31 @@ public class CentroDeportivo{
      *              
      */
     public void tarificarClaseEnSala(int sala, char tipo, int horas, int minutos, int inscritos)    {
-        //TODO
-
+        switch(tipo){
+           case YOGA:
+               yoga += inscritos;
+               if(inscritos > maximoInscripcionesYoga){
+                   maximoInscripcionesYoga = inscritos;
+                   salaMaximoYoga = sala;
+               }
+               break;
+            case PILATES:
+                pilates += inscritos;
+                break;
+            case SPINNING:
+                spinning += inscritos;
+                break;
+        }
+        double precio_clase;
+        precio_clase = PRECIO_BASE + (((horas * 60) + minutos) / 15) * PRECIO_QUINCE_MINUTOS;
     }
 
     /**
      *  nº sala en la que hay más inscritos en yoga
      *   
      */
-    public  getSala()   {
-        //TODO 
-
+    public int getSala(){
+        return salaMaximoYoga;
     }
 
     /**
@@ -131,8 +145,8 @@ public class CentroDeportivo{
      * independientemente de la sala  (puede haber coincidencias)
      *  
      */
-    public   getActividadMaximasInscripciones()    {
-        //TODO 
+    // public  getActividadMaximasInscripciones()    {
+        // //TODO 
 
-    }
+    // }
 }
