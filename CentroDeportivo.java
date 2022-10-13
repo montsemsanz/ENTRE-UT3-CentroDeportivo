@@ -118,27 +118,34 @@ public class CentroDeportivo
     public void tarificarClaseEnSala(int sala, char tipo, int horas, int minutos, int inscritos)    {
         // totalInscritos es una variable local que calcula el total
         // de inscritos por actividad
+        // minutosDescanso : variable que define los minutos de descanso
+        // precioClase : variable que definirá el precio de las clases
+        //calculaPrecio: calcula el precio de cada clase
+        int minutosDescanso = minutos - 5;
+        double precioClase = 0;
+        double periodoQuince = 0;
         if (sala == 1){
             System.out.println("Actividad: " + SPINNING);
         }
         int totalInscritos = 0;
         switch    (tipo)    {
             case 'Y':
-                System.out.println("YOGA");
-                totalInscritos = 0;
-                totalInscritos += inscritos;
+                yoga += inscritos;
             case 'S':
-                System.out.println("SPINNING");
-                totalInscritos = 0;
-                totalInscritos += inscritos;
+                spinning += inscritos;
             case 'P':
-                System.out.println("PILATES");
-                totalInscritos = 0;
-                totalInscritos += inscritos;
+                 pilates += inscritos;
         }
+        if (horas == 1){
+            horas = 0;
+            minutos += 60;
+        }
+        periodoQuince = (minutos / 15) * 0.40;
         System.out.println("Sala Nº: " + sala + "      " + "Actividad: " + tipo);
         System.out.println("--------------------------------------------------");
-        System.out.println("Total inscritos en sala " + inscritos);
+        System.out.println("Longitud. Duración: " + minutos + "min. Descanso: " + minutosDescanso + "min.");
+        System.out.println("Precio Clase: " + precioClase + "€");
+        System.out.println("Total inscritos en sala: " + inscritos);
     }
 
     /**
