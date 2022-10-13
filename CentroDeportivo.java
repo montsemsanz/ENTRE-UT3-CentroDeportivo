@@ -25,14 +25,23 @@
  */
 public class CentroDeportivo
 {
-    //TODO 
-    
-    
-    
+  private final int HORA_PRIMERA_CLASE =10
+  private final int MINUTOS_PRIMERA_CLASE = 30;
+  private final int HORA_ULTIMA_CLASE = 8;
+  private final int MINUTOS_ULTIMA_CLASE = 30;
+  private final int DESCANSO = 10;
+  private final double PRECIO_BASE = 5.0;
+  private final double PRECIO_QUINCE_MINUTOS = 0.40;
+  private final char yoga = 'Y';
+  private final char pilates = 'P';
+  private final char spinning = 'S';
+  private String yoga;
+  private String pilates;
+  private String spinning;
 
     /**
      * Constructor  - 
-     * Recibe un único parámetro, el nombre del centro deportivo
+     * Recibe un único parámetro, l nombre del centro deportivo
      * e inicializa el resto de atributos adecuadamente 
      */
     public CentroDeportivo()    {
