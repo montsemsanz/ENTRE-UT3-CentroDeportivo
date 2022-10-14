@@ -119,18 +119,24 @@ public class CentroDeportivo
         // totalInscritos es una variable local que calcula el total
         // de inscritos por actividad
         int totalInscritos = 0;
-        // precioClase : variable que definirá el precio de las clases
-        double precioClase = 0;
-        //vecesClase: define cuantas veces se da la clase
-        // en una clase en función de su duración
-        int vecesClase = 0;
-        // doubleMinutos : 
-        double doubleMinutos = minutos / 100;
+
         // precioTotal : calcula el precio total de la sala
         // según su duración
         double precioTotal = 0;
-        int periodoQuince; // calcula cuantos periodos de 15 minutos hay
-        
+
+        //vecesClase: define cuantas veces se da la clase
+        // en una sala en función de su duración
+        int vecesClase = 0;
+
+        //
+        int minClases = 0;
+
+        //
+        int horaClases = 0;
+
+        // calcula cuantos periodos de 15 minutos hay
+        int periodoQuince; 
+
         // Dependiendo la sala que sea habrá una actividad u otra
         if (sala == 1 || sala == 3){
             tipo = 'S';
@@ -141,12 +147,30 @@ public class CentroDeportivo
         else{
             tipo = 'P';
         }
-        
+
         // Precio de la clase en la sala
         minutos += 60 * horas;
         periodoQuince = minutos / 15;
         precioTotal = PRECIO_BASE + PRECIO_QUINCE_MINUTOS * periodoQuince;
-        
+
+        // Calcular cuantas veces se da una clase en una sala
+        horaClases = horas;
+        minClases = minutos;
+        if(minClases > 59){
+            horaClases++;
+            minClases = 0;
+        }
+        if(HORA_PRIMERA_CLASE >= 10 && MINUTOS_PRIMERA_CLASE >= 30){ 
+                horaClases += HORA_PRIMERA_CLASE;
+                minClases += MINUTOS_PRIMERA_CLASE;
+                minClases += DESCANSO;
+                vecesClase++;
+        }
+
+        if (horaClases >= 20 && minClases >= 30){
+            System.out.println("Las clases acaban");
+        }
+
         // Si es una actividad pondrá un nombre y le añadirá el número de inscritos
         switch    (tipo)    {
             case 'Y':
@@ -156,23 +180,21 @@ public class CentroDeportivo
                 spinning += inscritos;
                 tipo = SPINNING;
             case 'P':
-                 pilates += inscritos;
-                 tipo = PILATES;
+                pilates += inscritos;
+                tipo = PILATES;
         }
-        
+
         // Transforma horas en minutos
         if (horas == 1){
             horas = 0;
             minutos += 60;
         }
-        
-        // Calcular cuantas veces se da una clase en una sala
-        
+
         System.out.println("Sala Nº: " + sala + "      " + "Actividad: " + tipo);
         System.out.println("--------------------------------------------------");
         System.out.println("Longitud. Duración: " + minutos + "min. Descanso: " + DESCANSO + "min.");
-        System.out.println("Precio Clase: " + precioClase + "€");
-        System.out.println(precioTotal);
+        System.out.println("Precio Clase: " + precioTotal + "€");
+        System.out.println("Clase ofertada en sala: " +  vecesClase + " veces al día");
         System.out.println("Total inscritos en sala: " + inscritos);
     }
 
