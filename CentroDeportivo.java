@@ -119,7 +119,10 @@ public class CentroDeportivo
         // totalInscritos es una variable local que calcula el total
         // de inscritos por actividad
         int totalInscritos = 0;
-
+        
+        // nombreActividad : establece el nombre de la actividad
+        String nombreActividad = "";
+        
         // precioTotal : calcula el precio total de la sala
         // según su duración
         double precioTotal = 0;
@@ -143,17 +146,18 @@ public class CentroDeportivo
         // El total de inscritos por actividad
         if (tipo == 'Y'){
             totalInscritos += inscritos;
-            System.out.println("El total de inscritos en yoga es de " + inscritos);
         }
         if (tipo == 'P'){
             totalInscritos += inscritos;
-            System.out.println("El total de inscritos en pilates es de " + inscritos);
         }
         if (tipo == 'S'){
             totalInscritos += inscritos;
-            System.out.println("El total de inscritos en spinning es de " + inscritos);
         }    
-
+        
+        // Sala con máximo número de inscritos en yoga
+        if (inscritos > maximoInscripcionesYoga){
+            salaMaximoYoga = sala;
+        }
         // Dependiendo la sala que sea habrá una actividad u otra
         if (sala == 1 || sala == 3){
             tipo = 'S';
@@ -164,7 +168,7 @@ public class CentroDeportivo
         else if (sala == 4){
             tipo = 'P';
         }
-
+        
         // Precio de la clase en la sala
         minutos += 60 * horas;
         periodoQuince = minutos / 15;
@@ -193,10 +197,16 @@ public class CentroDeportivo
         switch    (tipo)    {
             case 'Y':
                 yoga += inscritos;
+                nombreActividad += "YOGA";
+                break;
             case 'S':
                 spinning += inscritos;
+                nombreActividad += "SPINNING";
+                break;
             case 'P':
                 pilates += inscritos;
+                nombreActividad += "PILATES";
+                break;
         }
 
         // Importe total del centro
@@ -205,7 +215,7 @@ public class CentroDeportivo
             totalAcumulado += importeTotal;
         }
 
-        System.out.println("Sala Nº: " + sala + "      " + "Actividad: " + tipo);
+        System.out.println("Sala Nº: " + sala + "      " + "Actividad: " + nombreActividad);
         System.out.println("--------------------------------------------------");
         System.out.println("Longitud. Duración: " + minutos + "min. Descanso: " + DESCANSO + "min.");
         System.out.println("Precio Clase: " + precioTotal + "€");
@@ -217,25 +227,43 @@ public class CentroDeportivo
     /**
      *  nº sala en la que hay más inscritos en yoga
      */
-    public int getSala()   {
-        int maximoInscritosYoga = 0;
-        if (yoga > pilates){
-            return pilates;
+    public int getSala(){
+        int sala = 0;
+        int inscritos = 0;
+        if (inscritos > maximoInscripcionesYoga){
+            salaMaximoYoga = sala;
         }
-        return yoga;
-        }
+        return salaMaximoYoga;
+    }
 
     /**
-     * Devuelve el nombre de la actividad con más inscritos 
+         * Devuelve el nombre de la actividad con más inscritos 
      * independientemente de la sala  (puede haber coincidencias)
      *  
      */
     public String getActividadMaximasInscripciones()    {
-        String actividadMaximosInscritos;
-        actividadMaximosInscritos = "SPINNING";
-        if (yoga > pilates){
-            return "SPINNING";
+        int sala = 0;
+        int inscritos = 0;
+        String actividadMaximosInscritos = "";
+        int maximoInscritos = 0;
+        maximoInscritos = inscritos;
+        if (maximoInscritos >= inscritos){
+            if (sala == 1 || sala == 3){
+                actividadMaximosInscritos += "SPINNING";
+            }
         }
-        return "SPINNING";
+        
+        if (maximoInscritos >= inscritos){
+            if (sala == 2 || sala == 5 || sala == 6){
+                actividadMaximosInscritos += "YOGA";
+            }
+        }
+        
+        if (maximoInscritos >= inscritos){
+            if (sala == 4){
+                actividadMaximosInscritos += "PILATES";
+            }
+        }
+        return actividadMaximosInscritos;
     }
 }
