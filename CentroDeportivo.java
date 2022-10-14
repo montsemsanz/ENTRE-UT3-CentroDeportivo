@@ -115,7 +115,7 @@ public class CentroDeportivo
      *      - la hora de finalización de la última clase (hora y minutos) -
      *        !!Ver resultados de ejecución!!
      *      - el método además irá registrando el importe total que lleva acumulado el centro
-     *        entre todas las personas inscritas 
+     *        entre todas las personas inscritas
      *      
      *   En pantalla se mostrarán los datos de la sala tal como indican los resultados de ejecución
      *              
@@ -136,32 +136,33 @@ public class CentroDeportivo
                 break;
 
         } 
-        if(yoga > maximoInscripcionesYoga){
-            maximoInscripcionesYoga = yoga;
+        if(inscritos > maximoInscripcionesYoga){
+            salaMaximoYoga = sala;
+            maximoInscripcionesYoga = inscritos;
         }
 
-        int tiempoDia = ((20 * 60 + 30) - (10 * 60 + 30));
-
-        int tiempoTotal = ((HORA_ULTIMA_CLASE + 12) * 60 + MINUTOS_ULTIMA_CLASE) - (HORA_PRIMERA_CLASE * 60 + MINUTOS_PRIMERA_CLASE);
-        int duracionClase = horas + minutos + DESCANSO;
-        double precioClase = (PRECIO_BASE + (PRECIO_QUINCE_MINUTOS * duracionClase/ 15));
-        double importeTotal = inscritos * precioClase;
-
-        int vecesOfertada = tiempoTotal / (duracionClase + DESCANSO);
-
-        int vecesClase = tiempoDia / duracionClase;
-
-        //Horas de inicio y final en minutos
-        int horaFinalizacion = ((HORA_PRIMERA_CLASE * 65) + (duracionClase * vecesOfertada)) /60;
-        int minutosFinalizacion =((HORA_PRIMERA_CLASE * 65) + (duracionClase * vecesOfertada)) % 60;
-
-        System.out.println("Sala Nº: " + sala +"                       Actividad:" + nombreTipo);
-        System.out.println("--------------------------------------------------------");
-        System.out.println("Longitud (Duración): " + duracionClase + " min. " + "Descanso: 10 min."); 
+        int duracionClase = horas * 60 + minutos;
+        double precioClase = PRECIO_BASE + (duracionClase / 15) * PRECIO_QUINCE_MINUTOS;
+        // De 10:30 a 8:30 hay 10 horas, que son 600 minutos.
+        int vecesClase = 600 / (duracionClase + DESCANSO);
+        int vecesOfertada = (vecesClase * (duracionClase + DESCANSO));
+        int horaUltimaClase = HORA_PRIMERA_CLASE + (vecesOfertada / 60);
+        int minutoUltimaClase = MINUTOS_PRIMERA_CLASE + (vecesOfertada % 60);
+        
+        if (minutoUltimaClase >= 60) {
+            minutoUltimaClase -= 60;
+            horaUltimaClase++;
+        }
+        
+        totalAcumulado += precioClase * inscritos;
+        
+        System.out.println("Sala nº" + sala + "          Actividad: " + nombreTipo);
+        System.out.println("-------------------------------------------------------");
+        System.out.println("Longitud (Duración): " + duracionClase + " min. Descanso: 10min");
         System.out.println("Precio clase: " + precioClase + "€");
-        System.out.println("Clase ofertada en sala: " + vecesOfertada + " veces al día");
-        System.out.println("La última clase termina a las: " + horaFinalizacion + "h." + "y " + minutosFinalizacion + " minutos");
-        System.out.println("Total inscritos en sala: " + inscritos);
+        System.out.println("Clase ofertada en la sala: " + vecesClase + " veces al día");
+        System.out.println("La última clase termina a las " + horaUltimaClase + "h y "+ minutoUltimaClase + " minutos.");
+        System.out.println("Total inscritos en la sala: " + inscritos);
     }
 
     /**
@@ -169,7 +170,7 @@ public class CentroDeportivo
      *   
      */
     public int getSala()   {
-        return maximoInscripcionesYoga;
+        return salaMaximoYoga;
     }
 
     /**
@@ -205,7 +206,7 @@ public class CentroDeportivo
             return "PILATES SPINNING";
         }
         else {return "YOGA PILATES SPINNING";
-        }   
+        }
     }
 }
 
