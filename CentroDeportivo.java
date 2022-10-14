@@ -131,19 +131,37 @@ public class CentroDeportivo
         salaMaximoYoga = sala;
         maximoInscripcionesYoga = inscritos;
         
-        int precioClase = PRECIO_BASE + (horas / 4 * PRECIO_QUINCE_MINUTOS) 
-        + (minutos / 15 * 0.40);
+        int horasEnMinutos = horas *  60;
+        int minutosClase = horasEnMinutos + minutos + DESCANSO;        
+        double precioClase = PRECIO_BASE + (horasEnMinutos + minutos
+        / 15 * PRECIO_QUINCE_MINUTOS);
 
-        double duracionClase = horas + minutos / 60;
-        int vecesOfertada = 10 / (duracionClase / 60);
+        int vecesOfertada = 10 * 60 / (horasEnMinutos + minutos + DESCANSO);
         
-        double horaMinInicio =  HORA_PRIMERA_CLASE + MINUTOS_ULTIMA_CLASE 
-        / 60;
-  
-        if (horaMinInicio + (vecesOfertada * duracionClase + 
-        DESCANSO / 60)) {
-            
+        int horaMinInicio =  10 * 60 + 30;
+
+        int horaFinal = 0;
+        int minutosFinal = 0;
+        if (vecesOfertada * minutosClase < 10 * 60 + 30) {
+            horaFinal = vecesOfertada * minutosClase / 60;
+            minutosFinal = 60 % vecesOfertada * minutosClase;
         }
+        else if (vecesOfertada * minutosClase > 10 * 60 + 30){
+            vecesOfertada --;
+        }
+        
+        totalAcumulado += precioClase * inscritos;
+        
+        System.out.println("Sala Nº: " + sala + "             Actividad: " 
+        + tipo + "\n" + 
+        "---------------------------------------------------\n" + 
+        "Longitud (Duración): " + (minutosClase - 10) + 
+        " min. Descanso: " + DESCANSO + " min.\n" +
+        "Precio clase: " + precioClase + "€\n" +
+        "Clase ofertada en sala: " + vecesOfertada + " veces al día.\n" +
+        "La última clase termina a las: " + (horaFinal + 12) + "h y " + 
+        minutosFinal + " minutos.\n" +
+        "Total inscritos en sala: " + inscritos);
     }
     
     /**
@@ -200,5 +218,4 @@ public class CentroDeportivo
             return "error";
         }
     }
-
 }
