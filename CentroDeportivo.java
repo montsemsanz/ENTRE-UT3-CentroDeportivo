@@ -118,33 +118,61 @@ public class CentroDeportivo
     public void tarificarClaseEnSala(int sala, char tipo, int horas, int minutos, int inscritos)    {
         // totalInscritos es una variable local que calcula el total
         // de inscritos por actividad
-        // minutosDescanso : variable que define los minutos de descanso
-        // precioClase : variable que definirá el precio de las clases
-        //calculaPrecio: calcula el precio de cada clase
-        int minutosDescanso = minutos - 5;
-        double precioClase = 0;
-        double periodoQuince = 0;
-        if (sala == 1){
-            System.out.println("Actividad: " + SPINNING);
-        }
         int totalInscritos = 0;
+        // precioClase : variable que definirá el precio de las clases
+        double precioClase = 0;
+        //vecesClase: define cuantas veces se da la clase
+        // en una clase en función de su duración
+        int vecesClase = 0;
+        // doubleMinutos : 
+        double doubleMinutos = minutos / 100;
+        // precioTotal : calcula el precio total de la sala
+        // según su duración
+        double precioTotal = 0;
+        int periodoQuince; // calcula cuantos periodos de 15 minutos hay
+        
+        // Dependiendo la sala que sea habrá una actividad u otra
+        if (sala == 1 || sala == 3){
+            tipo = 'S';
+        }
+        else if (sala == 2 || sala == 5 || sala == 6){
+            tipo = 'Y';
+        }
+        else{
+            tipo = 'P';
+        }
+        
+        // Precio de la clase en la sala
+        minutos += 60 * horas;
+        periodoQuince = minutos / 15;
+        precioTotal = PRECIO_BASE + PRECIO_QUINCE_MINUTOS * periodoQuince;
+        
+        // Si es una actividad pondrá un nombre y le añadirá el número de inscritos
         switch    (tipo)    {
             case 'Y':
                 yoga += inscritos;
+                tipo = YOGA;
             case 'S':
                 spinning += inscritos;
+                tipo = SPINNING;
             case 'P':
                  pilates += inscritos;
+                 tipo = PILATES;
         }
+        
+        // Transforma horas en minutos
         if (horas == 1){
             horas = 0;
             minutos += 60;
         }
-        periodoQuince = (minutos / 15) * 0.40;
+        
+        // Calcular cuantas veces se da una clase en una sala
+        
         System.out.println("Sala Nº: " + sala + "      " + "Actividad: " + tipo);
         System.out.println("--------------------------------------------------");
-        System.out.println("Longitud. Duración: " + minutos + "min. Descanso: " + minutosDescanso + "min.");
+        System.out.println("Longitud. Duración: " + minutos + "min. Descanso: " + DESCANSO + "min.");
         System.out.println("Precio Clase: " + precioClase + "€");
+        System.out.println(precioTotal);
         System.out.println("Total inscritos en sala: " + inscritos);
     }
 
@@ -152,8 +180,9 @@ public class CentroDeportivo
      *  nº sala en la que hay más inscritos en yoga
      */
     public int getSala()   {
-        int maximoInscritosYoga = 0;{
-            
+        int maximoInscritosYoga = 0;
+        if (yoga > pilates){
+            return pilates;
         }
         return yoga;
     }
@@ -164,7 +193,11 @@ public class CentroDeportivo
      *  
      */
     public String getActividadMaximasInscripciones()    {
-        return nombre;
-
+        String actividadMaximosInscritos;
+        actividadMaximosInscritos = "SPINNING";
+        if (yoga > pilates){
+            return "SPINNING";
+        }
+        return "SPINNING";
     }
 }
