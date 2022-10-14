@@ -3,7 +3,6 @@
  * ENTREGA UT3
  * @author - Aitor Cuadrado
  * 
- * 
  * Un centro deportivo oferta clases de yoga, pilates y spinning
  * en sus diferentes salas. En cada sala se realiza una actividad de la misma duración
  * que se repite a lo largo del día un nº de veces. Puede haber salas
@@ -45,7 +44,7 @@ public class CentroDeportivo
     private double totalAcumulado;
     private int salaMaximoYoga;
     private int maximoInscripcionesYoga; 
-
+    
     /**
      * Constructor  - 
      * Recibe un único parámetro, el nombre del centro deportivo
@@ -68,15 +67,15 @@ public class CentroDeportivo
      */
     public String getNombre()    {
         return nombre;
-        
+
     }
-    
+
     /**
      *  Mutador para el nombre del centro deportivo
      */
     public void setNombre(String queNombre)    {
-       nombre = queNombre; 
-       
+        nombre = queNombre; 
+
     }
 
     /**
@@ -85,7 +84,7 @@ public class CentroDeportivo
      */
     public double getImporteTotal()    {
         return totalAcumulado; 
-        
+
     }
 
     /**
@@ -124,7 +123,10 @@ public class CentroDeportivo
         int tiempoClase = 0;
         double precioClase = 0;
         double totalAcumulado = 0;
-        
+        int claseConDescanso = 0;
+        int clasesSala = 0;
+        int tiempoTotal = 600;
+
         switch (tipo){
             case YOGA: yoga =+ inscritos;
                 if (inscritos > maximoInscripcionesYoga){
@@ -135,11 +137,22 @@ public class CentroDeportivo
                 break;
             case SPINNING: spinning =+ inscritos;
                 break;
-                
+
         }
+    
+        // a)
         horasAminutos = horas * 60;
         tiempoClase = horasAminutos + minutos;
         precioClase = ((tiempoClase / 15) * PRECIO_QUINCE_MINUTOS + PRECIO_BASE) * inscritos;
+        // b)Desde las 10:30 hasta las 20:30 pasan 10 horas (600 minutos)
+        claseConDescanso = tiempoClase + DESCANSO;
+        if (claseConDescanso < (tiempoTotal-claseConDescanso)){
+             tiempoTotal =- claseConDescanso;
+             clasesSala++;
+        }
+        // c)
+        
+        // d)
         totalAcumulado =+ precioClase;
     }
 
@@ -148,8 +161,8 @@ public class CentroDeportivo
      *   
      */
     public int getSala()   {
-         return salaMaximoYoga;
-        
+        return salaMaximoYoga;
+
     }
 
     /**
@@ -169,6 +182,7 @@ public class CentroDeportivo
                 actividadMaximasInscripciones = "SPINNING";
             }
         }
+
         if (pilates > yoga){
             if(pilates > spinning){
                 actividadMaximasInscripciones = "PILATES";
@@ -180,19 +194,18 @@ public class CentroDeportivo
                 actividadMaximasInscripciones = "SPINNING";
             }
         }
-        // else if (pilates > spinning){
-            // actividadMaximasInscripciones = "PILATES";
-        // }
-        // else if (pilates == spinning){
-            // actividadMaximasInscripciones = "PILATES SPINNING";
-        // }
-        // else if (pilates == yoga){
-            // actividadMaximasInscripciones = "PILATES YOGA";
-        // }
-        // else{
-            // actividadMaximasInscripciones = "SPINNING";
-        // }
+
+        if (yoga == pilates){
+            if (yoga > spinning){
+                actividadMaximasInscripciones = "YOGA PILATES";
+            }
+            else if (yoga < spinning){
+                actividadMaximasInscripciones = "SPINNING";
+            }
+            else {
+                actividadMaximasInscripciones = "YOGA PILATES SPINNING";
+            }
+        }
         return actividadMaximasInscripciones;
     }
-    
-}
+}    
