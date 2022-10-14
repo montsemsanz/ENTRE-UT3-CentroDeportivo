@@ -131,26 +131,50 @@ public class CentroDeportivo
                 spinning += inscritos;
                 break;
         }
+        
+        // A) El precio de una clase 
         double precioClase = PRECIO_BASE + (((horas * 60) + minutos ) / 15) * PRECIO_QUINCE_MINUTOS ;
+        
+        // D) El dinero total acumulado 
         totalAcumulado = inscritos + precioClase;
-    }
-
+        
+        // El tiempo total que el centro deportivo imparte clases (600minutos)
+        int tiempoTotal = ((HORA_ULTIMA_CLASE + 12) * 60 + MINUTOS_ULTIMA_CLASE) - (HORA_PRIMERA_CLASE * 60 + MINUTOS_PRIMERA_CLASE);
+        
+        //El tiempo que dura una clase
+        int tiempoClase = horas * 60 + minutos;
+       
+        // B) La cantidad de veces que se da una actividad al dia
+        int vecesActividad = tiempoTotal / (tiempoClase + DESCANSO);
+        
+        //Imprime el ticket
+        System.out.println("*********************************************************************");
+        System.out.println("**********" + "Centro deportivo FITNESS CENTER" + "***********");
+        System.out.println("*********************************************************************");
+        System.out.println("Sala Nº : " + sala + "       Actividad:" + nombre);
+        System.out.println("--------------------------------------------------------------------------");
+        System.out.println("Longitud (Duración): " + tiempoClase +    " min. Descanso: " + DESCANSO + "min."); 
+        System.out.println("Precio clase: " + precioClase + "€");
+        System.out.println("Clase ofertada en sala: " + vecesActividad + " veces al día");
+        // System.out.println("La última clase termina a las: " + horaFinal + "h. y " + minutoFinal + " minutos");
+        System.out.println("Total inscritos en sala: " + inscritos);
+        
+}
 
     /**
      *  nº sala en la que hay más inscritos en yoga
-     *   
+     *  
          */
     public int getSala()   {
     return salaMaximoYoga ;
-
     }
 
-    // /**
-     // * Devuelve el nombre de la actividad con más inscritos 
-     // * independientemente de la sala  (puede haber coincidencias)
-     // *  
-     // */
-    // public   getActividadMaximasInscripciones()    {
-    
-    // }
+    /**
+     * Devuelve el nombre de la actividad con más inscritos 
+     * independientemente de la sala  (puede haber coincidencias)
+     *  
+     */
+    public String getActividadMaximasInscripciones()    {
+        return nombre ;
+    }
     }
