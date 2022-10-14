@@ -136,7 +136,10 @@ public class CentroDeportivo
 
         // Calcula cuantos periodos de 15 minutos hay
         int periodoQuince; 
-        
+
+        // Determina el importe total del centro
+        double importeTotal = 0;
+
         // El total de inscritos por actividad
         if (tipo == 'Y'){
             totalInscritos += inscritos;
@@ -150,7 +153,7 @@ public class CentroDeportivo
             totalInscritos += inscritos;
             System.out.println("El total de inscritos en spinning es de " + inscritos);
         }    
-        
+
         // Dependiendo la sala que sea habrá una actividad u otra
         if (sala == 1 || sala == 3){
             tipo = 'S';
@@ -174,11 +177,12 @@ public class CentroDeportivo
             horaClases++;
             minClases = 0;
         }
+
         if(HORA_PRIMERA_CLASE >= 10 && MINUTOS_PRIMERA_CLASE >= 30){ 
-                horaClases += HORA_PRIMERA_CLASE;
-                minClases += MINUTOS_PRIMERA_CLASE;
-                minClases += DESCANSO;
-                vecesClase++;
+            horaClases += HORA_PRIMERA_CLASE;
+            minClases += MINUTOS_PRIMERA_CLASE;
+            minClases += DESCANSO;
+            vecesClase++;
         }
 
         if (horaClases >= 20 && minClases >= 30){
@@ -195,10 +199,35 @@ public class CentroDeportivo
                 pilates += inscritos;
         }
 
-        // Transforma horas en minutos
-        if (horas == 1){
-            horas = 0;
-            minutos += 60;
+        // Importe total del centro
+        if (sala == 1){
+            importeTotal = inscritos * precioTotal;
+            totalAcumulado += importeTotal;
+        }
+
+        if (sala == 2){
+            importeTotal = inscritos * precioTotal;
+            totalAcumulado += importeTotal;
+        }
+
+        if (sala == 3){
+            importeTotal = inscritos * precioTotal;
+            totalAcumulado += importeTotal;
+        }
+
+        if (sala == 4){
+            importeTotal = inscritos * precioTotal;
+            totalAcumulado += importeTotal;
+        }
+
+        if (sala == 5){
+            importeTotal = inscritos * precioTotal;
+            totalAcumulado += importeTotal;
+        }
+
+        if (sala == 6){
+            importeTotal = inscritos * precioTotal;
+            totalAcumulado += importeTotal;
         }
 
         System.out.println("Sala Nº: " + sala + "      " + "Actividad: " + tipo);
@@ -219,7 +248,7 @@ public class CentroDeportivo
             return pilates;
         }
         return yoga;
-    }
+        }
 
     /**
      * Devuelve el nombre de la actividad con más inscritos 
