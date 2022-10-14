@@ -70,21 +70,21 @@ public class CentroDeportivo
         return nombre;
     }
 
-    // /**
-     // *  Mutador para el nombre del centro deportivo
-     // */
-    // public   setNombre(String queNombre)    {
-       
-    // }
+    /**
+     *  Mutador para el nombre del centro deportivo
+     */
+    public void  setNombre(String queNombre)    {
+       nombre = queNombre;
+    }
 
-    // /**
-     // *  accesor para el importe total acumulado 
-     // *  entre todos los inscritos en el centro
-     // *
-     // */
-    // public  getImporteTotal()    {
-        
-    // }
+    /**
+     *  accesor para el importe total acumulado 
+     *  entre todos los inscritos en el centro
+     *
+     */
+    public double getImporteTotal()    {
+        return totalAcumulado;
+    }
 
     // /**
      // *  Este método recibe 5 parámetros: 
@@ -118,9 +118,7 @@ public class CentroDeportivo
      // *              
      // */
     // public void tarificarClaseEnSala(int sala, char tipo, int horas, int minutos, int inscritos)    {
-        // //TODO 
-        
-        
+    
     // }
 
     // /**
