@@ -200,32 +200,7 @@ public class CentroDeportivo
         }
 
         // Importe total del centro
-        if (sala == 1){
-            importeTotal = inscritos * precioTotal;
-            totalAcumulado += importeTotal;
-        }
-
-        if (sala == 2){
-            importeTotal = inscritos * precioTotal;
-            totalAcumulado += importeTotal;
-        }
-
-        if (sala == 3){
-            importeTotal = inscritos * precioTotal;
-            totalAcumulado += importeTotal;
-        }
-
-        if (sala == 4){
-            importeTotal = inscritos * precioTotal;
-            totalAcumulado += importeTotal;
-        }
-
-        if (sala == 5){
-            importeTotal = inscritos * precioTotal;
-            totalAcumulado += importeTotal;
-        }
-
-        if (sala == 6){
+        if (sala == 1 || sala == 2 || sala == 3 || sala == 4 || sala == 5 || sala == 6 ){
             importeTotal = inscritos * precioTotal;
             totalAcumulado += importeTotal;
         }
