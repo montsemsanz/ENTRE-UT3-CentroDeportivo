@@ -125,42 +125,74 @@ public class CentroDeportivo
         double precioClase = 0;
         double totalAcumulado = 0;
         
+        switch (tipo){
+            case YOGA: yoga =+ inscritos;
+                if (inscritos > maximoInscripcionesYoga){
+                    salaMaximoYoga = sala;
+                }
+                break;
+            case PILATES: pilates =+ inscritos;
+                break;
+            case SPINNING: spinning =+ inscritos;
+                break;
+                
+        }
         horasAminutos = horas * 60;
         tiempoClase = horasAminutos + minutos;
-        precioClase = ((tiempoClase / 15) * 0.4 * + 5) * inscritos;
+        precioClase = ((tiempoClase / 15) * PRECIO_QUINCE_MINUTOS + PRECIO_BASE) * inscritos;
         totalAcumulado =+ precioClase;
     }
 
-    // /**
-     // *  nº sala en la que hay más inscritos en yoga
-     // *   
-     // */
-    // public  getSala()   {
-         
+    /**
+     *  nº sala en la que hay más inscritos en yoga
+     *   
+     */
+    public int getSala()   {
+         return salaMaximoYoga;
         
-    // }
+    }
 
     /**
      * Devuelve el nombre de la actividad con más inscritos 
      * independientemente de la sala  (puede haber coincidencias)  
      */
-    public void getActividadMaximasInscripciones()    {
-        String actividadMaximasInscripciones;
+    public String getActividadMaximasInscripciones()    {
+        String actividadMaximasInscripciones = "";
         if (yoga > pilates){
             if (yoga > spinning){
-                actividadMaximasInscripciones = "yoga"; 
+                actividadMaximasInscripciones = "YOGA"; 
+            }
+            else if (yoga == spinning){
+                actividadMaximasInscripciones = "YOGA SPINNING";
             }
             else {
-                actividadMaximasInscripciones = "spinning";
+                actividadMaximasInscripciones = "SPINNING";
             }
         }
-        else if (pilates > spinning){
-            actividadMaximasInscripciones = "pilates";
+        if (pilates > yoga){
+            if(pilates > spinning){
+                actividadMaximasInscripciones = "PILATES";
+            }
+            else if (pilates == spinning){
+                actividadMaximasInscripciones = "PILATES SPINNING";
+            }
+            else {
+                actividadMaximasInscripciones = "SPINNING";
+            }
         }
-        else{
-            actividadMaximasInscripciones = "spinning";
-        }
+        // else if (pilates > spinning){
+            // actividadMaximasInscripciones = "PILATES";
+        // }
+        // else if (pilates == spinning){
+            // actividadMaximasInscripciones = "PILATES SPINNING";
+        // }
+        // else if (pilates == yoga){
+            // actividadMaximasInscripciones = "PILATES YOGA";
+        // }
+        // else{
+            // actividadMaximasInscripciones = "SPINNING";
+        // }
         return actividadMaximasInscripciones;
     }
-
+    
 }
