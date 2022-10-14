@@ -158,16 +158,6 @@ public class CentroDeportivo
         if (inscritos > maximoInscripcionesYoga){
             salaMaximoYoga = sala;
         }
-        // Dependiendo la sala que sea habrá una actividad u otra
-        if (sala == 1 || sala == 3){
-            tipo = 'S';
-        }
-        else if (sala == 2 || sala == 5 || sala == 6){
-            tipo = 'Y';
-        }
-        else if (sala == 4){
-            tipo = 'P';
-        }
         
         // Precio de la clase en la sala
         minutos += 60 * horas;
@@ -177,23 +167,30 @@ public class CentroDeportivo
         // Calcular cuantas veces se da una clase en una sala
         horaClases = horas;
         minClases = minutos;
-        if(minClases > 59){
-            horaClases++;
-            minClases = 0;
-        }
-
-        if(HORA_PRIMERA_CLASE >= 10 && MINUTOS_PRIMERA_CLASE >= 30){ 
+        
+        if(HORA_PRIMERA_CLASE == 10 && MINUTOS_PRIMERA_CLASE == 30){
+            if (minClases > 59){
+                horaClases++;
+                minClases -= 59;
+            }
             horaClases += HORA_PRIMERA_CLASE;
             minClases += MINUTOS_PRIMERA_CLASE;
             minClases += DESCANSO;
             vecesClase++;
         }
-
-        if (horaClases >= 20 && minClases >= 30){
-            System.out.println(vecesClase++);
+        
+        if(HORA_PRIMERA_CLASE > 10 && MINUTOS_PRIMERA_CLASE > 30){
+            if (minClases > 59){
+                horaClases++;
+                minClases -= 59;
+            }
+            horaClases += HORA_PRIMERA_CLASE;
+            minClases += MINUTOS_PRIMERA_CLASE;
+            minClases += DESCANSO;
+            vecesClase++;
         }
-
-        // Si es una actividad pondrá un nombre y le añadirá el número de inscritos
+        
+        // Poner nombre a las actividades y le añadirá el número de inscritos
         switch    (tipo)    {
             case 'Y':
                 yoga += inscritos;
@@ -214,13 +211,14 @@ public class CentroDeportivo
             importeTotal = inscritos * precioTotal;
             totalAcumulado += importeTotal;
         }
-
+        
+        // Información
         System.out.println("Sala Nº: " + sala + "      " + "Actividad: " + nombreActividad);
         System.out.println("--------------------------------------------------");
         System.out.println("Longitud. Duración: " + minutos + "min. Descanso: " + DESCANSO + "min.");
         System.out.println("Precio Clase: " + precioTotal + "€");
         System.out.println("Clase ofertada en sala: " +  vecesClase + " veces al día");
-        System.out.println("La última clase termina a las: ");
+        System.out.println("La última clase termina a las: " + horaClases + ":" + minClases);  // Hora de finalización de la última clase
         System.out.println("Total inscritos en sala: " + inscritos);
     }
 
