@@ -25,36 +25,36 @@
  */
 public class CentroDeportivo
 {
-     private final int HORA_PRIMERA_CLASE = 10;
-     private final int MINUTOS_PRIMERA_CLASE = 30;
-     private final int HORA_ULTIMA_CLASE = 8;
-     private final int MINUTOS_ULTIMA_CLASE = 30;
-     private final int DESCANSO = 10;
-     private final double PRECIO_BASE = 5.0;
-     private final double PRECIO_QUINCE_MINUTOS = 0.40;
-     private final char YOGA = 'Y';
-     private final char PILATES = 'P';
-     private final char SPINNING = 'S';
-     String nombre;
-     private int yoga;
-     private int pilates;
-     private int spinning;
-     private double totalAcumulado;
-     private int salaMaximoYoga;
-     private int maximoInscripcionesYoga;
+    private final int HORA_PRIMERA_CLASE = 10;
+    private final int MINUTOS_PRIMERA_CLASE = 30;
+    private final int HORA_ULTIMA_CLASE = 8;
+    private final int MINUTOS_ULTIMA_CLASE = 30;
+    private final int DESCANSO = 10;
+    private final double PRECIO_BASE = 5.0;
+    private final double PRECIO_QUINCE_MINUTOS = 0.40;
+    private final char YOGA = 'Y';
+    private final char PILATES = 'P';
+    private final char SPINNING = 'S';
+    String nombre;
+    private int yoga;
+    private int pilates;
+    private int spinning;
+    private double totalAcumulado;
+    private int salaMaximoYoga;
+    private int maximoInscripcionesYoga;
     /**
      * Constructor  - 
      * Recibe un único parámetro, el nombre del centro deportivo
      * e inicializa el resto de atributos adecuadamente 
      */
     public CentroDeportivo(String queNombre)    {
-    nombre = queNombre;
-     int yoga = 0;
-     int pilates = 0;
-     int spinning = 0;
-     double totalAcumulado = 0;
-     int salaMaximoYoga = 0;
-     int maximoInscripcionesYoga = 0;    
+        nombre = queNombre;
+        int yoga = 0;
+        int pilates = 0;
+        int spinning = 0;
+        double totalAcumulado = 0;
+        int salaMaximoYoga = 0;
+        int maximoInscripcionesYoga = 0;    
 
     }
 
@@ -70,7 +70,7 @@ public class CentroDeportivo
      *  Mutador para el nombre del centro deportivo
      */
     public  void setNombre(String queNombre)    {
-       nombre = queNombre;
+        nombre = queNombre;
     }
 
     /**
@@ -79,8 +79,8 @@ public class CentroDeportivo
      *
      */
     public  double getImporteTotal()    {
-       return totalAcumulado;
-        
+        return totalAcumulado;
+
     }
 
     /**
@@ -114,22 +114,41 @@ public class CentroDeportivo
      *   En pantalla se mostrarán los datos de la sala tal como indican los resultados de ejecución
      *              
      */
-    public double tarificarClaseEnSala(int sala, char tipo, int horas, int minutos, int inscritos)    {
-        inscritos = yoga + pilates + spinning;
-        System.out.println(inscritos);
+    public void tarificarClaseEnSala(int sala, char tipo, int horas, int minutos, int inscritos)    {
+        inscritos = yoga + spinning + pilates;
+        switch(tipo) {
+            case YOGA: System.out.println(YOGA);
+                break;
+            case PILATES: System.out.println(PILATES);
+                break;
+            case SPINNING: System.out.println(SPINNING);
+                break;
+        }
         System.out.println(maximoInscripcionesYoga);
-        double precioHoras = horas *= PRECIO_BASE + (PRECIO_QUINCE_MINUTOS * minutos);
-        double precioMinutos = horas * PRECIO_BASE + (minutos / 15 *= PRECIO_QUINCE_MINUTOS );
-        double Nclase = horas/60 + minutos + DESCANSO;
-          if (horas % 1 == 0) {
-             return precioHoras;
-          } 
-         else if (horas > 1)   {
-          return precioHoras;
+        double precioHoras = horas * PRECIO_BASE + (PRECIO_QUINCE_MINUTOS * (horas / 4 + (minutos / 15)));        
+        double HorasMinuto = horas * 60 + minutos;
+        int NDeClase = 1;
+
+        if (horas % 1 == 0) {
+            System.out.println(precioHoras);
+        } 
+        else if (horas > 1)   {
+            System.out.println(precioHoras);
+        }
+        if ( 0 < NDeClase * (HorasMinuto + 10) - 600) { 
+            NDeClase++;
+        }
+        else if (0 > NDeClase * (HorasMinuto + 10) - 600) { 
+            System.out.println(NDeClase--);
+        }
+        double tiempoMinutos = NDeClase * (HorasMinuto + 10);
+        int horaFinalClase = 600 + (int)tiempoMinutos;
+        int nHoras = (int)horaFinalClase / 60;
+        int nMinutos = (int) horaFinalClase % 60;
+        System.out.println(NDeClase);
+        System.out.println(nHoras + ":" + nMinutos);
+        System.out.println("Total inscritos en sala  " + inscritos);
     }
-    return Nclase;
-    return precioHoras;
-    } 
 
     /**
      *  nº sala en la que hay más inscritos en yoga
@@ -137,7 +156,7 @@ public class CentroDeportivo
      */
     public  int getSala()   {
         return maximoInscripcionesYoga;
-        
+
     }
 
     /**
@@ -146,16 +165,17 @@ public class CentroDeportivo
      *  
      */
     public   String getActividadMaximasInscripciones()    {
-       if ((yoga > pilates) && (yoga > spinning)) { 
-           return "yoga";
-       }
-       else if ((pilates > spinning) && (pilates > yoga)) { 
-           return "pilates";
-       }
-        else if ((spinning > pilates) && (spinning > yoga)) { 
+        if (yoga > pilates && yoga > spinning) { 
+            return "yoga";
+        }
+        else if (pilates > spinning && pilates > yoga) { 
+            return "pilates";
+        }
+        else if (spinning > pilates && spinning > yoga) { 
             return "spinning";
-}
-return getActividadMaximasInscripciones();
-}
+        }
+
+        return getActividadMaximasInscripciones();
+    }
 }
 
