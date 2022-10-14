@@ -55,7 +55,7 @@ public class CentroDeportivo
         yoga = 0;
         pilates = 0;
         spinning = 0;
-        totalAcumulado = 0;
+        totalAcumulado = 0.0;
         salaMaximoYoga = 0;
         maximoInscripcionesYoga = 0; 
 
@@ -119,38 +119,42 @@ public class CentroDeportivo
      *              
      */
     public void tarificarClaseEnSala(int sala, char tipo, int horas, int minutos, int inscritos)    {
-        int horasAminutos = 0;
-        int tiempoClase = 0;
-        double precioClase = 0;
-        double totalAcumulado = 0;
-        int claseConDescanso = 0;
-        int clasesSala = 0;
         int tiempoTotal = 600;
-
+        int horasAminutos = horas * 60;
+        int tiempoClase = horasAminutos + minutos;
+        int claseConDescanso = tiempoClase + DESCANSO;
+        double precioClase = ((tiempoClase / 15) * PRECIO_QUINCE_MINUTOS + PRECIO_BASE) * inscritos;
+        int clasesSala = tiempoTotal / claseConDescanso;
+        int minUltimaClase = tiempoTotal - (clasesSala * claseConDescanso);
+        totalAcumulado += precioClase;
+        String actividad ="";
+        
         switch (tipo){
             case YOGA: yoga =+ inscritos;
+                actividad ="YOGA";
                 if (inscritos > maximoInscripcionesYoga){
+                    maximoInscripcionesYoga = inscritos;
                     salaMaximoYoga = sala;
                 }
                 break;
             case PILATES: pilates =+ inscritos;
+                actividad ="PILATES";
                 break;
             case SPINNING: spinning =+ inscritos;
+                actividad ="SPINNING";
                 break;
 
         }
 
-        // a)
-        horasAminutos = horas * 60;
-        tiempoClase = horasAminutos + minutos;
-        precioClase = ((tiempoClase / 15) * PRECIO_QUINCE_MINUTOS + PRECIO_BASE) * inscritos;
-        // b)Desde las 10:30 hasta las 20:30 pasan 10 horas (600 minutos)
-        claseConDescanso = tiempoClase + DESCANSO;
-        clasesSala = tiempoTotal / clasesSala;
-        // c)
+        System.out.println("Sala Nº: " + sala + "      Actividad: " + actividad);
+        System.out.println("---------------------------------------------");
+        System.out.println("Longitud (Duración): " + tiempoClase + " min. " + 
+            " Descanso: 10 min.");
+        System.out.println("Precio clase: " + precioClase + " €.");
+        System.out.println("Clase ofertada en sala: " + clasesSala + " veces al día.");
+        System.out.println("La última clase termina a las: ");
+        System.out.println("Total inscritos en sala: " + inscritos + ".");
 
-        // d)
-        totalAcumulado =+ precioClase;
     }
 
     /**
