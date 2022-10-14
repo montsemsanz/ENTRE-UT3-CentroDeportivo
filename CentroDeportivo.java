@@ -42,8 +42,7 @@ public class CentroDeportivo
     private double totalAcumulado;
     private int salaMaximoYoga;
     private int maximoInscripcionesYoga;
-    
-    
+
 
     /**
      * Constructor  - 
@@ -74,7 +73,7 @@ public class CentroDeportivo
      */
     public void setNombre(String queNombre)    {
         nombre = queNombre;
-       
+
     }
 
     /**
@@ -84,7 +83,7 @@ public class CentroDeportivo
      */
     public double getImporteTotal()    {
         return totalAcumulado;
-        
+
     }
 
     /**
@@ -119,27 +118,26 @@ public class CentroDeportivo
      *              
      */
     public void tarificarClaseEnSala(int sala, char tipo, int horas, int minutos, int inscritos)    {
-       String actividad = "";
-       int duracionTotal = (horas * 60) + minutos;
-       double totalPrecio = PRECIO_BASE + (duracionTotal / 15) * PRECIO_QUINCE_MINUTOS;
-       totalAcumulado = totalAcumulado + (totalPrecio * inscritos);
-       int minutosDia = ((HORA_ULTIMA_CLASE + 12) * 60 + MINUTOS_ULTIMA_CLASE) - (HORA_PRIMERA_CLASE * 60 + MINUTOS_PRIMERA_CLASE);
-       int vecesDia = minutosDia / (duracionTotal + DESCANSO);
-       int claseTerminah = ((HORA_PRIMERA_CLASE * 60) + MINUTOS_PRIMERA_CLASE + (duracionTotal + DESCANSO) * vecesDia) / 60;
-       int claseTerminam = ((HORA_PRIMERA_CLASE * 60) + MINUTOS_PRIMERA_CLASE + (duracionTotal + DESCANSO) * vecesDia) % 60;
-       
-       
+        String actividad = "";
+        int duracionTotal = (horas * 60) + minutos;
+        double totalPrecio = PRECIO_BASE + (duracionTotal / 15) * PRECIO_QUINCE_MINUTOS;
+        totalAcumulado = totalAcumulado + (totalPrecio * inscritos);
+        int minutosDia = ((HORA_ULTIMA_CLASE + 12) * 60 + MINUTOS_ULTIMA_CLASE) - (HORA_PRIMERA_CLASE * 60 + MINUTOS_PRIMERA_CLASE);
+        int vecesDia = minutosDia / (duracionTotal + DESCANSO);
+        int claseTerminah = ((HORA_PRIMERA_CLASE * 60) + MINUTOS_PRIMERA_CLASE + (duracionTotal + DESCANSO) * vecesDia) / 60;
+        int claseTerminam = ((HORA_PRIMERA_CLASE * 60) + MINUTOS_PRIMERA_CLASE + (duracionTotal + DESCANSO) * vecesDia) % 60;
+
        
         switch (tipo) {
             case YOGA: yoga = inscritos;
-            actividad = "YOGA";
-            break;
+                actividad = "YOGA";
+                break;
             case PILATES: pilates = inscritos;
-            actividad = "PILATES";
-            break;
+                actividad = "PILATES";
+                break;
             case SPINNING: spinning = inscritos;
-            actividad = "SPINNING";
-            break;
+                actividad = "SPINNING";
+                break;
         }
         if (yoga > maximoInscripcionesYoga) {
             maximoInscripcionesYoga = yoga;
@@ -152,34 +150,44 @@ public class CentroDeportivo
         System.out.println("Clase ofertada en sala:" +vecesDia + " veces al dia");
         System.out.println("La ultima clase termina a las:" + claseTerminah +"h." + " y " + claseTerminam +"minutos");
         System.out.println("Total inscritos en sala: " + inscritos);
-        
-        
-        
-            
-        }
-        
-    
 
+        
+    }
+    
     /**
      *  nº sala en la que hay más inscritos en yoga
      *   
      */
     public int getSala()   {
         return maximoInscripcionesYoga;
-        
-        
-    }
 
+    }
     /**
      * Devuelve el nombre de la actividad con más inscritos 
      * independientemente de la sala  (puede haber coincidencias)
      *  
      */
     public String getActividadMaximasInscripciones()    {
-        return nombre;
-        
-        
-        
+        String actividadMaxima = "";
+        if (yoga > pilates && yoga > spinning) {
+            actividadMaxima = "YOGA ";
+        }
+        else if (pilates > yoga && pilates > spinning) {
+            actividadMaxima = "PILATES ";
+        }
+        else if(spinning > yoga && spinning > pilates){
+            actividadMaxima = "SPINNING ";
+        }
+        else if(yoga == pilates && yoga != spinning){
+            actividadMaxima = "YOGA PILATES";
+        }
+        else if(yoga == spinning && yoga != pilates){
+            actividadMaxima = "YOGA SPINNING";
+        }
+        else if(pilates == spinning && yoga != pilates){
+            actividadMaxima = "PILATES SPINNING";
+        }
+        return actividadMaxima;
     }
 
 }
