@@ -115,38 +115,39 @@ public class CentroDeportivo
      *              
      */
     public void tarificarClaseEnSala(int sala, char tipo, int horas, int minutos, int inscritos)    {
-        inscritos = yoga + spinning + pilates;
-        switch(tipo) {
-            case YOGA: System.out.println(YOGA);
-                break;
-            case PILATES: System.out.println(PILATES);
-                break;
-            case SPINNING: System.out.println(SPINNING);
-                break;
-        }
-        System.out.println(maximoInscripcionesYoga);
-        double precioHoras = horas * PRECIO_BASE + (PRECIO_QUINCE_MINUTOS * (horas / 4 + (minutos / 15)));        
-        double HorasMinuto = horas * 60 + minutos;
-        int NDeClase = 1;
-
+        // intento del switch 
+        // switch(tipo) {
+            // case 'Y': 
+                // if (totalInscritosSala = inscrito);
+                // break;
+            // case 'P': System.out.println(PILATES);
+                // break;
+            // case 'S': System.out.println(SPINNING);
+                // break;
+        // }
+        System.out.println("Longitud (Duración): " + "? min" + "Descanso: 10 min");
+        // System.out.println(maximoInscripcionesYoga);
+        double precioHoras = PRECIO_QUINCE_MINUTOS * ( ((horas  * 60) +  minutos) / 15) +  PRECIO_BASE;
+        double horasMinuto = horas * 60 + minutos;
+    
         if (horas % 1 == 0) {
-            System.out.println(precioHoras);
+            System.out.println("Precio clase :" + precioHoras + "€");
         } 
         else if (horas > 1)   {
-            System.out.println(precioHoras);
+            System.out.println("Precio clase :" + precioHoras + "€");
         }
-        if ( 0 < NDeClase * (HorasMinuto + 10) - 600) { 
-            NDeClase++;
-        }
-        else if (0 > NDeClase * (HorasMinuto + 10) - 600) { 
-            System.out.println(NDeClase--);
-        }
-        double tiempoMinutos = NDeClase * (HorasMinuto + 10);
-        int horaFinalClase = 600 + (int)tiempoMinutos;
-        int nHoras = (int)horaFinalClase / 60;
-        int nMinutos = (int) horaFinalClase % 60;
-        System.out.println(NDeClase);
-        System.out.println(nHoras + ":" + nMinutos);
+        // int nDeClase = 1;
+        // while ((600 - (MINUTOS_PRIMERA_CLASE + 10) * nDeClase + 10) > 0) { 
+        // nDeClase = nDeClase++;
+        // }
+        // int tMin = (nDeClase-1)*(MINUTOS_PRIMERA_CLASE + 10);
+        // int minFinal = HORA_PRIMERA_CLASE * 60 + tMin;
+        // double tiempoMinutos = nDeClase * (HorasMinuto + 10);
+        // int horaFinalClase = 600 + (int)tiempoMinutos;
+        // int nHoras = (int)horaFinalClase / 60;
+        // int nMinutos = (int) horaFinalClase % 60;
+        System.out.println("Clase ofertada en sala:" + "? " + "veces al día");
+        // System.out.println("cierra" + minFinal / 60 + "horas y "+ minFinal % 60 + "minutos");
         System.out.println("Total inscritos en sala  " + inscritos);
     }
 
