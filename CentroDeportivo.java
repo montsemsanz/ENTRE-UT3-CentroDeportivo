@@ -125,7 +125,7 @@ public class CentroDeportivo
         switch (tipo) {
             case YOGA : yoga += inscritos;
                         actividad = "YOGA";
-                        if (inscritos > salaMaximoYoga) {
+                        if (inscritos > maximoInscripcionesYoga) {
                             salaMaximoYoga = sala;
                             maximoInscripcionesYoga = inscritos;
                         }
