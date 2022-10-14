@@ -44,7 +44,7 @@ public class CentroDeportivo
     private double totalAcumulado;
     private int salaMaximoYoga;
     private int maximoInscripcionesYoga; 
-    
+
     /**
      * Constructor  - 
      * Recibe un único parámetro, el nombre del centro deportivo
@@ -139,19 +139,16 @@ public class CentroDeportivo
                 break;
 
         }
-    
+
         // a)
         horasAminutos = horas * 60;
         tiempoClase = horasAminutos + minutos;
         precioClase = ((tiempoClase / 15) * PRECIO_QUINCE_MINUTOS + PRECIO_BASE) * inscritos;
         // b)Desde las 10:30 hasta las 20:30 pasan 10 horas (600 minutos)
         claseConDescanso = tiempoClase + DESCANSO;
-        if (claseConDescanso < (tiempoTotal-claseConDescanso)){
-             tiempoTotal =- claseConDescanso;
-             clasesSala++;
-        }
+        clasesSala = tiempoTotal / clasesSala;
         // c)
-        
+
         // d)
         totalAcumulado =+ precioClase;
     }
