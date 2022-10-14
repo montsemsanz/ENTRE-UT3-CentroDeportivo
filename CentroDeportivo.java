@@ -133,17 +133,25 @@ public class CentroDeportivo
         
         int precioClase = PRECIO_BASE + (horas / 4 * PRECIO_QUINCE_MINUTOS) 
         + (minutos / 15 * 0.40);
+
+        double duracionClase = horas + minutos / 60;
+        int vecesOfertada = 10 / (duracionClase / 60);
         
-        int vecesOfertada = 10 / (horas + minutos / 60 + 0.10);
+        double horaMinInicio =  HORA_PRIMERA_CLASE + MINUTOS_ULTIMA_CLASE 
+        / 60;
+  
+        if (horaMinInicio + (vecesOfertada * duracionClase + 
+        DESCANSO / 60)) {
+            
+        }
     }
     
     /**
      *  nº sala en la que hay más inscritos en yoga
      *   
      */
-    public getSala()   {
-        //TODO 
-        
+    public int getSala()   {
+        return salaMaximoYoga;        
     }
 
     /**
@@ -151,11 +159,46 @@ public class CentroDeportivo
      * independientemente de la sala  (puede haber coincidencias)
      *  
      */
-    public   getActividadMaximasInscripciones()    {
-        //TODO 
-        
-        
-        
+    public String getActividadMaximasInscripciones()    {
+        if (yoga == pilates && yoga == spinning) {
+            return "YOGA, PILATES Y SPINNING";
+        }
+        else if (yoga == pilates && yoga > spinning) {
+            return "YOGA Y PILATES";
+        }
+        else if (yoga == pilates && yoga < spinning) {
+            return "SPINNING";
+        }
+        else if (yoga > pilates && pilates == spinning) {
+            return "YOGA";
+        }
+        else if (yoga < pilates && pilates == spinning) {
+            return "PILATES Y SPINNING";
+        }
+        else if (yoga == spinning && spinning > pilates) {
+            return "YOGA y SPINNING";
+        }
+        else if (yoga == spinning && spinning < pilates) {
+            return "PILATES";
+        }
+        else if (yoga > spinning && spinning == pilates) {
+            return "YOGA";
+        }
+        else if (yoga < spinning && spinning == pilates) {
+            return "SPINNING Y PILATES";
+        }
+        else if (yoga > spinning && yoga > pilates) {
+            return "YOGA";
+        }
+        else if (spinning > yoga && spinning > pilates) {
+            return "SPINNING";
+        }
+        else if (pilates > yoga && pilates > spinning) {
+            return "PILATES";
+        }
+        else {
+            return "error";
+        }
     }
 
 }
