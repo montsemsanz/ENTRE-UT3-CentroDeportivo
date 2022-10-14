@@ -141,11 +141,11 @@ public class CentroDeportivo
         
         // Total inscritos por tipo de actividad
         switch (tipo) {
-            case YOGA: totalInscritosY = yoga;
+            case YOGA: totalInscritosY = inscritos;
                 break;
-            case PILATES: totalInscritosP = pilates;
+            case PILATES: totalInscritosP = inscritos;
                 break;
-            case SPINNING: totalInscritosS = spinning;
+            case SPINNING: totalInscritosS = inscritos;
                 break;
         }
         int totalInscritos = totalInscritosY + totalInscritosP + totalInscritosS;
@@ -165,12 +165,19 @@ public class CentroDeportivo
         int ClasesEnSala = 600 / (duracionClase + DESCANSO);
         
         // C) La hora de finalización de la última clase (hora y minutos)
-        int finUltimaClase = 600 - (600 % (duracionClase + 10));
+        int finUltimaClase = 600 - (600 % (duracionClase + DESCANSO));
         int horaFinUltimaClase = finUltimaClase / 60;
         int minFinUltimaClase = finUltimaClase % 60;
              // Pasar a formato reloj la hora y los minutos
         int HoraFinUltimaClase = 10 + horaFinUltimaClase;
-        int MinFinUltimaClase = minFinUltimaClase - 30;
+        int MinFinUltimaClase = minFinUltimaClase + 30;
+        if (minFinUltimaClase >= 30) {
+            MinFinUltimaClase = minFinUltimaClase - 30;
+            HoraFinUltimaClase ++;
+        }
+        else {
+            MinFinUltimaClase = minFinUltimaClase + 30;
+        }
         
         // D) el importe total que lleva acumulado el centro entre 
         //    todas las personas inscritas
@@ -181,7 +188,8 @@ public class CentroDeportivo
         System.out.println("Sala Nº: " + sala + "               " + 
                             "Actividad: " + tipo);
         System.out.println("_____________________________________");
-        System.out.println("Longitud (Duración): " + duracionClase);
+        System.out.println("Longitud (Duración): " + duracionClase +
+                            "min. Descanso: " + DESCANSO + "min.");
         System.out.println("Precio clase: " + precioClase + "€");
          System.out.println("Clase ofertada en sala: " + ClasesEnSala + 
                             " veces al día");
