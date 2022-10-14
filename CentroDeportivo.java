@@ -126,16 +126,27 @@ public class CentroDeportivo
                 break;
         }
 
+        if(tipo == YOGA){
+            yoga += inscritos;
+        }
+        else if(tipo == PILATES){
+            pilates += inscritos;
+        }
+        else if(tipo == SPINNING){
+            spinning += inscritos;
+        }
+        
+        
     }
-    
-    // /**
-     // *  nº sala en la que hay más inscritos en yoga
-     // *   
-     // */
-    // public int getSala()   {
 
-    // }
-    
+    /**
+     *  nº sala en la que hay más inscritos en yoga
+     *   
+     */
+    public int getSala()   {
+        return salaMaximoYoga;
+    }
+
     /**
      * Devuelve el nombre de la actividad con más inscritos 
      * independientemente de la sala  (puede haber coincidencias)
