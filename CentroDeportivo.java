@@ -128,15 +128,29 @@ public class CentroDeportivo
         // en una sala en función de su duración
         int vecesClase = 0;
 
-        //
+        // Variable para los minutos
         int minClases = 0;
 
-        //
+        // Variable para las horas
         int horaClases = 0;
 
-        // calcula cuantos periodos de 15 minutos hay
+        // Calcula cuantos periodos de 15 minutos hay
         int periodoQuince; 
-
+        
+        // El total de inscritos por actividad
+        if (tipo == 'Y'){
+            totalInscritos += inscritos;
+            System.out.println("El total de inscritos en yoga es de " + inscritos);
+        }
+        if (tipo == 'P'){
+            totalInscritos += inscritos;
+            System.out.println("El total de inscritos en pilates es de " + inscritos);
+        }
+        if (tipo == 'S'){
+            totalInscritos += inscritos;
+            System.out.println("El total de inscritos en spinning es de " + inscritos);
+        }    
+        
         // Dependiendo la sala que sea habrá una actividad u otra
         if (sala == 1 || sala == 3){
             tipo = 'S';
@@ -144,7 +158,7 @@ public class CentroDeportivo
         else if (sala == 2 || sala == 5 || sala == 6){
             tipo = 'Y';
         }
-        else{
+        else if (sala == 4){
             tipo = 'P';
         }
 
@@ -168,20 +182,17 @@ public class CentroDeportivo
         }
 
         if (horaClases >= 20 && minClases >= 30){
-            System.out.println("Las clases acaban");
+            System.out.println(vecesClase++);
         }
 
         // Si es una actividad pondrá un nombre y le añadirá el número de inscritos
         switch    (tipo)    {
             case 'Y':
                 yoga += inscritos;
-                tipo = YOGA;
             case 'S':
                 spinning += inscritos;
-                tipo = SPINNING;
             case 'P':
                 pilates += inscritos;
-                tipo = PILATES;
         }
 
         // Transforma horas en minutos
@@ -195,6 +206,7 @@ public class CentroDeportivo
         System.out.println("Longitud. Duración: " + minutos + "min. Descanso: " + DESCANSO + "min.");
         System.out.println("Precio Clase: " + precioTotal + "€");
         System.out.println("Clase ofertada en sala: " +  vecesClase + " veces al día");
+        System.out.println("La última clase termina a las: ");
         System.out.println("Total inscritos en sala: " + inscritos);
     }
 
