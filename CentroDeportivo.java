@@ -112,74 +112,42 @@ public class CentroDeportivo
      *   En pantalla se mostrarán los datos de la sala tal como indican los resultados de ejecución         
      */
     public void tarificarClaseEnSala(int sala, char tipo, int horas, int minutos, int inscritos)    {
-        // Variable que cambia las horas a minutos para facilitar los cálculos.
         int horasAMinutos = horas * 60;
-        
-        // Variable que calcula la duración total de la clase en minutos.
         int duracionClase = horasAMinutos + minutos;
-        
-        // Variable que calcula el precio de la clase según su duración.
         double precioClase = PRECIO_BASE + (PRECIO_QUINCE_MINUTOS * (duracionClase / 15));
-        
-        // Variable que añade el descanso a la duración de la clase
-        // para acortar los cálculos posteriores.
         int totalConDescanso = duracionClase + DESCANSO;
-        
-        // Variable que convierte la hora de inicio de la jornada a minutos.
         int comienzoEnMinutos = HORA_PRIMERA_CLASE * 60 + MINUTOS_PRIMERA_CLASE;
-        
-        // Variable que convierte la hora de cierre a minutos.
         int finEnMinutos = (HORA_ULTIMA_CLASE + 12) * 60 +  MINUTOS_ULTIMA_CLASE;
-        
-        // Variable que calcula la duración del día laborable para hacer más legible
-        // el resto del código, podría hacerse sin ella.
         int diaLaborable = finEnMinutos - comienzoEnMinutos;
-        
-        // Variable que calcula el número de veces
-        // que se imparte una clase al día en esa sala.
         int numeroVeces = diaLaborable / totalConDescanso;
-        
-        // Variable que calcula la hora total a la que acaba la última clase de una sala.
         int horaFinEnMinutos = (comienzoEnMinutos + numeroVeces * totalConDescanso);
-        
-        // Variable que calcula la hora de fin, sin los minutos.
         int horaFin = horaFinEnMinutos / 60;
-        
-        // Variable que calcula los minutos de la hora de fin, sin la hora.
         int minutosFin = horaFinEnMinutos % 60;
-        
-        // Variable que pasa los inscritos por clase al total diario de la sala.
         int totalInscritos = inscritos * numeroVeces;
-        
-        // Variable para printear el tipo de actividad según el caso.
         String tipoActividad = "";
-        
-        // Método que devuelve en pantalla todos los datos de la sala y suma al 
-        // total, calcula y clasifica los inscritos según el tipo de actividad.
-        // También cambia el nº de sala con máximo de inscritos en caso de ser YOGA y
-        // de ser mayor que el resto de salas.
+
         if (comienzoEnMinutos + duracionClase > finEnMinutos){
             System.out.println("La clase no puede pasar de las 20:30");
         }
         else{
             switch   (tipo)    {
                 case YOGA:   yoga += (totalInscritos);
-                             tipoActividad = "YOGA";
+                    tipoActividad = "YOGA";
                     if (totalInscritos > maximoInscripcionesYoga){
                         maximoInscripcionesYoga = totalInscritos;
                         salaMaximoYoga = sala;
                     }
                     break;
                 case PILATES: pilates += (totalInscritos);
-                              tipoActividad = "PILATES";  
+                    tipoActividad = "PILATES";  
                     break;
                 case SPINNING: spinning += (totalInscritos);
-                               tipoActividad = "SPINNING";
+                    tipoActividad = "SPINNING";
                     break;
             }
             totalAcumulado += totalInscritos * precioClase;
             System.out.println("Sala Nº: " + sala + "                 Actividad: "
-             + tipoActividad);
+                + tipoActividad);
             System.out.println("-".repeat(50));
             System.out.println("Longitud(duración): " + duracionClase + " min. "
                 + "Descanso: " + DESCANSO + " min. ");
@@ -203,9 +171,8 @@ public class CentroDeportivo
      * independientemente de la sala  (puede haber coincidencias)
      */
     public String getActividadMaximasInscripciones()    {
-        // Variable para printear el tipo de actividad según el caso.
         String str = "";
-        
+
         if (yoga > pilates && yoga > spinning){
             str = "YOGA";
         }
