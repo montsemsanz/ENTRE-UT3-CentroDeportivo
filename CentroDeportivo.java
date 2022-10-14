@@ -1,6 +1,7 @@
 
 /**
  * ENTREGA UT3
+ * 
  * @author - Asier Mauleon
  * 
  * 
@@ -70,7 +71,7 @@ public class CentroDeportivo
     /**
      *  Mutador para el nombre del centro deportivo
      */
-    public String setNombre(String queNombre)    {
+    public void setNombre(String queNombre)    {
         nombre = queNombre;
     }
 
@@ -116,26 +117,53 @@ public class CentroDeportivo
      *              
      */
     public void tarificarClaseEnSala(int sala, char tipo, int horas, int minutos, int inscritos)    {
-        //TODO 
+        switch (tipo){
+            case 'Y': tipo = YOGA;
+                break;
+            case 'P': tipo = PILATES;
+                break;
+            case 'S': tipo = SPINNING;
+                break;
+        }
 
     }
+    
+    // /**
+     // *  nº sala en la que hay más inscritos en yoga
+     // *   
+     // */
+    // public int getSala()   {
 
-    /**
-     *  nº sala en la que hay más inscritos en yoga
-     *   
-     */
-    public  getSala()   {
-        //TODO 
-
-    }
-
+    // }
+    
     /**
      * Devuelve el nombre de la actividad con más inscritos 
      * independientemente de la sala  (puede haber coincidencias)
      *  
      */
-    public   getActividadMaximasInscripciones()    {
-        //TODO 
-
+    public String getActividadMaximasInscripciones()    {
+        String strMaximasInscripciones = "";
+        if(yoga > pilates && yoga > spinning){
+            strMaximasInscripciones = "Yoga";
+        }
+        if(pilates > yoga && pilates > spinning){
+            strMaximasInscripciones = "Pilates";
+        }
+        if(spinning > yoga && spinning > pilates){
+            strMaximasInscripciones = "Spinning";
+        }
+        if(yoga == spinning){
+            strMaximasInscripciones = "Yoga Spinning";
+        }
+        if(yoga == pilates){
+            strMaximasInscripciones = "Yoga Pilates";
+        }
+        if(pilates == spinning){
+            strMaximasInscripciones = "Pilates Spinning";
+        }
+        if((yoga == pilates) && (yoga == spinning)){
+            strMaximasInscripciones = "Yoga Pilates Spinning";
+        }
+        return strMaximasInscripciones;
     }
 }
